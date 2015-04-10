@@ -17,9 +17,12 @@ Sub directories meant to contain best practices information about various topics
 
 #### waffle.io
 
+## Licensing
 
 ## DevOps
 (when to involve them ...)
+
+## Security
 
 ## Deployment
 
