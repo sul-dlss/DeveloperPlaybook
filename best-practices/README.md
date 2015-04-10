@@ -1,5 +1,7 @@
 # Best Practices
 
+- [Documentation](/documentation)
+
 Best practices guides should attempt to answer the question:
 
 To what extent does it make our products better?
