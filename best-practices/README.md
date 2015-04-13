@@ -33,6 +33,21 @@ Object-Oriented Design
 
 [Tell, don't ask]: http://robots.thoughtbot.com/post/27572137956/tell-dont-ask
 
+Version Control
+---------------
+
+* Use git
+* Host your projects on github (it's surprising how often it's useful to share Stanford-specific code, even just for the general approach to a problem)
+* Prefer using public repositories.
+* Prefer hosting your project in the `sul-dlss` organization so it is easier to discover. If it makes sense to move it to a separate organization later, github makes the proces easy and seamless.
+* Provide a short description for your github project (and a URL, if applicable)
+* Prefer pull requests instead of pushing directly to master (and give continuous integration a chance to run before merging)
+* Before merging a branch, consider squashing the commits to only salient, well-described commits (e.g. not "fix typo", "fix a bug in the last commit", "why won't you work!!?!!?" 
+* Don't rewrite public history
+* Write [good commit messages]. If you're fixing an issue, reference the issue in the commit message, but also include additional context.
+
+[good commit messages]: https://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message
+
 Ruby
 ----
 
