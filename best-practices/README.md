@@ -18,6 +18,17 @@ General
 
 [Keep the code simple]: http://www.readability.com/~/ko2aqda2
 
+Licensing
+---------
+
+As a matter of practice, DLSS publishes software into publicly accessible code repositories. This facilitates the review, exchange, reuse and possible code contributions from other sites--a key part of our development strategy and methodology. As best practice, we endeavor to put a clear license on this code so others know what they may and may not do with it. DLSS staff should release it under an open source license.
+
+* When contributing to an existing codebase that has an approved OSS license, we should contribute the code back under the this same license.
+* When developing new code, then it should use an [Apache 2 license] as the default.
+* The copyright holder for most work is "The Board of Trustees of the Leland Stanford Junior University"
+
+[Apache 2 license]: /best-practices/examples/apache2-license
+
 Object-Oriented Design
 ----------------------
 
