@@ -59,6 +59,13 @@ Version Control
 
 [good commit messages]: https://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message
 
+Deployment
+----------
+* Document how to deploy the project in (or linked to from) the readme
+* Use a reproducable deployment strategy
+* Have a branch that is always deployable
+* Use commonly used deployment software (e.g. capistrano for ruby-based applications)
+
 Ruby
 ----
 
