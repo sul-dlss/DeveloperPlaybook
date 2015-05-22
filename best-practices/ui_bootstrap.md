@@ -1,6 +1,6 @@
 # Twitter Bootstrap
 
-When building front-end interfaces, we should use [Twitter Bootstrap](http://getbootstrap.com/) to provide a base layout, common set of user interface components, and easily sharable SUL branding.
+When building front-end interfaces, we should use [Twitter Bootstrap](http://getbootstrap.com/) to provide a base layout, common user interface components, and easily sharable SUL branding and look and feel across DLSS projects.
 
 Projects should override bootstrap variables (following SCSS conventions) to customize the Bootstrap theme, e.g.:
 
