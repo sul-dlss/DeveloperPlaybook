@@ -17,49 +17,45 @@ All projects should have a `README.md` file. This file should try to answer the 
 
 
 ## Example
+    [![Build Status](https://travis-ci.org/sul-dlss/name-of-the-project.svg?branch=master)](https://travis-ci.org/sul-dlss/name-of-the-project) [![Coverage Status](https://coveralls.io/repos/sul-dlss/name-of-the-project/badge.png)](https://coveralls.io/r/sul-dlss/name-of-the-project) [![Dependency Status](https://gemnasium.com/sul-dlss/name-of-the-project.svg)](https://gemnasium.com/sul-dlss/name-of-the-project) [![Gem Version](https://badge.fury.io/rb/name-of-the-project.svg)](http://badge.fury.io/rb/name-of-the-project)
 
-```
-[![Build Status](https://travis-ci.org/sul-dlss/name-of-the-project.svg?branch=master)](https://travis-ci.org/sul-dlss/name-of-the-project) [![Coverage Status](https://coveralls.io/repos/sul-dlss/name-of-the-project/badge.png)](https://coveralls.io/r/sul-dlss/name-of-the-project) [![Dependency Status](https://gemnasium.com/sul-dlss/name-of-the-project.svg)](https://gemnasium.com/sul-dlss/name-of-the-project) [![Gem Version](https://badge.fury.io/rb/name-of-the-project.svg)](http://badge.fury.io/rb/name-of-the-project)
+    # Name of the Project
 
-# Name of the Project
+    This project provides an implementation of the [XKCD Random Number](https://xkcd.com/221/) generator. This random number generator is particularly useful when predictable random numbers can improve performance.
 
-This project provides an implementation of the [XKCD Random Number](https://xkcd.com/221/) generator. This random number generator is particularly useful when predictable random numbers can improve performance.
+    ## Requirements
 
-## Requirements
+    - Ruby 3.0
+    - libxml 5
 
-- Ruby 3.0
-- libxml 5
+    ## Installation
 
-## Installation
+    Add this line to your Rails application's Gemfile
 
-Add this line to your Rails application's Gemfile
+    ```ruby
+      gem 'xkcd-random'
+    ```
 
-\```ruby
-  gem 'xkcd-random'
-\```
+    Then execute:
 
-Then execute:
+    ```console
+    $ bundle install
+    ```
 
-\```console
-$ bundle install
-\```
+    In your code, record the random number:
 
-In your code, record the random number:
+    ```
+    XKCD::Random.number = 4 # chosen by a fair die roll
+    ```
 
-\```
-XKCD::Random.number = 4 # chosen by a fair die roll
-\```
+    ## Running the tests
 
-## Running the tests
+    Run tests:
 
-Run tests:
-
-\```console
-$ rake
-\```
-
-```
-
+    ```console
+    $ rake
+    ```
+    
 ## Other Examples
 
 - [spotlight](https://github.com/sul-dlss/spotlight)
