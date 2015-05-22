@@ -2,6 +2,7 @@
 A place to organize style guides, best practices, tools, and techniques for Stanford University's Digital Library Systems &amp; Services Group.
 
  - [Best Practices](/best-practices)
+   - [Documentation](/best-practices/documentation)
  - [Style](/style)
  - [Code Review](/code-review)
 
