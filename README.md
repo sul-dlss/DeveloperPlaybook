@@ -21,7 +21,7 @@ waiting a week for everybody to leave feedback**.
 Goals
 -----
 
-The goals of the building the Developer Playbook are to:
+The goals of building the Developer Playbook are to:
 
  - Provide a description of current accepted working practices within DLSS.  These are not necessarily the *best* practices, but they're ours for the moment.
  - Determine whether we have consensus on those practices, to document the ones that we do agree on, and have a list of issues for further discussion.
