@@ -17,6 +17,7 @@ To what extent does it make our products better?
 
 Or conversely, what is the level of danger if we don't agree and everyone does it differently?
 
-Best practices should represent existing or emerging consensus within the department.
+Best practices should represent existing or emerging consensus for DLSS.  The practices must refer to authorities outside of DLSS, community best practices, to ensure that open-source communities can work easily with DLSS projects.
 
 Best practices should also be generally applicable, and describe a high level of practice (so that, they too, are easier to develop, deploy, maintain and learn). 
+
