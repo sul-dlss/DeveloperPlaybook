@@ -26,6 +26,10 @@ If you have something you want to add or remove, please use the following agreed
  - Otherwise if the proposal is not accepted it gets tagged "defer" as a note that consensus could not be reached and closed.
  - Deferred proposals should have consensus building around them before being reintroduced.
 
+## Editing, Organizing, and other contributions
+
+Pull requests that enhance, clarify, or reorganize our playbook without changing the spirit of our documented practices should be merged with minimal process overhead. If there are 4 or more +1s and no -1s, then the pull request should be merged.
+
 ## Guiding Principles
 
  - Don’t be a jerk :smiley:
