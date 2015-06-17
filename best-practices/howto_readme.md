@@ -12,7 +12,7 @@ All projects should have a `README.md` file. This file should try to answer the 
     - [Travis](http://docs.travis-ci.com/user/status-images/)
     - [Gem Version](http://badge.fury.io/for/rb)
     - Coverage ([coveralls](https://coveralls.io/))
-    - [Gemnsasium](https://gemnasium.com/)
+    - [Gemnasium](https://gemnasium.com/)
     - [waffle](https://waffle.io/)
 
 
