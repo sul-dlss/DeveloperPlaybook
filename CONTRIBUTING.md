@@ -11,6 +11,7 @@ If you have something you want to add or remove, please use the following agreed
  - The body of the issue must describe the rationale for why the entry is needed
    - What is the danger if there isn't a best practice?
    - How do people most effectively follow it?
+ - When appropriate, a proposal should include links to repositories, code or other similar DLSS reference examples of the practice's use. 
   
 ### Gaining Consensus
  - Consensus is gauged by people commenting with :+1: and :-1: ([GitHub Emoji Cheatsheet](http://www.emoji-cheat-sheet.com/))
