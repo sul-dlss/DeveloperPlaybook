@@ -12,7 +12,10 @@ All projects should have a `README.md` file. This file should try to answer the 
     - [Travis](http://docs.travis-ci.com/user/status-images/)
     - [Gem Version](http://badge.fury.io/for/rb)
     - Coverage ([coveralls](https://coveralls.io/))
+        - [Getting Started](https://coveralls.zendesk.com/hc/en-us/articles/201769485-Ruby-Rails)
     - [Gemnasium](https://gemnasium.com/)
+        - [Additional Consul Documentation](https://consul.stanford.edu/display/dlssdevops/How+to+track+and+manage+application+dependencies)
+        - [Service Setup Example](https://github.com/sul-dlss/sul-requests/settings/hooks)
     - [waffle](https://waffle.io/)
 
 
