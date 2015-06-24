@@ -17,6 +17,6 @@ To what extent does it make our products better?
 
 Or conversely, what is the level of danger if we don't agree and everyone does it differently?
 
-Best practices should represent existing or emerging consensus within the department.
+Best practices should represent existing or emerging consensus within the department.  Where possible, best practices should refer to open source documentation for further information and, especially, any useful getting started guides.
 
 Best practices should also be generally applicable, and describe a high level of practice (so that, they too, are easier to develop, deploy, maintain and learn). 
