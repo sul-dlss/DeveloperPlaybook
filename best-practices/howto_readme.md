@@ -12,9 +12,13 @@ All projects should have a `README.md` file. This file should try to answer the 
     - [Travis](http://docs.travis-ci.com/user/status-images/)
     - [Gem Version](http://badge.fury.io/for/rb)
     - Coverage ([coveralls](https://coveralls.io/))
+        - [Getting Started](https://coveralls.zendesk.com/hc/en-us/articles/201769485-Ruby-Rails)
     - [Gemnasium](https://gemnasium.com/)
+        - Make sure your app is registered with the sul-dlss gemnasium account.
+        - Add a Service hook to your github repository, so that it informs Gemnasium when you've updated and it will re-evaluate your Gemfile.lock; this will keep the Gemnasium badge on the README in sync.
+            - [Service Setup Example](https://github.com/sul-dlss/sul-requests/settings/hooks)
+        - Once it's registered, the gemnasium web interface will display updated alerts to take action on.  Gemnasium does give you a solution when it issues an alert, usually to update your gem to the latest version.
     - [waffle](https://waffle.io/)
-
 
 ## Example
     [![Build Status](https://travis-ci.org/sul-dlss/name-of-the-project.svg?branch=master)](https://travis-ci.org/sul-dlss/name-of-the-project) [![Coverage Status](https://coveralls.io/repos/sul-dlss/name-of-the-project/badge.png)](https://coveralls.io/r/sul-dlss/name-of-the-project) [![Dependency Status](https://gemnasium.com/sul-dlss/name-of-the-project.svg)](https://gemnasium.com/sul-dlss/name-of-the-project) [![Gem Version](https://badge.fury.io/rb/name-of-the-project.svg)](http://badge.fury.io/rb/name-of-the-project)
