@@ -8,6 +8,7 @@ A place to organize style guides, best practices, tools, and techniques for Stan
    - [Documentation](/best-practices/documentation)
    - [How To - Readme](/best-practices/howto_readme.md)
    - [Licensing](/best-practices/licensing.md)
+   - [Setting up Rails projects](/best-practices/setting_up_rails_project.md)
    - [Version Control](/best-practices/version_control.md)
  - [Style](/style)
  - [Code Review](/code-review)
