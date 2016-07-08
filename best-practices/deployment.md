@@ -12,17 +12,11 @@ Other common plugins (not yet bundled in `lyberteam-capistrano-devel`) include:
 
 - `squash/rails/capistrano3`, for reporting deploys to our Squash exception handling application
 
-We avoid putting hostnames, users, and other "sensitive" information in the capistrano deploy configuration. Instead, we may prompt the deployer for that information:
+We do not consider hostnames and users as "sensitive" information in the capistrano deploy configuration. For ease of deploy, add this information into the deploy configuration.
 
 ```ruby
-# https://github.com/sul-dlss/earthworks/blob/master/config/deploy/production.rb#L3
-set :deploy_host, ask("Server", 'e.g. server.stanford.edu')
-
-# https://github.com/sul-dlss/exhibits-request/blob/master/config/deploy/production.rb
-require 'dotenv'
-Dotenv.load
-# ...
-set :deploy_host, ENV['CAPISTRANO_PRODUCTION_DEPLOY_HOST'] || ask(:deploy_host, "")
+# https://github.com/sul-dlss/exhibits/blob/master/config/deploy/staging.rb#L2
+server 'exhibits-stage.stanford.edu', user: 'exhibits', roles: %w(web db app)
 ```
 
 We use different Capistrano environments for each environment we deploy to. Commonly used names for these Capistrano environments include:
