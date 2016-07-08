@@ -19,8 +19,8 @@ We do not consider hostnames and users as "sensitive" information in the capistr
 server 'exhibits-stage.stanford.edu', user: 'exhibits', roles: %w(web db app)
 ```
 
-We use different Capistrano environments for each environment we deploy to. Commonly used names for these Capistrano environments include:
+We use different Capistrano environments for each environment we deploy to. These should match the suffix of the hostname for the server(s) it is being deployed to, which will most likely already use the shorthand environment name (i.e. `dev` over `development`). Commonly used names for these Capistrano environments include:
 
-- `development`
-- `staging`
-- `production`
+- `dev`
+- `stage`
+- `prod`
