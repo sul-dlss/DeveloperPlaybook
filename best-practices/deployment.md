@@ -24,3 +24,5 @@ We use different Capistrano environments for each environment we deploy to. Thes
 - `dev`
 - `stage`
 - `prod`
+
+NOTE:  if there is a database, you will likely need to use `development` and `production` to match the database names on the servers.
