@@ -27,8 +27,17 @@ code and the gems that your code uses when processing background jobs are thread
 It's fairly common to run Redis on its own server. If you do this, you need to know that Redis
 doesn't have any notion of separate "accounts". The implication is that if several applications
 share the same Redis server for ease of administration, they may step on each other and wipe out
-each other's data if you're not careful. You may also experience
-[performance problems](https://redislabs.com/blog/benchmark-shared-vs-dedicated-redis-instances#.V7IfjrVrgUE).
+each other's data if you're not careful. The
+[redis-namespace gem](https://github.com/resque/redis-namespace) can help alleviate some of this
+issue. There also seems to be a higher risk that you'll experience
+[performance problems](https://redislabs.com/blog/benchmark-shared-vs-dedicated-redis-instances#.V7IfjrVrgUE)
+when running shared Redis instances.
+
+The organization behind Sidekiq offers paid support licenses, which also provide enhanced
+features. However, the source code is hosted on [GitHub](https://github.com/mperham/sidekiq). The
+project also has a nice [Wiki](https://github.com/mperham/sidekiq/wiki) page with links to best
+practices etc. Overall I would say that the Sidekiq documentation is better than the Delayed Job
+docs.
 
 
 ## Active Job
