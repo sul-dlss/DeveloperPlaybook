@@ -46,4 +46,7 @@ docs.
 declaring and running background jobs. It supports a variety of technologies, including Delayed Job
 and Sidekiq. Active Job is attractive, because it lets you switch out back ends with minimal impact
 on your application code. Note, however, that Active Job does not currently have a mechanism for
-detecting when a background job has failed.
+detecting when a background job has failed. Most of the actual processing libraries (Delayed Job,
+Sidekiq etc.) have facilities for recognizing when a job has failed, though, so if this is important
+to you, it may be necessary to go without the layer of convenience and consistency that Active Job
+provides.
