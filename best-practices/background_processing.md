@@ -15,14 +15,34 @@ Delayed Job supports [ActiveJob](http://guides.rubyonrails.org/active_job_basics
 [This article](https://www.sitepoint.com/delayed-jobs-best-practices/) suggests some best practices
 for Delayed Job.
 
+Argo and Exhibits both use Delayed Job (with Active Job, see below).
+
+
+## Resque
+
+[Resque](https://github.com/resque/resque) is a Ruby application with a companion Sinatra-based
+monitoring web app. It uses [Redis](http://redis.io) as its backend for managing the queues. Each queue is a
+multivalued record (a List data structure) in Redis and Redis handles all the queueing issues like
+concurrency, etc.
+
+Resque workers poll one or more queues to get work. For each job they receive, they fork a process
+to run the job using the self.perform(*args) method. You can run multiple workers per queue if you
+want to have concurrent jobs for a queue. When a worker polls more than 1 queue, it does so in order
+per job which you can leverage to implement priority queues.
+
+Note that per the lead maintainer, Resque is currently
+[in maintenance mode](http://resque.github.io/2016/03/10/resque-1.26.0-released.html).
+
+The DOR Workflow Service framework uses Resque.
+
 
 ## Sidekiq
 
-I believe Sidekiq was inspired by Resque, and is considered by most to improve on its ancestor. As
-opposed to Delayed Job, both of these tools require [Redis](http://redis.io) for queueing
-jobs. Note that Sidekiq uses threads to run its jobs in the same process. This means that if there
-is any chance of your background jobs stepping on one another, you need to ensure that both your
-code and the gems that your code uses when processing background jobs are thread safe.
+I believe Sidekiq was inspired by Resque, and is considered by most to improve on its ancestor. Like
+Resque, Sidekiq relies on Redis for queue management. Note that Sidekiq uses threads to run its jobs
+in the same process. This means that if there is any chance of your background jobs stepping on one
+another, you need to ensure that both your code and the gems that your code uses when processing
+background jobs are thread safe.
 
 It's fairly common to run Redis on its own server. If you do this, you need to know that Redis
 doesn't have any notion of separate "accounts". The implication is that if several applications
@@ -38,6 +58,8 @@ features. However, the source code is hosted on [GitHub](https://github.com/mper
 project also has a nice [Wiki](https://github.com/mperham/sidekiq/wiki) page with links to best
 practices etc. Overall I would say that the Sidekiq documentation is better than the Delayed Job
 docs.
+
+The DPN Synchronization application (dpn-sync) uses Sidekiq.
 
 
 ## Active Job
