@@ -59,7 +59,7 @@ project also has a nice [Wiki](https://github.com/mperham/sidekiq/wiki) page wit
 practices etc. Overall I would say that the Sidekiq documentation is better than the Delayed Job
 docs.
 
-The DPN Synchronization application (dpn-sync) uses Sidekiq.
+The [DPN Synchronization](https://github.com/dpn-admin/dpn-sync) application uses Sidekiq.
 
 
 ## Active Job
