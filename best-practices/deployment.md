@@ -2,15 +2,16 @@
 
 We use [`capistrano`](http://capistranorb.com) to reliably deploy our applications to one or more machines. Capistrano gives us a common workflow for deploying our applications and is shipped with reasonable defaults for a wide variety of Rails, Sinatra, and other Ruby-based applications. By providing a consistent way to deploy an application, we make it easier for everyone to contribute to and maintain our applications.
 
-We maintain [`lyberteam-capistrano-devel`](https://github.com/sul-dlss/lyberteam-capistrano-devel), a distribution of Capistrano plugins that all our deployed applications should take advantage of. The gem includes:
+We maintain [`dlss-capistrano`](https://github.com/sul-dlss/dlss-capistrano), a distribution of Capistrano plugins that all our deployed applications should take advantage of. The gem includes:
 
 - `capistrano/one_time_key`, for integrating Capistrano with our kerberos-based environment;
 - `capistrano/releaseboard`, for reporting deploys to a common releaseboard application;
 - `capistrano/bundle_audit`, for checking applications for known security vulnerabilities before launching.
 
-Other common plugins (not yet bundled in `lyberteam-capistrano-devel`) include:
+Other common plugins (not yet bundled in `dlss-capistrano`) include:
 
-- `squash/rails/capistrano3`, for reporting deploys to our Squash exception handling application
+- `squash/rails/capistrano3`, for reporting deploys to our Squash exception handling application, or
+- `capistrano/honeybadger`, for reporting deploys to Honeybadger
 
 We do not consider hostnames and users as "sensitive" information in the capistrano deploy configuration. For ease of deploy, add this information into the deploy configuration.
 
