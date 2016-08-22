@@ -72,3 +72,10 @@ detecting when a background job has failed. Most of the actual processing librar
 Sidekiq etc.) have facilities for recognizing when a job has failed, though, so if this is important
 to you, it may be necessary to go without the layer of convenience and consistency that Active Job
 provides.
+
+
+## Deployment
+
+[Capistrano::Sidekiq](https://github.com/seuros/capistrano-sidekiq) and
+[Capistrano::DelayedJob](https://github.com/AgileConsultingLLC/capistrano3-delayed-job) provide
+specific Capistrano tasks for Sidekiq and Delayed Job respectively.
