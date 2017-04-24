@@ -5,7 +5,6 @@ We use [`capistrano`](http://capistranorb.com) to reliably deploy our applicatio
 We maintain [`dlss-capistrano`](https://github.com/sul-dlss/dlss-capistrano), a distribution of Capistrano plugins that all our deployed applications should take advantage of. The gem includes:
 
 - `capistrano/one_time_key`, for integrating Capistrano with our kerberos-based environment;
-- `capistrano/releaseboard`, for reporting deploys to a common releaseboard application;
 - `capistrano/bundle_audit`, for checking applications for known security vulnerabilities before launching.
 
 Other common plugins (not yet bundled in `dlss-capistrano`) include:
