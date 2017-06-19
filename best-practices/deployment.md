@@ -2,7 +2,7 @@
 
 We use [`capistrano`](http://capistranorb.com) to deploy our applications to one or more machines. Capistrano gives us a common workflow for deploying our applications and is shipped with reasonable defaults for a wide variety of Rails, Sinatra, and other Ruby-based applications. It can also be used for deploying non-Ruby applications. By providing a consistent way to deploy an application, we make it easier for everyone to contribute to and maintain our applications.
 
-The provided [capistrano documentation(http://capistranorb.com/)] is excellent.  We also have many projects at https://github.com/sul-dlss that use capistrano and can be referred to as exemplars.
+The provided [capistrano documentation](http://capistranorb.com/) is excellent.  We also have many projects at https://github.com/sul-dlss that use capistrano and can be referred to as exemplars.
 
 We maintain [`dlss-capistrano`](https://github.com/sul-dlss/dlss-capistrano), a distribution of Capistrano plugins that all our deployed applications should take advantage of. The gem includes:
 
