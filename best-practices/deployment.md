@@ -9,7 +9,6 @@ We maintain [`dlss-capistrano`](https://github.com/sul-dlss/dlss-capistrano), a 
 
 Other common plugins (not yet bundled in `dlss-capistrano`) include:
 
-- `squash/rails/capistrano3`, for reporting deploys to our Squash exception handling application, or
 - `capistrano/honeybadger`, for reporting deploys to Honeybadger
 
 We do not consider hostnames and users as "sensitive" information in the capistrano deploy configuration. For ease of deploy, add this information into the deploy configuration.
