@@ -72,3 +72,13 @@ set :deploy_to, '/opt/app/%{fetch(:user)}/%{fetch(:application)}'
 # config valid only for current version of Capistrano
 lock '3.8.0'
 ```
+
+### Beware of changing stage names when using the whenever gem
+
+If you use the whenever gem for cron job management and if your capistrano deployment stage name changes for some reason, and if you set your whenever identifier to something that includes that stage name, for example:
+
+```
+set :whenever_identifier, ->{ "app_name_#{fetch(:stage)}" }
+```
+
+then you will need to look at the crontab on the server to be sure it is correct and does not have any old entries after you deploy.  The gem will not clean out cron jobs when the name of the whenever_identifier changes.
