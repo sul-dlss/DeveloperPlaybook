@@ -62,7 +62,17 @@ Changing uid to root (0)
 Now you have the ability to do a test puppet run. This will run the puppet agent against the branch that you pushed to puppet, but will not actually apply any of the changes. You will see a diff of changes that will be made when the PR is finally merged and puppetmaster picks up and applies the change on your server:
 
 ```
-$ puppet agent --test --noop environment=sunetidFeature
+$ puppet agent --test --noop --environment=sunetidFeature
 ```
 
-WARNING: Please make sure that you use the `--noop` flag or else the puppetmaster will <EM>always</EM> try to use the puppet configuration from the branch you created instead of production!
+:exclamation: WARNING :exclamation:
+Please make sure that you use the `--noop` flag :exclamation: or else the puppet will try to apply the configuration from whatever environment is specified; in the example above
+it would be from the `sunetidFeature` branch of the puppet repository.
+
+You can do this to test your configuration changes in real-time, but be aware that puppet will then update the puppet config file (`/etc/puppetlabs/puppet/puppet.conf`) with the environment you just specified on the command line, and after that if somebody runs `puppet agent --test` (without the environment flag) it will assume the environment previously specified, so if you want to test your puppet runs in real-time, please make sure that you subsequently reset the puppet config to use the production environment with:
+
+```
+$ puppet agent --test --environment=production
+```
+
+...or else the next person who comes along will be confused as to why their puppet changes are not being propagated, or there may be errors because the environment's branch that you used is no longer available!
