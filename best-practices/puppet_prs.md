@@ -33,3 +33,46 @@ git push origin sunetidFeature
 ```
 
  Next, create a PR in GitHub for your changes. Once the PR has been submitted, the ops team will be automatically notified to review it. Once the PR has been reviewed and merged into the production branch by the ops team, the puppetmaster will apply the configuration on its next run, usually within an hour, or a friendly operations team member will apply the change to the server by running the puppet agent manually.
+
+### Testing your puppet changes
+
+If you need to have the ability on the development machine to do a test run of the proposed puppet changes, you need to have access to the machine as the root user. Add `ksu: true` to the `app_user` configuration as shown:
+
+```
+role::params::app_user:
+  requests:
+    k5users:
+      - mysunetid
+      - yoursunetid
+    ksu:
+      true
+```
+
+Be aware that this will give root access to all of the `k5users`, so be certain that you actually need this level of access and that all of the k5users can have this level of access. Once the PR is submitted with this change the ops team will review and merge it as described above, and after the puppetmaster applies the configuration on the next run, the k5users will have root access to do test puppet runs.
+
+The next time you create a new puppet branch and commit/push to the puppet Github repository, you will be able to do a test run of the proposed puppet configuration to see what changes would actually be applied. To do this use the `ksu` command:
+
+```
+$ ksu
+Authenticated mysunetid@stanford.edu
+Account root: authorization for mysunetid@stanford.edu successful
+Changing uid to root (0)
+```
+
+Now you have the ability to do a test puppet run. This will run the puppet agent against the branch that you pushed to puppet, but will not actually apply any of the changes. You will see a diff of changes that will be made when the PR is finally merged and puppetmaster picks up and applies the change on your server:
+
+```
+$ puppet agent --test --noop --environment=sunetidFeature
+```
+
+:exclamation: WARNING :exclamation:
+Please make sure that you use the `--noop` flag :exclamation: or else the puppet will try to apply the configuration from whatever environment is specified; in the example above
+it would be from the `sunetidFeature` branch of the puppet repository.
+
+You can do this to test your configuration changes in real-time, but be aware that puppet will then update the puppet config file (`/etc/puppetlabs/puppet/puppet.conf`) with the environment you just specified on the command line, and after that if somebody runs `puppet agent --test` (without the environment flag) it will assume the environment previously specified, so if you want to test your puppet runs in real-time, please make sure that you subsequently reset the puppet config to use the production environment with:
+
+```
+$ puppet agent --test --environment=production
+```
+
+...or else the next person who comes along will be confused as to why their puppet changes are not being propagated, or there may be errors because the environment's branch that you used is no longer available!
