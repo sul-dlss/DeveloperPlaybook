@@ -25,3 +25,9 @@ $ gem owner base_indexer -a sul-devops-team@lists.stanford.edu
 ```
 
 The service account will ensure we all have access to our collective work. 
+
+## Steps to release a new version of a gem
+
+1. Update the version of the gem on the `master` branch according to the above [semantic versioning](http://semver.org) guidelines.
+1. Run `rake release` in the gem directory
+1. Add appropriate [release notes and publish the release](https://help.github.com/articles/creating-releases/)
