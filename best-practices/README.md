@@ -4,6 +4,7 @@
 - [How To - Readme](/best-practices/howto_readme.md)
 - [Licensing](/best-practices/licensing.md)
 - [Version Control](/best-practices/version_control.md)
+- [Updating NodeJS]('/best-practices/updating-nodejs.md')
 
 Best practices guides should attempt to answer the question:
 
