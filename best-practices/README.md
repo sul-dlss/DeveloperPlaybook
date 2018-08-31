@@ -1,10 +1,20 @@
 # Best Practices
 
 - [Documentation](/best-practices/documentation)
+- [Automating Deployment Notifications on Slack](/best-practices/README.md)
+- [Background Processing at DLSS](/best-practices/background_processing.md)
+- [Communication](/best-practices/communication.md)
+- [Deployment](/best-practices/communication.md)
+- [Deprecation](/best-practices/deprecation.md)
 - [How To - Readme](/best-practices/howto_readme.md)
 - [Licensing](/best-practices/licensing.md)
+- [Monitoring](/best-practices/monitoring.md)
+- [Puppet Prs](/best-practices/monitoring.md)
+- [Releasing Gems](/best-practices/releasing_gems.md)
+- [Setting Up Rails Projects](/best-practices/setting_up_rails_projects.md)
+- [UI/Bootstrap](/best-practices/ui_bootstrap.md)
+- [Updating NodeJS](/best-practices/updating-nodejs.md)
 - [Version Control](/best-practices/version_control.md)
-- [Updating NodeJS]('/best-practices/updating-nodejs.md')
 
 Best practices guides should attempt to answer the question:
 
