@@ -16,3 +16,6 @@ If you decide on the former approach, you will want to set up your honeybadger c
 - In the Slack application go to the side bar under `Direct Messages` and click on the Honeybadger application. This should pop up a right side bar where you can click Settings. Then click on "Add Configuration". Then follow the instructions given.
 - Set up a configuration with your PROD environment to the deploy channel.
 - If you don't have any Environments showing, you will need to deploy your application to a VM via capistrano.
+
+## OK Computer
+If possible, rails-based projects should use [OK Computer](https://github.com/sportngin/okcomputer) to provide a status-check endpoint for their instances and their dependent services. This endpoint should have [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) enabled for those exposed status routes in its puppet file. Enabling CORS makes it possible for status checks (or any other CORS-enabled API) to be accessed from javascript, which allows multiple front-ends to be written for a given backend. [Searchworks-status](https://sul-dlss.github.io/searchworks-status/), for example, draws data from a number of SUL services' OK Computer endpoints at runtime to create a public dashboard.
