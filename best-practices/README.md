@@ -14,6 +14,7 @@
 - [Setting Up Rails Projects](/best-practices/setting_up_rails_projects.md)
 - [UI/Bootstrap](/best-practices/ui_bootstrap.md)
 - [Updating NodeJS](/best-practices/updating-nodejs.md)
+- [Updating Ruby](/best-practices/updating-ruby.md)
 - [Version Control](/best-practices/version_control.md)
 
 Best practices guides should attempt to answer the question:
