@@ -18,6 +18,7 @@ A place to organize style guides, best practices, tools, and techniques for Stan
    - [Setting Up Rails Projects](/best-practices/setting_up_rails_projects.md)
    - [UI/Bootstrap](/best-practices/ui_bootstrap.md)
    - [Updating NodeJS](/best-practices/updating-nodejs.md)
+   - [Pair Programming](/best-practices/pair_programming.md)
    - [Version Control](/best-practices/version_control.md)
  - [Style](/style)
  - [Code Review](/code-review)
