@@ -60,5 +60,5 @@ The process is:
 License
 -------
 
-Developer Playbook is © 2016 The Board of Trustees of the Leland Stanford Junior University. It is distributed under the [Creative Commons
+Developer Playbook is © 2018 The Board of Trustees of the Leland Stanford Junior University. It is distributed under the [Creative Commons
 Attribution License](http://creativecommons.org/licenses/by/3.0/) and is a derivation of [guides](https://github.com/thoughtbot/guides).
