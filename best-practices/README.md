@@ -4,7 +4,7 @@
 - [Automating Deployment Notifications on Slack](/best-practices/README.md)
 - [Background Processing at DLSS](/best-practices/background_processing.md)
 - [Communication](/best-practices/communication.md)
-- [Deployment](/best-practices/communication.md)
+- [Deployment](/best-practices/deployment.md)
 - [Deprecation](/best-practices/deprecation.md)
 - [How To - Readme](/best-practices/howto_readme.md)
 - [Licensing](/best-practices/licensing.md)
