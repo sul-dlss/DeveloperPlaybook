@@ -12,6 +12,7 @@
 - [Puppet Prs](/best-practices/monitoring.md)
 - [Releasing Gems](/best-practices/releasing_gems.md)
 - [Setting Up Rails Projects](/best-practices/setting_up_rails_projects.md)
+- [Testing](/best-practices/testing.md)
 - [UI/Bootstrap](/best-practices/ui_bootstrap.md)
 - [Updating NodeJS](/best-practices/updating-nodejs.md)
 - [Updating Ruby](/best-practices/updating-ruby.md)
@@ -25,10 +26,10 @@ To what extent does it make our products better?
  - Easier to test
  - Easier to deploy
  - Easier to maintain
- - Easier to understand by a new developer that has to get up to speed with the code 
+ - Easier to understand by a new developer that has to get up to speed with the code
 
 Or conversely, what is the level of danger if we don't agree and everyone does it differently?
 
 Best practices should represent existing or emerging consensus within the department.  Where possible, best practices should refer to open source documentation for further information and, especially, any useful getting started guides.
 
-Best practices should also be generally applicable, and describe a high level of practice (so that, they too, are easier to develop, deploy, maintain and learn). 
+Best practices should also be generally applicable, and describe a high level of practice (so that, they too, are easier to develop, deploy, maintain and learn).
