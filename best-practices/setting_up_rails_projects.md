@@ -22,6 +22,4 @@ See [Monitoring](/best-practices/monitoring.md).
 Use the default `database.yml` from Rails unless there is a reason not to. Prefer to not tie your project to a specific SQL implementation unless necessary. You should use Rails migrations to specify and manage your database schema.
 
 ## Testing
-Rails projects in DLSS should use the [RSpec Rails](https://github.com/rspec/rspec-rails) framework for Ruby testing. Much of the [Blacklight](http://projectblacklight.org/) and [Project Hydra](https://projecthydra.org/) community have chosen to use RSpec, we should be consistent unless there is a reason not to.
-
-JavaScript should also be tested. Rails projects have had success in using [teaspoon](https://github.com/modeset/teaspoon) for this.
+Rails projects in DLSS should use the [RSpec Rails](https://github.com/rspec/rspec-rails) framework for Ruby testing. See the [Testing](/best-practices/testing.md) chapter for more information.
