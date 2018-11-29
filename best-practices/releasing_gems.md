@@ -16,7 +16,11 @@ Bundler::GemHelper.install_tasks
 
 In our `Rakefile`, bundler adds the `build`, `install` and `release` Rake tasks. These tasks make it easy to build gem releases, consistently tag the gem release in git, and push the gem to rubygems.org.
 
-## Adding the DLSS service account as a gem owner
+## Team ownership of gems
+
+### Adding the DLSS service account as a gem owner
+
+**NOTE**: Not sure if this is a relevant practice anymore. Leaving here for discussion.
 
 In order for all of us to maintain and release our gems, we add a DLSS service account as a gem owner:
 
@@ -25,6 +29,10 @@ $ gem owner base_indexer -a sul-devops-team@lists.stanford.edu
 ```
 
 The service account will ensure we all have access to our collective work. 
+
+### Run the gem bulk update script
+
+As of late 2018, we use a [script](https://github.com/sul-dlss/infrastructure-update-scripts/blob/master/grant_revoke_gem_authority.rb) (adapted from a Samvera community script) to ensure all Infrastructure and Access team members can release gems to rubygems.org for all gems in the DLSS portfolio. Run this script after you push a gem for the first time to provide access to fellow DLSS developers. See the script for the prerequisite steps. If there are any errors in the output, discuss them in an appropriate channel (DLSS developers listserv, `#software-developers` Slack channel, etc.).
 
 ## Steps to release a new version of a gem
 
