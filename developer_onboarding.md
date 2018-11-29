@@ -32,6 +32,7 @@ Note: As a mentor, your responsibility is to help the new hire to go through the
 ## Weeks 1-2
 ##### Accounts (first couple days)
 - GitHub sul-dlss (dlss-labs if necessary)
+  - Add GitHub username to [DLSS Roster](https://consul.stanford.edu/display/DSG/Roster+and+Phone+List+for+DLSS+Staff)
 - Honeybadger
 - New Relic  - Ops
 - Slack (#software-developers)
@@ -43,6 +44,8 @@ Note: As a mentor, your responsibility is to help the new hire to go through the
 - Google Drive / team drives
 - Box
 - Zoom
+- Rubygems.org (to push gem releases)
+  - Add rubygems.org email address to [DLSS Roster](https://consul.stanford.edu/display/DSG/Roster+and+Phone+List+for+DLSS+Staff)
 
 ##### Processes
 - __Remote hires__: introduce to remote co-worker to talk about travel policies and expense reporting
@@ -83,6 +86,9 @@ Digitization Services
 - Suggest attending an upcoming conference (e.g. SamveraConnect, code4lib NorCal)
 - Suggest some uses for STAP funds (e.g. Upcase, conference registration)
 - Transition to independent work
+- Grant access to Ruby gems
+  - Add GitHub username/Rubygems.org mapping to [gem bulk update script](https://github.com/sul-dlss/infrastructure-update-scripts/blob/master/grant_revoke_gem_authority.rb#L26)
+  - After this is done, mentor or another team member should run said script
 
 ## Other resources:
 https://about.gitlab.com/handbook/general-onboarding/
