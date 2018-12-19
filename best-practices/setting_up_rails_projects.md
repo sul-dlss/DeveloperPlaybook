@@ -13,7 +13,7 @@ Projects should have implemented continuous integration. The following services 
 
  - [travis-ci](https://travis-ci.org/) for running test suites
  - [hound-ci](https://houndci.com/repos) for style checking
- - [coveralls](https://coveralls.io/) for code coverage
+ - [codeclimate](https://codeclimate.com/) for code coverage
 
 ## Application Monitoring
 See [Monitoring](/best-practices/monitoring.md).

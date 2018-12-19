@@ -11,8 +11,8 @@ All projects should have a `README.md` file. This file should try to answer the 
 - Include relevant badges:
     - [Travis](http://docs.travis-ci.com/user/status-images/)
     - [Gem Version](http://badge.fury.io/for/rb)
-    - Coverage ([coveralls](https://coveralls.io/))
-        - [Getting Started](https://coveralls.zendesk.com/hc/en-us/articles/201769485-Ruby-Rails)
+    - Coverage ([codeclimate](https://codeclimate.com/))
+        - [Getting Started](https://docs.codeclimate.com/docs)
     - [Gemnasium](https://gemnasium.com/)
         - Make sure your app is registered with the sul-dlss gemnasium account.
         - Add a Service hook to your github repository, so that it informs Gemnasium when you've updated and it will re-evaluate your Gemfile.lock; this will keep the Gemnasium badge on the README in sync.
@@ -21,7 +21,10 @@ All projects should have a `README.md` file. This file should try to answer the 
     - [waffle](https://waffle.io/)
 
 ## Example
-    [![Build Status](https://travis-ci.org/sul-dlss/name-of-the-project.svg?branch=master)](https://travis-ci.org/sul-dlss/name-of-the-project) [![Coverage Status](https://coveralls.io/repos/sul-dlss/name-of-the-project/badge.png)](https://coveralls.io/r/sul-dlss/name-of-the-project) [![Dependency Status](https://gemnasium.com/sul-dlss/name-of-the-project.svg)](https://gemnasium.com/sul-dlss/name-of-the-project) [![Gem Version](https://badge.fury.io/rb/name-of-the-project.svg)](http://badge.fury.io/rb/name-of-the-project)
+    [![Build Status](https://travis-ci.org/sul-dlss/name-of-the-project.svg?branch=master)](https://travis-ci.org/sul-dlss/name-of-the-project) 
+    [![Code Climate](https://codeclimate.com/github/sul-dlss/name-of-the-project/badges/gpa.svg)](https://codeclimate.com/github/sul-dlss/name-of-the-project)
+    [![Code Climate Test Coverage](https://codeclimate.com/github/sul-dlss/name-of-the-project/badges/badges/coverage.svg)](https://codeclimate.com/github/sul-dlss/name-of-the-project/badges/coverage) 
+    [![Dependency Status](https://gemnasium.com/sul-dlss/name-of-the-project.svg)](https://gemnasium.com/sul-dlss/name-of-the-project) [![Gem Version](https://badge.fury.io/rb/name-of-the-project.svg)](http://badge.fury.io/rb/name-of-the-project)
 
     # Name of the Project
 
