@@ -44,8 +44,6 @@ Note: As a mentor, your responsibility is to help the new hire to go through the
 - Google Drive / team drives
 - Box
 - Zoom
-- Rubygems.org (to push gem releases)
-  - Add rubygems.org email address to [DLSS Roster](https://consul.stanford.edu/display/DSG/Roster+and+Phone+List+for+DLSS+Staff)
 
 ##### Processes
 - __Remote hires__: introduce to remote co-worker to talk about travel policies and expense reporting
