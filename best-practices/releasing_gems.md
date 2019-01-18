@@ -18,21 +18,21 @@ In our `Rakefile`, bundler adds the `build`, `install` and `release` Rake tasks.
 
 ## Team ownership of gems
 
-### Adding the DLSS service account as a gem owner
+### Adding the DLSS service account to new gems
 
-**NOTE**: Not sure if this is a relevant practice anymore. Leaving here for discussion.
-
-In order for all of us to maintain and release our gems, we add a DLSS service account as a gem owner:
+In order for all of us to maintain and release our gems, we expect all new gems managed by DLSS to have the DLSS service account added as a gem owner:
 
 ```console
 $ gem owner base_indexer -a sul-devops-team@lists.stanford.edu
 ```
 
-The service account will ensure we all have access to our collective work. 
+The service account (`sul-devops-team@lists.stanford.edu`) will ensure we all have access to our collective work. 
 
-### Run the gem bulk update script
+### Adding/removing owners
 
-As of late 2018, we use a [script](https://github.com/sul-dlss/infrastructure-update-scripts/blob/master/grant_revoke_gem_authority.rb) (adapted from a Samvera community script) to ensure all Infrastructure and Access team members can release gems to rubygems.org for all gems in the DLSS portfolio. Run this script after you push a gem for the first time to provide access to fellow DLSS developers. See the script for the prerequisite steps. If there are any errors in the output, discuss them in an appropriate channel (DLSS developers listserv, `#software-developers` Slack channel, etc.).
+As of late 2018, we use a Jenkins-based [solution](https://github.com/sul-dlss/rubygem-update-scripts) to ensure all Infrastructure and Access team members can release gems to rubygems.org for all gems in the DLSS portfolio. To add a new owner and remove an existing owner, create a GitHub pull request to modify [the list of Rubygems.org email addresses](https://github.com/sul-dlss/rubygem-update-scripts/blob/master/rubygems-emails.txt).
+
+See the [README](https://github.com/sul-dlss/rubygem-update-scripts/blob/master/README.md) for more information about how this works.
 
 ## Steps to release a new version of a gem
 
