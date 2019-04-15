@@ -13,6 +13,7 @@ nodejs:
 After updating (from 0.x -> 9.9), run manually on the server (as ksu): 
 
 ```sh
+yum remove npm
 yum upgrade nodejs
 ```
 
