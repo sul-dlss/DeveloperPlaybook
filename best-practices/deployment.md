@@ -83,6 +83,14 @@ set :whenever_identifier, ->{ "app_name_#{fetch(:stage)}" }
 
 then you will need to look at the crontab on the server to be sure it is correct and does not have any old entries after you deploy.  The gem will not clean out cron jobs when the name of the whenever_identifier changes.
 
+### Shared configs
+
+Make sure that `linked_dirs` includes `config/settings`. e.g.:
+
+```ruby
+set :linked_dirs, %w(log config/settings config/certs)
+```
+
 ### Communications
 
 When deploying a codebase to production (outside of patch parties and organized work cycles), you should notify the Operations team with a message in the #dlss-operations Slack channel. To ensure that the service/product owner(s) are aware, notify the service owner via the service’s dedicated channel (if there is one), notify the PSM team via the #dlss-psm channel, and/or contact the individual service owner directly.
