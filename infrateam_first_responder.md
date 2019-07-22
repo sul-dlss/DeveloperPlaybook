@@ -128,7 +128,7 @@ Other places to monitor:
 * feedback email lists, e.g. argo-feedback, sinopia-feedback, etc
 * the `#dlss-infrastructure` channel
 * Slack channels relevant to applications in the portfolio, e.g. `#pre-assembly`
-* resque dashboards?  e.g. for preservation catalog?
+* Resque dashboards  e.g.
   - https://argo.stanford.edu/report/workflow_grid
   - https://sul-lyberservices-prod.stanford.edu/robots/overview
     - https://sul-lyberservices-prod.stanford.edu/robots/failed
