@@ -121,10 +121,10 @@ We need this document to be useful and current.  Please submit improvements as P
 
 # How to Proactively Check for Production Problems
 
-At the very least, the first responder should be watching incoming alerts from Honeybadger.
+At the very least, the first responder should be watching incoming alerts from Honeybadger.  (https://app.honeybadger.io/projects)
 
 Other places to monitor:
-* Nagios alerts
+* Nagios alerts (https://sul-nagios-prod.stanford.edu/nagios/  The Services tab on the left column will give overview of checks.  The Problems->Services tab will give you what’s alerting.)
 * feedback email lists, e.g. argo-feedback, sinopia-feedback, etc
 * the `#dlss-infrastructure` channel
 * Slack channels relevant to applications in the portfolio, e.g. `#pre-assembly`
