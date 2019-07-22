@@ -54,7 +54,7 @@ We have code bases to maintain that aren't Ruby applications or gems.  We have n
 
 ### Verify / Notify coverage for following week
 
-1. Verify first responder for following week is still able to cover it.  Check this on Monday (though it's a good thing to keep in mind throughout the week, in case e.g. unexpected illnesses come up).
+1. Verify first responder for following week is still able to cover it.  Check this with on deck person on Monday (and keep in mind throughout the week, e.g. if person becomes ill).  (schedule: https://docs.google.com/spreadsheets/u/1/d/13TJR93Yc9_eF5B7w4XDx6ggG_wb3aLkgCHjpLwmHPBA/)
   1. It's the scheduled responder's responsibility to find a swap, not current first responder. _TBD: We'll figure something out if said responder is unavailable due to emergency?_
   1. The person covering the following week is "on deck" for this week.
 1. Set Slack reminders in `#dlss-infrastructure` for next week's Monday morning. The reminders should indicate who is first responder and who is on deck for that week, and should be set for 3 am Pacific time/6 am Eastern, so that the east coast early risers don't have to wait for it.
@@ -68,7 +68,7 @@ The infrastructure team has 8 developers, so you should be taking a shift every 
 
 ### Proactively Check for Production Problems
 
-See "Proactively Check for Production Problems" section below for specifics.
+See "Proactively Checking for Production Problems" section below for specifics.
 
 ### Triage Production Problems
 
@@ -89,7 +89,7 @@ If for some reason documentation is a significant undertaking, the call for docu
 
 ### Improve First Responder Instructions as Needed
 
-We need this document to be useful and current.  Please submit improvements as PRs for  review.
+We need this document to be useful and current.  Please submit improvements as PRs for review.
 
 ## What if first responder isn't available?
 
@@ -141,4 +141,4 @@ Prioritization is the responsibility of management, not the responsibility of th
 
 * Management may choose to have the first responder handle a non-project work ticket
   * If so, ensure you assign the ticket to yourself and put it in the "in progress" column the project board https://github.com/orgs/sul-dlss/projects/1
-* First responder may be asked to spearhead a work estimate https://github.com/sul-dlss-labs/estimation (note that these are, by definition, meant to be done by more than one person;  if it's smaller, should it be a ticket in a project?)
+* First responder may be asked to spearhead a work estimate https://github.com/sul-dlss-labs/estimation (note that these are, by definition, meant to be done by more than one person; if it's smaller, should it be a ticket in a project?)
