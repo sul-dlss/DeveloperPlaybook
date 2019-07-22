@@ -32,6 +32,26 @@ It *may* be that someone in a time zone further east than Palo Alto has already 
 
 It is a team task to complete these updates, but the first responder needs to make sure that all codebases needing updates have updates merged and deployed.  Note that some projects need to have PRs created by hand ("Manually clone and update repos that failed bundle update" on line 6 of instructions). It may be helpful to post in channel how many updates each developer should do, given who is working that day and how many PRs there are.
 
+#### Gems - ensure no security alerts
+
+There is a sheet/tab in https://docs.google.com/spreadsheets/d/1LysSAPFsRGt9PteWpVswp74xnPXyLLxADpHRfh69VLQ/ with a list of sul-dlss repos with both 'infrastructure' and 'gem' tags.  Note that there is no Gemfile.lock, so a PR can't be created automatically.
+1. Check for security alerts for each gem.
+  1. If there is a security alert
+    1. Try to update the gem's dependencies (esp. pinned ones) to get rid of the alert.
+    2. Make a PR if the build passes.
+    3. Bump the gem version and cut a new release of the gem.
+  1. If no security alert
+    1. (?) Run the CI build(s) for each gem with the latest versions of dependencies
+
+#### Code that isn't a Ruby Application or Gem
+
+We have code bases to maintain that aren't Ruby applications or gems.  We have not yet tackled how to deal with these.
+
+- javascript node apps with npm updates:
+  - https://github.com/sul-dlss/access-update-scripts has code to create PRs for npm package updates, but it currently only works for the sul-dlss github organization.  All the sinopia code is in the LD4P github organization.  Should make a maintenance ticket to address this?
+- java code
+- other
+
 ### Verify / Notify coverage for following week
 
 1. Verify first responder for following week is still able to cover it.  Check this on Monday (though it's a good thing to keep in mind throughout the week, in case e.g. unexpected illnesses come up).
