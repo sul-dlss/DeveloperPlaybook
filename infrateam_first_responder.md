@@ -20,11 +20,11 @@ PRs to this doc are always welcome, but especially while we're ironing things ou
   [Proactively Check for Production Problems](#proactively-check-for-production-problems)
   [Triage Production Problems](#triage-production-problems)
   [Improve First Responder Instructions as Needed](#improve-first-responder-instructions-as-needed)
-[What if first responder isn't available?](#what-if-first-responder-isn't-available)
 [Proactively Checking for Production Problems](#proactively-checking-for-production-problems)
 [Triaging Production Problems](#triaging-production-problems)
   [A note on prioritization](#a-note-on-prioritization)
 [Other Issues as Assigned](#other-issues-as-assigned)
+[What if first responder isn't available?](#what-if-first-responder-isn't-available)
 
 ## The "First Responder" Rotation Premises
 
@@ -112,12 +112,6 @@ If for some reason documentation is a significant undertaking, the call for docu
 
 We need this document to be useful and current.  Please submit improvements as PRs for review.
 
-## What if first responder isn't available?
-
-The idea is for the first responder to be "interruptible" for production problems during his/her week of coverage.  If there are significant blocks of time when this isn't true (e.g. ½ day meeting with no access to slack or email), or if life happens (illness, family emergency, etc.), hopefully the first responder can arrange for coverage.  ("I'll take one of your days if you can cover Tues for me").  Please notify `#dlss-infrastructure` Slack channel of changes.
-
-When the first responder can't arrange for coverage, the default would be for the "on deck" responder to become first responder.  The "on deck" person is the first responder for the following week.
-
 ## Proactively Checking for Production Problems
 
 At the very least, the first responder should be watching incoming alerts from Honeybadger.
@@ -163,3 +157,9 @@ Prioritization is the responsibility of management, not the responsibility of th
 * Management may choose to have the first responder handle a non-project work ticket
   * If so, ensure you assign the ticket to yourself and put it in the "in progress" column the project board https://github.com/orgs/sul-dlss/projects/1
 * First responder may be asked to spearhead a work estimate https://github.com/sul-dlss-labs/estimation (note that these are, by definition, meant to be done by more than one person; if it's smaller, should it be a ticket in a project?)
+
+## What if first responder isn't available?
+
+The idea is for the first responder to be "interruptible" for production problems during his/her week of coverage.  If there are significant blocks of time when this isn't true (e.g. ½ day meeting with no access to slack or email), or if life happens (illness, family emergency, etc.), hopefully the first responder can arrange for coverage.  ("I'll take one of your days if you can cover Tues for me").  Please notify `#dlss-infrastructure` Slack channel of changes.
+
+When the first responder can't arrange for coverage, the default would be for the "on deck" responder to become first responder.  The "on deck" person is the first responder for the following week.
