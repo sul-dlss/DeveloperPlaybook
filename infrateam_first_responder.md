@@ -5,6 +5,27 @@ the first responder role and then outlines specific duties and expectations.
 
 PRs to this doc are always welcome, but especially while we're ironing things out and having regular retrospectives about the process.  If it sticks, and/or the access team adopts it, we can get rid of this caveat.
 
+### Table of Contents
+
+[The "First Responder" Rotation Premises](#the-first-responder-rotation-premises)
+["First responder" != "on call"](#first-responder--on-call)
+[Duties](#duties)
+  [Weekly Dependency Updates](#weekly-dependency-updates)
+    [Ensure dependency update spreadsheet is created](#ensure-dependency-update-spreadsheet-is-created)
+    [Ensure Monday dependency updates are completed](#ensure-monday-dependency-updates-are-completed)
+    [Gems - ensure no security alerts](#gems---ensure-no-security-alerts)
+    [Code that isn't a Ruby Application or Gem](#code-that-isn-t-a-ruby-application-or-gem)
+  [Verify / Notify coverage for following week](#verify--notify-coverage-for-following-week)
+  [Sign Up for Your Next First Responder Shift](#sign-up-for-your-next-first-responder-shift)
+  [Proactively Check for Production Problems](#proactively-check-for-production-problems)
+  [Triage Production Problems](#triage-production-problems)
+  [Improve First Responder Instructions as Needed](#improve-first-responder-instructions-as-needed)
+[What if first responder isn't available?](#what-if-first-responder-isn't-available)
+[Proactively Checking for Production Problems](#proactively-checking-for-production-problems)
+[Triaging Production Problems](#triaging-production-problems)
+  [A note on prioritization](#a-note-on-prioritization)
+[Other Issues as Assigned](#other-issues-as-assigned)
+
 ## The "First Responder" Rotation Premises
 
 * Respond to production issues in a timely fashion during business hours.
