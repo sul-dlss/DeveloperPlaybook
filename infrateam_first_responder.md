@@ -1,8 +1,11 @@
-# Guidelines for first responder
+# Guide for Infrastructure Team First Responder
 
-The DLSS infrastructure team is trying out a new rotating role of "first responder".  PRs are always welcome, but especially while we're ironing things out and having regular retrospectives about the process.  If it sticks, and/or the access team adopts it, we can get rid of this caveat.
+The DLSS infrastructure team is using a rotating role of "first responder".  This doc explains a bit about the concept of
+the first responder role and then outlines specific duties and expectations.
 
-## The "first responder" rotation premises
+PRs to this doc are always welcome, but especially while we're ironing things out and having regular retrospectives about the process.  If it sticks, and/or the access team adopts it, we can get rid of this caveat.
+
+## The "First Responder" Rotation Premises
 
 * Respond to production issues in a timely fashion during business hours.
 * Single process for handling questions outside the team's current work cycle.
@@ -45,7 +48,7 @@ The infrastructure team has 8 developers, so you should be taking a shift every 
 
 ### Proactively Check for Production Problems
 
-See "Proactively Check for Production Problems" section below for specifics. 
+See "Proactively Check for Production Problems" section below for specifics.
 
 ### Triage Production Problems
 
@@ -94,7 +97,7 @@ Other places to monitor:
 If a user reports a problem, or if one is surfaced from monitoring, the first responder is meant to timebox an investigation of the problem (_TBD: no more than 30 min?_).  It's fine to ask teammates with relevant expertise for help, but also think about what documentation is needed so the next person will need less help. It is _not_ the job of the first responder to fix the issue on the spot (though if the fix is trivial, it's fine to do so).
 
 * All problems investigated should get a ticket UNLESS:
-  * Investigation leads to discovery that there is no problem 
+  * Investigation leads to discovery that there is no problem
     * If additional documentation would have made this clearer, then
       * First responder creates additional documentation (preferred) or a ticket for it
   * Fixing the problem will be as quick as writing up a ticket
