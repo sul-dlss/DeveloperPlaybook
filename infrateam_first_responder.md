@@ -129,11 +129,15 @@ Other places to monitor:
 * the `#dlss-infrastructure` channel
 * Slack channels relevant to applications in the portfolio, e.g. `#pre-assembly`
 * Resque dashboards  e.g.
-  - https://argo.stanford.edu/report/workflow_grid
-  - https://sul-lyberservices-prod.stanford.edu/robots/overview
-    - https://sul-lyberservices-prod.stanford.edu/robots/failed
-  - https://preservation-catalog-prod-01.stanford.edu/resque/overview
-    - https://preservation-catalog-prod-01.stanford.edu/resque/failed
+  - robots
+    - https://sul-lyberservices-prod.stanford.edu/robots/overview
+      - https://sul-lyberservices-prod.stanford.edu/robots/failed
+    - https://argo.stanford.edu/report/workflow_grid
+  - pre-assembly
+    - https://sul-preassembly-prod.stanford.edu/resque/overview
+  - preservation
+    - https://preservation-catalog-prod-01.stanford.edu/resque/overview
+      - https://preservation-catalog-prod-01.stanford.edu/resque/failed
 * cron daemon emails
 * Github security alerts
 * If you hear about possible security issues through other avenues (e.g. `#iso-public` on Slack, your consumption of the news in general), and you feel that the issues may be relevant and uncaptured, file an issue and call attention to it as needed.
