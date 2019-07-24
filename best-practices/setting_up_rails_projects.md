@@ -5,8 +5,11 @@ Many of the DLSS software projects are [Ruby on Rails](http://rubyonrails.org/) 
 ## Open source by default
 DLSS projects should be open source by default. See [licensing](/best-practices/licensing.md). Developers should _never_ check in api keys or private information. Use the [config](https://github.com/railsconfig/config) gem instead. If you have any questions, check with dev-ops first.
 
+## Deployment
+We use capistrano for deployment. [More information](deployment.md)
+
 ## Configuration
-Use the [config](https://github.com/railsconfig/config) gem for configuration management.
+Use the [config](https://github.com/railsconfig/config) gem for configuration management. Use [shared-configs](https://github.com/sul-dlss/shared_configs) to store senstive data.
 
 ## Continuous Integration
 Projects should have implemented continuous integration. The following services are used often:
