@@ -8,6 +8,10 @@ Note: Until our terraform source is upgraded to support version 0.12.x+, vesrion
 
 > brew install vault
 
+Verify that the vault version is >= 1.2
+
+> vault --version
+
 ## Setup
 
 ### Request a developer login
