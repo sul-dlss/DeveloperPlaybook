@@ -13,12 +13,7 @@ All projects should have a `README.md` file. This file should try to answer the 
     - [Gem Version](http://badge.fury.io/for/rb)
     - Coverage ([codeclimate](https://codeclimate.com/))
         - [Getting Started](https://docs.codeclimate.com/docs)
-    - [Gemnasium](https://gemnasium.com/)
-        - Make sure your app is registered with the sul-dlss gemnasium account.
-        - Add a Service hook to your github repository, so that it informs Gemnasium when you've updated and it will re-evaluate your Gemfile.lock; this will keep the Gemnasium badge on the README in sync.
-            - [Service Setup Example](https://github.com/sul-dlss/sul-requests/settings/hooks)
-        - Once it's registered, the gemnasium web interface will display updated alerts to take action on.  Gemnasium does give you a solution when it issues an alert, usually to update your gem to the latest version.
-    - [waffle](https://waffle.io/)
+
 
 ## Example
     [![Build Status](https://travis-ci.org/sul-dlss/name-of-the-project.svg?branch=master)](https://travis-ci.org/sul-dlss/name-of-the-project) 
