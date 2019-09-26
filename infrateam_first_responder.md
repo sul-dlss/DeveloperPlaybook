@@ -120,8 +120,8 @@ Other places to monitor:
 * Slack channels relevant to applications in the portfolio, e.g. `#pre-assembly`
 * Resque dashboards  e.g.
   - robots
-    - https://sul-lyberservices-prod.stanford.edu/robots/overview
-      - https://sul-lyberservices-prod.stanford.edu/robots/failed
+    - https://robot-console-prod.stanford.edu/overview
+      - https://robot-console-prod.stanford.edu/failed
     - https://argo.stanford.edu/report/workflow_grid
   - pre-assembly
     - https://sul-preassembly-prod.stanford.edu/resque/overview
