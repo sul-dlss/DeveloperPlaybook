@@ -117,6 +117,7 @@ Other places to monitor:
 * Nagios alerts (https://sul-nagios-prod.stanford.edu/nagios/  The Services tab on the left column will give overview of checks.  The Problems->Services tab will give you what’s alerting.)
 * feedback email lists, e.g. argo-feedback, sinopia-feedback, etc
 * the `#dlss-infrastructure` channel
+* the `#sul-cap-collab` channel, which has developers in the School of Medicine working on the Profiles project (which we connect to with our sul-pub system)
 * Slack channels relevant to applications in the portfolio, e.g. `#pre-assembly`
 * Resque dashboards  e.g.
   - robots
