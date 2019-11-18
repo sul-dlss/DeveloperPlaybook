@@ -140,6 +140,9 @@ Other places to monitor:
       - https://preservation-catalog-prod-01.stanford.edu/resque/failed
   - web-registrar-app
     - https://was-registrar-app.stanford.edu/queues
+* Other dashboards of interest:
+  - dor-services-app sidekiq (for jobs run by workers in other threads):
+    - https://dor-services-prod.stanford.edu/queues/
 * cron daemon emails
 * Github security alerts
 * If you hear about possible security issues through other avenues (e.g. `#iso-public` on Slack, your consumption of the news in general), and you feel that the issues may be relevant and uncaptured, file an issue and call attention to it as needed.
