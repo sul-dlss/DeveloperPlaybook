@@ -116,16 +116,18 @@ At the very least, the first responder should be watching incoming alerts from H
 Other places to monitor:
 * Nagios alerts (https://sul-nagios-prod.stanford.edu/nagios/  The Services tab on the left column will give overview of checks.  The Problems->Services tab will give you what’s alerting.)
 * feedback email lists, e.g. argo-feedback, sinopia-feedback, etc
-* the `#dlss-infrastructure` channel
-* the `#sul-cap-collab` channel, which has developers in the School of Medicine working on the Profiles project (which we connect to with our sul-pub system)
-* Slack channels relevant to applications in the portfolio: 
-  - `#pre-assembly` 
-  - `#dlss-aaas`
-  - `#dlss-argo-dev` 
-  - `#dlss-etds-dev`
+* Slack channels relevant to applications in the portfolio:
+  - `#dlme` - "Digital Library of the Middle East" - we are responsible for dlme-transform, related to indexing of materials.
+  - `#dlss-aaas` - "Accessioning as a Service" - where accessioneers may surface problems
+  - `#dlss-argo-dev`- where accessioneers and object editors may surface problems
+  - `#dlss-etds-dev` - Electronic Theses and Dissertations channel
+  - `#dlss-infrastructure` <-- our team's main channel
   - `#dlss-preservation-dev`
-  - `#dlme`
-  - `#sdr-operations` 
+  - `#dlss-sinopia-dev` - Sinopia is our linked data channel
+  - `#pre-assembly` - where accessioneers may surface problems with pre-assembly
+  - `#sdr-operations`
+  - `#sul-cap-collab` - has developers in the School of Medicine working on the Profiles project (which we connect to with our sul-pub system)
+  - `#web-archiving`
 * Resque dashboards  e.g.
   - robots
     - https://robot-console-prod.stanford.edu/overview
@@ -136,6 +138,8 @@ Other places to monitor:
   - preservation
     - https://preservation-catalog-prod-01.stanford.edu/resque/overview
       - https://preservation-catalog-prod-01.stanford.edu/resque/failed
+  - web-registrar-app
+    - https://was-registrar-app.stanford.edu/queues
 * cron daemon emails
 * Github security alerts
 * If you hear about possible security issues through other avenues (e.g. `#iso-public` on Slack, your consumption of the news in general), and you feel that the issues may be relevant and uncaptured, file an issue and call attention to it as needed.
