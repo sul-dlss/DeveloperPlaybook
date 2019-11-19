@@ -1,4 +1,4 @@
-# Developer Playbook  [![Votes Wanted](https://badge.waffle.io/sul-dlss/DeveloperPlaybook.svg?label=votes&title=Votes%20Wanted)](http://waffle.io/sul-dlss/DeveloperPlaybook)
+# Developer Playbook
 =========
 
 A place to organize style guides, best practices, tools, and techniques for Stanford University's Digital Library Systems &amp; Services Group.
