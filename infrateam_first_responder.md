@@ -124,6 +124,7 @@ Other places to monitor:
   - `#dlss-infrastructure` <-- our team's main channel
   - `#dlss-preservation-dev`
   - `#dlss-sinopia-dev` - Sinopia is our linked data channel
+  - `#earthworks` - for gis-robot-suite related discussion
   - `#pre-assembly` - where accessioneers may surface problems with pre-assembly
   - `#sdr-operations`
   - `#sul-cap-collab` - has developers in the School of Medicine working on the Profiles project (which we connect to with our sul-pub system)
