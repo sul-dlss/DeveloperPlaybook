@@ -1,7 +1,6 @@
 # Guide for Infrastructure Team First Responder
 
-The DLSS Infrastructure team is using a rotating role of "first responder." This doc explains the concept of
-the first responder role and outlines specific duties and expectations.
+The DLSS Infrastructure team is using a rotating role of "first responder." This doc explains the concept of the first responder role and outlines specific duties and expectations.
 
 ## Table of Contents
 
@@ -91,7 +90,7 @@ If you need to triage or troubleshoot a problem and realize some documentation i
 * README or other top level markdown doc in codebase (viewable via github)
   * Which codebase would need to be apparent from the problem
 * Wiki for the codebase
-* ? - in general, just try to consider where the person interested in the info might look first. A user might go to the wiki, a dev might go to the README, ops folks might head to DevOpsDocs. Use your best judgement and ask for feedback if unsure.
+* ? - in general, consider where the person interested in the info might look first. An end-user might go to the wiki, a dev might go to the README, ops folks might head to DevOpsDocs. Use your best judgement and ask for feedback if unsure.
 
 The above documents should be useful and current. Please submit improvements as PRs for review.
 
@@ -112,7 +111,7 @@ We need this document to be useful and current.  Please submit improvements as P
 At the very least, the first responder should be watching:
 
 * [Honeybadger alerts](https://app.honeybadger.io/projects) for projects in the Infrastructure portfolio
-  * **Note** that you may want to clear old alerts at the beginning of your first responder shift so you have a clean slate to monitor.
+  * **Note** that you may want to resolve old alerts in the Honeybadger UI at the beginning of your first responder shift so you have a clean slate to monitor.
 * Feedback email lists, e.g. argo-feedback, sinopia-feedback, etc
 * Slack channels relevant to applications in the portfolio:
   - `#dlme` - "Digital Library of the Middle East" - we are responsible for dlme-transform, related to indexing of materials.
@@ -128,7 +127,6 @@ At the very least, the first responder should be watching:
   - `#sul-cap-collab` - has developers in the School of Medicine working on the Profiles project (which we connect to with our sul-pub system)
   - `#web-archiving`
 * Queue dashboards:
-  - **Note** that you may want to clear old failed jobs at the beginning of your first responder shift so you have a clean slate to monitor, but do this deliberately and with caution: clearing failed jobs may prevent investigating current known first responder issues.
   - robots
     - https://robot-console-prod.stanford.edu/overview
       - https://robot-console-prod.stanford.edu/failed
