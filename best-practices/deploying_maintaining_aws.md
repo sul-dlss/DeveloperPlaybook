@@ -4,7 +4,7 @@
 
 > brew install terraform@0.11
 
-Note: Until our terraform source is upgraded to support version 0.12.x+, vesrion 0.11.x is required.
+Note: Until our terraform source is upgraded to support version 0.12.x+, version 0.11.x is required.
 
 > brew install vault
 
