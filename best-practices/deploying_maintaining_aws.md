@@ -2,9 +2,7 @@
 
 ## Installation
 
-> brew install terraform@0.11
-
-Note: Until our terraform source is upgraded to support version 0.12.x+, vesrion 0.11.x is required.
+> brew install terraform
 
 > brew install vault
 
@@ -50,3 +48,28 @@ Verify changes and updates
 Apply changes and updates
 
 > terraform apply
+
+## Verify deployment
+
+### ECS
+
+When deploying new images to ECS, log into the AWS console, and verify that the task enters a steady state. This can take several minutes.
+
+1. Login to AWS console and switch to the appropriate role
+1. Navigate to ECS Services
+1. Navigate into the application cluster
+1. Click the service you are deploying
+1. Click on the `Events` tab
+
+You should see a series of events similar to:
+
+```
+service service-name has reached a steady state.
+service service-name has stopped 1 running tasks: task 
+service service-name has begun draining connections on 1 tasks.
+service service-name deregistered 1 targets in target-group service-name-alb
+service service-name registered 1 targets in target-group service-name-alb 
+service service-name has started 1 tasks: task [task uuid].
+```
+
+If the service fails to reach a steady state, and another task is started, i.e. the above steps are continuously repeated, there was a problem starting the task. Click onto a task ID and then the `Logs` tab to see if anything is logged related to the failure.
