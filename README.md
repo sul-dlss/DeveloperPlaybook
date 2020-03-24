@@ -21,6 +21,7 @@ A place to organize style guides, best practices, tools, and techniques for Stan
    - [Updating NodeJS](/best-practices/updating-nodejs.md)
    - [Pair Programming](/best-practices/pair_programming.md)
    - [Version Control](/best-practices/version_control.md)
+   - [Multi-factor Auth/Two Factor Auth](/best-practices/2FA.md)
  - [Style](/style)
  - [Code Review](/code-review)
 
