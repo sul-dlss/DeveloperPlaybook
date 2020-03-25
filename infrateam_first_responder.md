@@ -140,6 +140,12 @@ At the very least, the first responder should be watching:
     - https://was-registrar-app.stanford.edu/queues
   - dor-services-app sidekiq (for jobs run by workers in other threads):
     - https://dor-services-prod.stanford.edu/queues/
+  - google books
+    - https://sul-gbooks-prod.stanford.edu/queues
+  - sdr-api
+    - https://sdr-api-prod.stanford.edu/queues
+  - techmd service
+    - https://dor-techmd-prod.stanford.edu/queues
 * cron daemon emails
 * GitHub security alerts
 
