@@ -147,6 +147,8 @@ As a loose guideline, we recommend checking each of these at least once or twice
 
 Other places to monitor:
 * Nagios alerts (https://sul-nagios-prod.stanford.edu/nagios/  The Services tab on the left column will give overview of checks.  The Problems->Services tab will give you what’s alerting.)
+* Grafana at https://sulstats.stanford.edu/ gives different visualizations of running
+infrastructure servers with the option to create customized dashboards.
 * If you hear about possible security issues through other avenues (e.g. `#iso-public` on Slack, your consumption of the news in general), and you feel that the issues may be relevant and uncaptured, file an issue and call attention to it as needed.
 
 ## How to Triage Production Problems
