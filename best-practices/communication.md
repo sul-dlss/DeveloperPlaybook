@@ -18,7 +18,7 @@ We communicate early and often with other teams that will be affected by our wor
 
 In particular,
 
- - We talk with DevOps, particularly concerning deployment.
+ - We talk with Operations, particularly concerning deployment, scalability (storage, VMs) and security.
  - We talk with Design, particularly concerning UI components and accessibility.
  - We talk with Developers, particularly concerning shared code (e.g. dlss gems in common), common tools (e.g. Rails, Fedora, webauth, blacklight), and new tools to be adopted.
  - We talk with Managers, particularly concerning scheduling and scope (creep).
