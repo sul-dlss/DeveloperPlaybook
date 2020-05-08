@@ -38,11 +38,7 @@ The DOR Workflow Service framework uses Resque.
 
 ## Sidekiq
 
-I believe Sidekiq was inspired by Resque, and is considered by most to improve on its ancestor. Like
-Resque, Sidekiq relies on Redis for queue management. Note that Sidekiq uses threads to run its jobs
-in the same process. This means that if there is any chance of your background jobs stepping on one
-another, you need to ensure that both your code and the gems that your code uses when processing
-background jobs are thread safe.
+I believe Sidekiq was inspired by Resque, and is considered by most to improve on its ancestor. Like Resque, Sidekiq relies on Redis for queue management. Note that Sidekiq uses threads to run its jobs in the same process. This means that if there is any chance of your background jobs stepping on one another, you need to ensure that both your code and the gems that your code uses when processing background jobs are thread-safe. A common example of non-thread-safe code is `Dir.chdir` and the `Timeout` library. Avoid using these entirely.
 
 It's fairly common to run Redis on its own server. If you do this, you need to know that Redis
 doesn't have any notion of separate "accounts". The implication is that if several applications
