@@ -50,6 +50,10 @@ It *may* be that someone in a time zone further east than Palo Alto has already 
 
 It is a team task to complete these updates, but the first responder needs to make sure that all codebases needing updates have updates merged and deployed. Note that some projects may need to have PRs created by hand. It may be helpful to post in the `#dlss-infrastructure` Slack channel how many updates each developer should do, given who is working that day and how many PRs there are.
 
+WIP script to automatically merge all dependency update PRs is currently in its own PR in access-update-scripts: https://github.com/sul-dlss/access-update-scripts/pull/104/files -- you can switch to the branch locally and use this script.  From the comments at the top, you will need a github access token.  Instructions are here:  https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
+
+WIP Script to automatically deploy all sul-dlss PRs is here:  https://github.com/sul-dlss-labs/sdr-deploy
+
 ##### Code that isn't a Ruby Application
 
 We have codebases to maintain that aren't Ruby applications or gems. We have not yet settled on a long-term method for dealing with these:
