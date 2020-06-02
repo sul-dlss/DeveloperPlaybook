@@ -72,7 +72,7 @@ Note that security updates affecting our Ruby **gems** will be caught when doing
   1. The person covering the following week is "on deck" for this week.
 1. Set Slack reminders in `#dlss-infrastructure` for next week's Monday morning. The reminders should indicate who is first responder and who is on deck for that week, and should be set for 3 am Pacific time/6 am Eastern, so that the east coast early risers don't have to wait for it.
   * Documentation on Slack's `/remind` command:  https://get.slack.help/hc/en-us/articles/208423427-Set-a-reminder
-    * E.g., if Alice and Bob are up next week, `/remind #dlss-infrastructure on Monday at 3 am "@alice is the first responder this week, and @bob is on deck"`
+    * E.g., if Alice and Bob are up next week, `/remind #dlss-infrastructure on Monday at 3 am "@alice is the first responder week of Monthuary 8, and @bob is on deck"`
 
 ### Sign Up for Your Next First Responder Shift
 
