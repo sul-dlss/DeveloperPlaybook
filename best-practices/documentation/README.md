@@ -19,13 +19,14 @@ OpenAPI Specifications may be expressed as either YAML or JSON. Thus far, we hav
 
 ### API Documentation Examples
 
-* https://sul-dlss.github.io/technical-metadata-service/
-* https://sul-dlss.github.io/sdr-api/
-* https://sul-dlss.github.io/preservation_catalog/
-* https://sul-dlss.github.io/dor-services-app/
-* https://sul-dlss.github.io/suri-rails/
-* https://sul-dlss.github.io/cocina-models/
-* https://sul-dlss.github.io/workflow-server-rails/ (in progress)
+* [SDR ("Cocina") Data Models](https://sul-dlss.github.io/cocina-models/)
+* [SDR Deposit API](https://sul-dlss.github.io/sdr-api/)
+* [SDR Identifier API](https://sul-dlss.github.io/suri-rails/)
+* [SDR Indexing API](https://sul-dlss.github.io/dor_indexing_app/)
+* [SDR Preservation API](https://sul-dlss.github.io/preservation_catalog/)
+* [SDR Repository ("DOR Services") API](https://sul-dlss.github.io/dor-services-app/)
+* [SDR Technical Metadata API](https://sul-dlss.github.io/technical-metadata-service/)
+* [SDR Workflow API](https://sul-dlss.github.io/workflow-server-rails/) (**coming soon**!)
 
 ### How To Add OpenAPI To A Project
 
