@@ -26,7 +26,7 @@ OpenAPI Specifications may be expressed as either YAML or JSON. Thus far, we hav
 * [SDR Preservation API](https://sul-dlss.github.io/preservation_catalog/)
 * [SDR Repository ("DOR Services") API](https://sul-dlss.github.io/dor-services-app/)
 * [SDR Technical Metadata API](https://sul-dlss.github.io/technical-metadata-service/)
-* [SDR Workflow API](https://sul-dlss.github.io/workflow-server-rails/)
+* [SDR Workflow API](https://sul-dlss.github.io/workflow-server-rails/) (**coming soon**!)
 
 ### How To Add OpenAPI To A Project
 
