@@ -51,9 +51,16 @@ It *may* be that someone in a time zone further east than Palo Alto has already 
 
 It is a team task to complete these updates, but the first responder needs to make sure that all codebases needing updates have updates merged and deployed. Note that some projects may need to have PRs created by hand. It may be helpful to post in the `#dlss-infrastructure` Slack channel how many updates each developer should do, given who is working that day and how many PRs there are.
 
+##### Merge 'em
 WIP script to automatically merge all dependency update PRs is currently in its own PR in access-update-scripts: https://github.com/sul-dlss/access-update-scripts/pull/104/files -- you can switch to the branch locally and use this script.  From the comments at the top, you will need a github access token.  Instructions are here:  https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
 
-WIP Script to automatically deploy all sul-dlss PRs is here:  https://github.com/sul-dlss-labs/sdr-deploy
+##### Deploy 'em
+WIP Script to automatically deploy all sul-dlss PRs is here:  https://github.com/sul-dlss-labs/sdr-deploy.  Note that you will need to be sure you can ssh into each of the prod VMs from wherever you are running this script.
+
+- qa: deploy to qa with script
+- stage: please run infrastructure-integration-tests before deploy to stage, then deploy to stage with script, then run tests after deploy to stage.
+    - take note in #dlss-infra-stage-use if there is active testing going on;  be sure to either comment out that app or coordinate with tester
+- prod: if all tests passed for stage deploys, deploy to prod with script.
 
 ##### Code that isn't a Ruby Application
 
