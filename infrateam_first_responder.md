@@ -57,7 +57,7 @@ WIP script to automatically merge all dependency update PRs is currently in its 
 ##### Deploy 'em
 Use the `sdr-deploy` script to deploy all infrastructure projects (with exceptions noted below)  using capistrano to deployed environments is here:  https://github.com/sul-dlss-labs/sdr-deploy.  
 
-There are applications that need to be deployed separately, currently (6/9/2020) sinopia apps, dlme-transform, rialto-webapp, sul-pub.
+There are applications that need to be deployed separately (i.e., not using `sdr-deploy`), currently (6/9/2020): sinopia apps, dlme-transform, and rialto-webapp are deployed using Terraform. Also note `sdr-deploy` is not a good tool for deploying the hydra_etd application to the `uat` environment nor for deploying the sul-pub application to its environments beyond `stage` and `prod`: https://github.com/sul-dlss/sul_pub/tree/master/config/deploy.
 
 Note that you will need to be sure you can ssh into each of the VMs from wherever you are running the deploy script.
 
