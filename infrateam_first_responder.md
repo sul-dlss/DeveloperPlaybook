@@ -55,7 +55,7 @@ It is a team task to complete these updates, but the first responder needs to ma
 WIP script to automatically merge all dependency update PRs is currently in its own PR in access-update-scripts: https://github.com/sul-dlss/access-update-scripts/pull/104/files -- you can switch to the branch locally and use this script.  From the comments at the top, you will need a github access token.  Instructions are here:  https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
 
 ##### Deploy 'em
-WIP Script to automatically deploy all sul-dlss PRs using capistrano to local VMs is here:  https://github.com/sul-dlss-labs/sdr-deploy.  
+Use the `sdr-deploy` script to deploy all infrastructure projects (with exceptions noted below)  using capistrano to deployed environments is here:  https://github.com/sul-dlss-labs/sdr-deploy.  
 
 There are applications that need to be deployed separately, currently (6/9/2020) sinopia apps, dlme-transform, rialto-webapp, sul-pub.
 
