@@ -13,6 +13,7 @@ The DLSS Infrastructure team is using a rotating role of "first responder." This
       * [Code that isn't a Ruby Application or Gem](#code-that-isnt-a-ruby-application-or-gem)
   * [Verify / Notify Coverage for Following Week](#verify--notify-coverage-for-following-week)
   * [Sign Up for Your Next First Responder Shift](#sign-up-for-your-next-first-responder-shift)
+  * [Run infrastructure-integration-tests](#run-infrastructure-integration-tests )
   * [Proactively Check for Production Problems](#proactively-check-for-production-problems)
   * [Triage Production Problems](#triage-production-problems)
   * [Improve Troubleshooting Documentation as Needed](#Improve-Troubleshooting-Documentation-as-Needed)
@@ -78,6 +79,14 @@ Note that security updates affecting our Ruby **gems** will be caught when doing
 
 The infrastructure team has 8 developers, so you should be taking a shift every 8 or so weeks.
 * Schedule:  https://docs.google.com/spreadsheets/u/1/d/13TJR93Yc9_eF5B7w4XDx6ggG_wb3aLkgCHjpLwmHPBA/
+
+### Run infrastructure-integration-tests 
+
+We want the FR to be sure this test suite remains useful by running all the tests. 
+
+This may (should?) be done as part of running autodeploy of dep updates to stage (e.g.:  run tests before deploy to stage, then deploy to stage, then run tests after deploy to stage)
+
+If some tests fail when running the whole test suite at once, but pass when run individually, that is ok -- as long as they all pass under some circumstances.
 
 ### Proactively Check for Production Problems
 
