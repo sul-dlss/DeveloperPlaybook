@@ -51,9 +51,20 @@ It *may* be that someone in a time zone further east than Palo Alto has already 
 
 It is a team task to complete these updates, but the first responder needs to make sure that all codebases needing updates have updates merged and deployed. Note that some projects may need to have PRs created by hand. It may be helpful to post in the `#dlss-infrastructure` Slack channel how many updates each developer should do, given who is working that day and how many PRs there are.
 
+##### Merge 'em
 WIP script to automatically merge all dependency update PRs is currently in its own PR in access-update-scripts: https://github.com/sul-dlss/access-update-scripts/pull/104/files -- you can switch to the branch locally and use this script.  From the comments at the top, you will need a github access token.  Instructions are here:  https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
 
-WIP Script to automatically deploy all sul-dlss PRs is here:  https://github.com/sul-dlss-labs/sdr-deploy
+##### Deploy 'em
+Use the `sdr-deploy` script to deploy all infrastructure projects (with exceptions noted below)  using capistrano to deployed environments is here:  https://github.com/sul-dlss-labs/sdr-deploy.  
+
+There are applications that need to be deployed separately (i.e., not using `sdr-deploy`), currently (6/9/2020): sinopia apps, dlme-transform, and rialto-webapp are deployed using Terraform. Also note `sdr-deploy` is not a good tool for deploying the hydra_etd application to the `uat` environment nor for deploying the sul-pub application to its environments beyond `stage` and `prod`: https://github.com/sul-dlss/sul_pub/tree/master/config/deploy.
+
+Note that you will need to be sure you can ssh into each of the VMs from wherever you are running the deploy script.
+
+- qa: deploy to qa with script
+- stage: please run infrastructure-integration-tests before deploy to stage, then deploy to stage with script, then run tests after deploy to stage.
+    - take note in #dlss-infra-stage-use if there is active testing going on;  be sure to either comment out that app or coordinate with tester
+- prod: if all tests passed for stage deploys, deploy to prod with script.
 
 ##### Code that isn't a Ruby Application
 
