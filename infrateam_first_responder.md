@@ -81,6 +81,7 @@ We have codebases that aren't Ruby applications or gems. We have not yet settled
 
 - java code
   - the Infrastructure team is has the following Java repositories in our portfolio, none of which are actively maintained by the team
+    - [dlss-wowza](https://github.com/sul-dlss/dlss-wowza/)
     - [etdpdf](https://github.com/sul-dlss/etdpdf)
     - [openwayback](https://github.com/sul-dlss/openwayback)
     - [wasapi-downloader](https://github.com/sul-dlss/wasapi-downloader)
@@ -88,7 +89,9 @@ We have codebases that aren't Ruby applications or gems. We have not yet settled
 - Go projects (such as various RIALTO components)
   - with the future of RIALTO in question, it's not likely to receive attention any time soon
 
-Note that security updates affecting our Ruby **gems** will be caught when doing capistrano deployments via `gemfile audit`.
+We currently do not have an automatic update mechanism for our Java projects.
+
+Note that security updates affecting our Ruby **gems** will be caught when doing capistrano deployments via `gemfile audit`.  For some projects, we've also enabled a GitHub setting that allows GH to automatically create pull requests (via Dependabot) to address security vulnerabilities (for merge by human reviewers).
 
 ### Verify / Notify Coverage for Following Week
 
@@ -153,13 +156,11 @@ At the very least, the first responder should be watching:
 * Slack channels relevant to applications in the portfolio:
   - `#dlme` - "Digital Library of the Middle East" - we are responsible for dlme-transform, related to indexing of materials.
   - `#dlss-aaas` - "Accessioning as a Service" - where accessioneers may surface problems
-  - `#dlss-argo-dev`- where accessioneers and object editors may surface problems
   - `#dlss-etds-dev` - Electronic Theses and Dissertations channel
   - `#dlss-infrastructure` <-- our team's main channel
   - `#dlss-preservation-dev`
   - `#dlss-sinopia-dev` - Sinopia is our linked data channel
   - `#earthworks` - for gis-robot-suite related discussion
-  - `#pre-assembly` - where accessioneers may surface problems with pre-assembly
   - `#sdr-operations`
   - `#sul-cap-collab` - has developers in the School of Medicine working on the Profiles project (which we connect to with our sul-pub system)
   - `#web-archiving`
