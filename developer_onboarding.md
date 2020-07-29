@@ -69,7 +69,7 @@ Note: As a mentor, your responsibility is to help the new hire to go through the
 - Library systems
 - LOCKSS
 - PSM
-- Ops  (Review "to production" checklist, devops docs, puppet, nagios, monitoring, okcomputer, capistrano, travis, coveralls, honeybadger, shared_configs, gemnasium, SLAs)
+- Ops  (Review [new project checklist](/best-practices/new_project_checklist.md), devops docs, puppet, nagios, monitoring, okcomputer, capistrano, travis, coveralls, honeybadger, shared_configs, gemnasium, SLAs)
 Digitization Services
 - Metadata
 - Digitization Lab Tour (Green Library Visit)
