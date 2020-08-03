@@ -53,7 +53,7 @@ The first responder needs to make sure that all codebases needing updates have u
 
 ##### Merge 'em
 
-Run the `merge-all` script to automatically merge all dependency update PRs: https://github.com/sul-dlss/access-update-scripts/blob/master/merge-all.rb. From the comments at the top, you will need a GitHub access token. Instructions are here: https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
+Run the `merge-all` script to automatically merge all dependency update PRs: https://github.com/sul-dlss/access-update-scripts/blob/master/merge-all.rb. Note that this script will only work with Ruby 2.6 or greater.  See the comments at the top for how to run and note you will need a github access token if you haven't previously created one.  Instructions for creating a token are here:  https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line   Save your token somewhere secure for re-use since you won't be able to view it in the Github interface again.
 
 ##### Deploy 'em
 
@@ -93,9 +93,9 @@ Note that security updates affecting our Ruby **gems** will be caught when doing
 The infrastructure team has 8 developers, so you should be taking a shift every 8 or so weeks.
 * Schedule:  https://docs.google.com/spreadsheets/u/1/d/13TJR93Yc9_eF5B7w4XDx6ggG_wb3aLkgCHjpLwmHPBA/
 
-### Run infrastructure-integration-tests 
+### Run infrastructure-integration-tests
 
-We want the FR to be sure this test suite remains useful by running all the tests. 
+We want the FR to be sure this test suite remains useful by running all the tests.
 
 This should be done as part of running autodeploy of dep updates to stage (e.g.:  run tests before deploy to stage, then deploy to stage, then run tests after deploy to stage)
 
