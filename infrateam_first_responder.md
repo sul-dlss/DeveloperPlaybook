@@ -41,23 +41,25 @@ The idiosyncratic name of the role is intentional. It is not the duty of the fir
 
 ### Weekly Dependency Updates
 
-#### Ensure dependency update spreadsheet is created
+#### Create dependency update spreadsheet
 
 Instructions are here https://docs.google.com/spreadsheets/d/1LysSAPFsRGt9PteWpVswp74xnPXyLLxADpHRfh69VLQ/edit#gid=0
 
-It *may* be that someone in a time zone further east than Palo Alto has already done this, but it is the first responder's responsibility to ensure this gets done.
+This is how we track dependency updates over time.
 
-#### Ensure Monday dependency updates are completed
+#### Complete Monday dependency updates
 
-It is a team task to complete these updates, but the first responder needs to make sure that all codebases needing updates have updates merged and deployed. Note that some projects may need to have PRs created by hand. It may be helpful to post in the `#dlss-infrastructure` Slack channel how many updates each developer should do, given who is working that day and how many PRs there are.
+The first responder needs to make sure that all codebases needing updates have updates merged and deployed. Note that some projects may need to have PRs created by hand where automatic creation may have failed. It is helpful to post updates in the `#dlss-infrastructure` Slack channel to make sure the team is aware of this work, in case anyone is working in related codebases or looking to deploy changes.
 
 ##### Merge 'em
-WIP script to automatically merge all dependency update PRs is currently in its own PR in access-update-scripts: https://github.com/sul-dlss/access-update-scripts/pull/104/files -- you can switch to the branch locally and use this script.  From the comments at the top, you will need a github access token.  Instructions are here:  https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
+
+Run the `merge-all` script to automatically merge all dependency update PRs: https://github.com/sul-dlss/access-update-scripts/blob/master/merge-all.rb. From the comments at the top, you will need a GitHub access token. Instructions are here: https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
 
 ##### Deploy 'em
-Use the `sdr-deploy` script to deploy all infrastructure projects (with exceptions noted below) via capistrano to deployed environments -- see here:  https://github.com/sul-dlss-labs/sdr-deploy.  
 
-There are applications that need to be deployed separately (i.e., not using `sdr-deploy`), currently (6/9/2020): sinopia apps, dlme-transform, and rialto-webapp are deployed using Terraform. Also note `sdr-deploy` is not a good tool for deploying the hydra_etd application to the `uat` environment nor for deploying the sul-pub application to its environments beyond `stage` and `prod`: https://github.com/sul-dlss/sul_pub/tree/master/config/deploy.
+Use the `sdr-deploy` script to deploy all infrastructure projects (with exceptions noted below) via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy
+
+**NOTE**: There are applications that need to be deployed separately (i.e., not using `sdr-deploy`), currently (as of August 2020): sinopia apps, dlme-transform, and rialto-webapp are deployed using Terraform. Also note `sdr-deploy` is not a good tool for deploying the hydra_etd application to the `uat` environment nor for deploying the sul-pub application to its environments beyond `stage` and `prod`: https://github.com/sul-dlss/sul_pub/tree/master/config/deploy. And these need to be done every week.
 
 Note that you will need to be sure you can ssh into each of the VMs from wherever you are running the deploy script.
 
@@ -68,12 +70,12 @@ Note that you will need to be sure you can ssh into each of the VMs from whereve
 
 ##### Code that isn't a Ruby Application
 
-We have codebases to maintain that aren't Ruby applications or gems. We have not yet settled on a long-term method for dealing with these:
+We have codebases that aren't Ruby applications or gems. We have not yet settled on a long-term method for dealing with these:
 
-- javascript apps with npm updates:
-  - https://github.com/sul-dlss/access-update-scripts has code to create PRs for npm package updates, but it currently only works for the sul-dlss github organization. All the sinopia code is in the LD4P github organization. There is a [pending pull request](https://github.com/sul-dlss/access-update-scripts/pull/82) that will address this.
-- java code (note that we are down to two Java repositories in our platform: [suri2](https://github.com/sul-dlss/suri2) (which is slated to be replaced with the Rails-based [suri_rails](https://github.com/sul-dlss/suri_rails) in 2020), and [etd-reporter](https://github.com/sul-dlss/etd-reporter).)
+- java code
+  - the Infrastructure team is down to one Java repository in our platform, [etdpdf](https://github.com/sul-dlss/etdpdf), and it does not go through CI or receive maintenance updates
 - Go projects (such as various RIALTO components)
+  - with the future of RIALTO in question, it's not likely to receive attention any time soon
 
 Note that security updates affecting our Ruby **gems** will be caught when doing capistrano deployments via `gemfile audit`.
 
