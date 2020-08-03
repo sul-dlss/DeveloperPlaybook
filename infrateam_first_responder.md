@@ -80,7 +80,11 @@ There are applications that need to be deployed separately (i.e., not using `sdr
 We have codebases that aren't Ruby applications or gems. We have not yet settled on a long-term method for dealing with these:
 
 - java code
-  - the Infrastructure team is down to one Java repository in our platform, [etdpdf](https://github.com/sul-dlss/etdpdf), and it does not go through CI or receive maintenance updates
+  - the Infrastructure team is has the following Java repositories in our portfolio, none of which are actively maintained by the team
+    - [etdpdf](https://github.com/sul-dlss/etdpdf)
+    - [openwayback](https://github.com/sul-dlss/openwayback)
+    - [wasapi-downloader](https://github.com/sul-dlss/wasapi-downloader)
+    - [WASMetadataExtractor](https://github.com/sul-dlss/WASMetadataExtractor)
 - Go projects (such as various RIALTO components)
   - with the future of RIALTO in question, it's not likely to receive attention any time soon
 
