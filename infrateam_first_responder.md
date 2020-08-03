@@ -57,9 +57,7 @@ Run the `merge-all` script to automatically merge all dependency update PRs: htt
 
 ##### Deploy 'em
 
-Use the `sdr-deploy` script to deploy all infrastructure projects (with exceptions noted below) via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy
-
-**NOTE**: There are applications that need to be deployed separately (i.e., not using `sdr-deploy`), currently (as of August 2020): sinopia apps, dlme-transform, and rialto-webapp are deployed using Terraform. Also note `sdr-deploy` is not a good tool for deploying the hydra_etd application to the `uat` environment nor for deploying the sul-pub application to its environments beyond `stage` and `prod`: https://github.com/sul-dlss/sul_pub/tree/master/config/deploy. And these need to be done every week.
+Use the `sdr-deploy` script to deploy all infrastructure projects (with **important exceptions** noted below) via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy
 
 Note that you will need to be sure you can ssh into each of the VMs from wherever you are running the deploy script.
 
@@ -67,6 +65,15 @@ Note that you will need to be sure you can ssh into each of the VMs from whereve
 - stage: please run infrastructure-integration-tests before deploy to stage, then deploy to stage with script, then run tests after deploy to stage.
     - take note in #dlss-infra-stage-use if there is active testing going on;  be sure to either comment out that app or coordinate with tester
 - prod: if all tests passed for stage deploys, deploy to prod with script.
+
+###### Important Exceptions
+
+There are applications that need to be deployed separately (i.e., not using `sdr-deploy`):
+
+* **hydra_etd `uat` environment**: deploy via `cap uat deploy` in `hydra-etd`
+* **sul-pub environments beyond `stage` and `prod`**: deploy via `cap ENV deploy` ([ENV values](https://github.com/sul-dlss/sul_pub/tree/master/config/deploy))
+* **Sinopia apps**: deploy via terraform (see [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/sinopia/operations-concerns.md#deployment-info))
+* **dlme-transform**: deploy via terraform (see [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info))
 
 ##### Code that isn't a Ruby Application
 
