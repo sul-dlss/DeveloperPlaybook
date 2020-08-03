@@ -49,10 +49,10 @@ It *may* be that someone in a time zone further east than Palo Alto has already 
 
 #### Ensure Monday dependency updates are completed
 
-It is a team task to complete these updates, but the first responder needs to make sure that all codebases needing updates have updates merged and deployed. Note that some projects may need to have PRs created by hand. It may be helpful to post in the `#dlss-infrastructure` Slack channel how many updates each developer should do, given who is working that day and how many PRs there are.
+It is a team task to complete these updates, but the first responder needs to make sure that all codebases needing updates have updates merged and deployed. Note that some projects may need to have PRs created by hand. 
 
 ##### Merge 'em
-WIP script to automatically merge all dependency update PRs is currently in its own PR in access-update-scripts: https://github.com/sul-dlss/access-update-scripts/pull/104/files -- you can switch to the branch locally and use this script.  From the comments at the top, you will need a github access token.  Instructions are here:  https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
+A script to automatically merge all dependency update PRs is in the access-update-scripts repo: https://github.com/sul-dlss/access-update-scripts/   The script is called `merge-all.rb` This script will only work with Ruby 2.6 or greater.  See the comments at the top for how to run and note you will need a github access token if you haven't previously created one.  Instructions for creating a token are here:  https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line   Save your token somewhere secure for re-use since you won't be able to view it in the Github interface again.
 
 ##### Deploy 'em
 Use the `sdr-deploy` script to deploy all infrastructure projects (with exceptions noted below) via capistrano to deployed environments -- see here:  https://github.com/sul-dlss-labs/sdr-deploy.  
