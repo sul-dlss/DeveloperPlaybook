@@ -1,44 +1,47 @@
 # Developer Playbook
-=========
 
 A place to organize style guides, best practices, tools, and techniques for Stanford University's Digital Library Systems &amp; Services Group.
 
  - [Best Practices](/best-practices)
-   - [Documentation](/best-practices/documentation)
-   - [Automating Deployment Notifications on Slack](/best-practices/README.md)
-   - [Background Processing at DLSS](/best-practices/background_processing.md)
+   - [Automating Deployment Notifications](/best-practices/automating_deployment_notifications.md)
+   - [Background Processing](/best-practices/background_processing.md)
    - [Communication](/best-practices/communication.md)
-   - [Deployment](/best-practices/communication.md)
+   - [Deployment](/best-practices/deployment.md)
+   - [Deploying / Maintaining AWS](/best-practices/deploying_maintaining_aws.md)
    - [Deprecation](/best-practices/deprecation.md)
+   - [Documentation](/best-practices/documentation.md)
    - [How To - Readme](/best-practices/howto_readme.md)
    - [Licensing](/best-practices/licensing.md)
    - [Monitoring](/best-practices/monitoring.md)
-   - [Puppet Prs](/best-practices/monitoring.md)
+   - [Multi-factor Auth/Two Factor Auth](/best-practices/2FA.md)
+   - [New Project Checklist](/best-practices/new_project_checklist.md)
+   - [Pair Programming](/best-practices/pair_programming.md)
+   - [Puppet PRs](/best-practices/puppet_prs.md)
    - [Releasing Gems](/best-practices/releasing_gems.md)
    - [Setting Up Rails Projects](/best-practices/setting_up_rails_projects.md)
    - [Testing](/best-practices/testing.md)
    - [UI/Bootstrap](/best-practices/ui_bootstrap.md)
    - [Updating NodeJS](/best-practices/updating-nodejs.md)
-   - [Pair Programming](/best-practices/pair_programming.md)
+   - [Updating Ruby](/best-practices/updating-ruby.md)
    - [Version Control](/best-practices/version_control.md)
-   - [Multi-factor Auth/Two Factor Auth](/best-practices/2FA.md)
- - [Style](/style)
+ - [Code Club](/code_club.md)
  - [Code Review](/code-review)
+ - [Developer Onboarding](/developer_onboarding.md)
+ - [Developers Forum](/developers_forum.md)
+ - [Infrastructure First Responder](infrateam_first_responder.md)
+ - [Style](/style)
 
 Organized in a similar manner and inspired by the [thoughtbot playbook](http://playbook.thoughtbot.com/) and [thoughtbot guides](https://github.com/thoughtbot/guides)
 
-Contributing
-------------
 
-Please read the [contribution guidelines] before submitting a pull request.
+## Contributing
+
+Please read the [contribution guidelines](/CONTRIBUTING.md) before submitting a pull request.
 
 In particular: **if you have commit access, please don't merge changes without
 waiting a week for everybody to leave feedback**.
 
-[contribution guidelines]: /CONTRIBUTING.md
-
-Goals
------
+## Goals
 
 The goals of the Developer Playbook are to:
 
@@ -60,8 +63,7 @@ The process is:
  - broad, imperfect, and rapid.  Future discussions can take it deep, refine the discussions, and go more slowly and carefully.
  - modifiable under its own rules, as needed, and as and when desired.
 
-License
--------
+## License
 
-Developer Playbook is © 2018 The Board of Trustees of the Leland Stanford Junior University. It is distributed under the [Creative Commons
+Developer Playbook is © 2018,2019,2020 The Board of Trustees of the Leland Stanford Junior University. It is distributed under the [Creative Commons
 Attribution License](http://creativecommons.org/licenses/by/3.0/) and is a derivation of [guides](https://github.com/thoughtbot/guides).
