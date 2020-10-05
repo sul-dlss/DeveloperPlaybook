@@ -8,7 +8,7 @@ The DLSS Infrastructure team is using a rotating role of "first responder." This
   * ["First responder" != "on call"](#first-responder--on-call)
 * [Duties](#duties)
   * [Weekly Dependency Updates](#weekly-dependency-updates)
-    * [Ensure dependency update spreadsheet is created](#ensure-dependency-update-spreadsheet-is-created)
+    * [Ensure dependency update spreadsheet is created](#create-dependency-update-spreadsheet)
     * [Ensure Monday dependency updates are completed](#ensure-monday-dependency-updates-are-completed)
       * [Code that isn't a Ruby Application or Gem](#code-that-isnt-a-ruby-application-or-gem)
   * [Verify / Notify Coverage for Following Week](#verify--notify-coverage-for-following-week)
