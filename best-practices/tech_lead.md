@@ -52,10 +52,10 @@ If you're TL, and the work-cycle PO is mostly unavailable, and there's no appoin
 
 There's also engineering management opportunities when you are TL:
 - Which tech debt should we be paying?
-- “How should CDL fit into ETD work cycle?”
-- “Can the team be more-or-less single focused on ETD work for x weeks, then be single focused on Sinopia afterwards?”
+- e.g. “How should CDL fit into ETD work cycle?”
+- e.g. “Can the team be more-or-less single focused on ETD work for x weeks, then be single focused on Sinopia afterwards?”
 
-Ask the questions, start the discussions that will help the work-cycle and the team be as successful and happy as possible.
+Ask the questions, start the discussions, etc. that will help the work-cycle and the team be as successful and happy as possible.
 
 ### The Board the Board the Board
 We've been using "project boards" for transparency of process during workcycles.  More on them below.
@@ -79,11 +79,11 @@ Keep a running list of topics to be discussed -- the running notes are a good pl
 
 - meet as often as you need to, or if that's not possible, as often as you can.
   - for ETD 2020Q3, there were so many details and questions, the TL and the PO met for 30 min every day
-  - for SDR features 2019Q3, there was so availability of the PO, we had to ensure we utilized the planning meeting time to get PO questions answered.
+  - for SDR features 2019Q3, there was so little availability of the PO, we had to ensure we utilized the planning meeting time to get PO questions answered.
 
-I'm guessing the ideal is between those 2 extremes.  Maybe you can meet ad hoc as needed.  Maybe you can get decisions made over slack.
+I'm guessing the ideal is between those 2 extremes.  Maybe you can meet ad hoc as needed.  Maybe you can get decisions made over slack.  Maybe it works best for a particular TL + PO pairing to have n meetings a week on the calendar.
 
-Ultimately: are the right topics appearing on your topics list and are you able to discuss things and get decisions made so work isn't blocked?
+Ultimately: are the right topics appearing on your topics list and are you able to discuss them and get decisions made so work isn't blocked?
 
 Also, the PO might need help with:
 - identifying which issues / designs / pull requests / deployments need PO sign off
@@ -128,9 +128,11 @@ It may be useful to walk a PO, a UX Designer, or anyone newly interacting with t
 - How we use zenhub
   - what are the columns?  what do they mean?
   - how do tickets get into each column?
+  - how do we sort them?
 - How we use GoogleDocs for running notes and action Items
   - assigning something to a person with a comment
   - resolving the item via the comment AND with strikethrough for text
+  - making the notes text a different color from the agenda text
 
 ### WorkCycle Planning
 
@@ -145,7 +147,7 @@ Some examples:
 - Convert "Bulk Updates" (Sync) to "Bulk Actions" (ASync)
 - Replace Cognito Authorization
 
-Note that Epics can be too vague to be useful, or too lofty to be realistic. For example, "Replace Fedora3" might be too much for a single work cycle and it may not be clear what it entails.  If so, break it down.  Maybe "Decouple App1, App2 and App3 from direct access to DOR" would be appropriate for a work cycle, or "Explore Valkyrie as a Fedora3 Alternative", with a clear idea of "and we will know this is done when we have indicated which of the N desired functionalities Valkyrie can provide."
+Note that Epics can be too vague to be useful, or too lofty to be realistic. For example, "Replace Fedora3" might be too much for a single work cycle and it may not be clear what it entails.  If so, break it down.  Maybe "Decouple App1, App2 and App3 from direct access to DOR" would be an Epic in a work cycle, or "Explore Valkyrie as a Fedora3 Alternative", with a clear idea of "and we will know this is done when we have indicated which of the N desired functionalities Valkyrie can provide."
 
 __Have Realistic Goals__
 - 5 epics, max ... preferably 3 or 4.
@@ -204,6 +206,9 @@ __Before Each Sprint__
 
 __During Sprint__
 - run standup meetings (keep on track, crisp, discussions at end)
+- ensure there are ALWAYS prioritized, actionable tickets in the ready column
+- PR review happens promptly.  (within hours;  certainly no more than one day for review)
+- PO and Designer review of work, when required, happens promptly.
 
 __End of Sprint__
 - prepare demos, if desired
