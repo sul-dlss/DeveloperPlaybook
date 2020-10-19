@@ -75,6 +75,13 @@ There are applications that need to be deployed separately (i.e., not using `sdr
 * **Sinopia apps**: deploy via terraform (see [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/sinopia/operations-concerns.md#deployment-info))
 * **dlme-transform**: deploy via terraform (see [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info))
 
+There are applications without a QA deploy environment which will show as a FAILURE when you use the `sdr-deploy` script against qa - this is expected:
+
+* hydrus
+* gis-robot-suite
+* sul-pub
+* was-registrar-app/
+
 ##### Code that isn't a Ruby Application
 
 We have codebases that aren't Ruby applications or gems. We have not yet settled on a long-term method for dealing with these:
