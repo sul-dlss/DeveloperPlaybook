@@ -1,0 +1,232 @@
+# Ordered Shutdown/Restart Lists for Infrastructure Services
+This ordered checklist of shutting down the Infrastructure services in a
+controlled manner to minimize disruptions and HoneyBadger alerts.
+
+Likewise, a restart ordered list is provided for bringing up Infrastructure
+services.
+
+## Shutdown Steps:
+- [ ] Front-end Applications
+   - [ ] Argo
+     - argo-qa-a
+     - argo-qa-b
+     - argo-stage-a
+     - argo-stage-b
+     - argo-prod-02
+     - argo-prod-01
+   - [ ] Google Books: enable google books via the UI: https://sul-gbooks-prod.stanford.edu/features
+    - sul-gbooks-stage
+    - sul-gbooks-qa
+    - sul-gbooks-prod
+   - [ ] H2
+    - sul-h2-stage
+    - sul-h2-qa
+    - sul-h2-prod
+   - [ ] Hydrus
+     - sul-hydrus-stage
+     - sul-hydrus-qa
+     - sul-hydrus-prod
+   - [ ] Sul-Pub
+     - sul-pub-stage
+     - sul-pub-prod
+     - sul-pub-cap-uat
+     - sul-pub-cap-qa
+     - sul-pub-cap-dev
+     - sul-pub-cap-dev-a
+   - [ ] Suri
+     - sul-suri-stage
+     - sul-suri-qa
+     - sul-suri-prod
+   - [ ] WAS
+     - was-registrar-app-stage
+     - was-registrar-app
+- [ ] Worker and Robots VMs
+  - [ ] Preservation Robots (preservation_robots): stop the workers
+    - preservation-robots1-stage
+    - preservation-robots1-qa
+    - preservation-robots1-prod
+  - [ ] Common Accessioning Robots (common-accessioning): stop the workers
+    - common-accessioning-stage-b
+    - common-accessioning-stage-a
+    - common-accessioning-qa-b
+    - common-accessioning-qa-a
+    - common-accessioning-prod-d
+    - common-accessioning-prod-c
+    - common-accessioning-prod-b
+    - common-accessioning-prod-a
+  - [ ] Pre-assembly Robots (pre-assembly): stop the workers
+  - [ ] Robot Console
+    - robot-console-stage
+    - robot-console-qa
+    - robot-console-prod
+  - [ ] WAS Robots (was_robot_suite): stop the workers
+    - was-robots1-stage
+    - was-robots1-qa
+    - was-robots1-prod
+    - was-robots1-stage
+    - was-robots1-qa
+    - was-robots1-prod
+  - [ ] GIS Robots (gis-robot-suite): stop the workers
+- [ ] Service Applications (DSA, DIA, techmd, etc)
+  - sdr-api-stage
+  - sdr-api-qa
+  - sdr-api-prod
+  - dor-indexing-app-qa-a
+  - dor-indexing-app-qa-b
+  - dor-indexing-app-stage-a
+  - dor-indexing-app-stage-b
+  - dor-services-db-qa-a
+  - dor-services-db-stage-a
+  - dor-services-migrate
+  - dor-services-qa
+  - dor-services-stage
+  - dor-services-worker-qa-a
+  - dor-services-worker-stage-a
+  - dor-techmd-qa
+  - dor-techmd-stage
+  - dor-techmd-worker-qa-a
+  - dor-techmd-worker-stage-a
+  - workflow-service-stage
+  - workflow-service-qa
+  - workflow-service-prod
+- [ ] Solr
+- [ ] Fedora
+- [ ] Redis and Messaging-related
+  - dor-services-worker-qa-a
+  - preservation-catalog-prod-01
+  - preservation-catalog-qa-01
+  - preservation-catalog-stage-01
+  - sulmq-qa
+  - sulmq-prod-b
+  - sulmq-prod-a
+- [ ] Databases
+  - preservation-catalog-stage-03
+  - preservation-catalog-stage-02
+  - preservation-catalog-stage-01
+  - preservation-catalog-qa-03
+  - preservation-catalog-qa-02
+  - preservation-catalog-qa-01
+  - preservation-catalog-prod-05
+  - preservation-catalog-prod-04
+  - preservation-catalog-prod-03
+  - preservation-catalog-prod-02
+  - preservation-catalog-prod-01
+  - sul-preassembly-stage
+  - sul-preassembly-qa
+  - sul-preassembly-prod
+  - workflow-service-db-stage-a
+  - workflow-service-db-qa-a
+  - workflow-service-db-prod-01
+
+## Restart Steps:
+- [ ] Databases
+  - preservation-catalog-stage-03
+  - preservation-catalog-stage-02
+  - preservation-catalog-stage-01
+  - preservation-catalog-qa-03
+  - preservation-catalog-qa-02
+  - preservation-catalog-qa-01
+  - preservation-catalog-prod-05
+  - preservation-catalog-prod-04
+  - preservation-catalog-prod-03
+  - preservation-catalog-prod-02
+  - preservation-catalog-prod-01
+  - sul-preassembly-stage
+  - sul-preassembly-qa
+  - sul-preassembly-prod
+  - workflow-service-db-stage-a
+  - workflow-service-db-qa-a
+  - workflow-service-db-prod-01
+- [ ] Redis and Messaging-related
+  - dor-services-worker-qa-a
+  - preservation-catalog-prod-01
+  - preservation-catalog-qa-01
+  - preservation-catalog-stage-01
+  - sulmq-qa
+  - sulmq-prod-b
+  - sulmq-prod-a
+- [ ] Fedora
+- [ ] Solr
+- [ ] Service Applications (DSA, DIA, techmd, etc)
+  - sdr-api-stage
+  - sdr-api-qa
+  - sdr-api-prod
+  - dor-indexing-app-qa-a
+  - dor-indexing-app-qa-b
+  - dor-indexing-app-stage-a
+  - dor-indexing-app-stage-b
+  - dor-services-db-qa-a
+  - dor-services-db-stage-a
+  - dor-services-migrate
+  - dor-services-qa
+  - dor-services-stage
+  - dor-services-worker-qa-a
+  - dor-services-worker-stage-a
+  - dor-techmd-qa
+  - dor-techmd-stage
+  - dor-techmd-worker-qa-a
+  - dor-techmd-worker-stage-a
+  - workflow-service-stage
+  - workflow-service-qa
+  - workflow-service-prod
+  - [ ] Worker and Robots VMs
+    - [ ] Preservation Robots (preservation_robots): stop the workers
+      - preservation-robots1-stage
+      - preservation-robots1-qa
+      - preservation-robots1-prod
+    - [ ] Common Accessioning Robots (common-accessioning): stop the workers
+      - common-accessioning-stage-b
+      - common-accessioning-stage-a
+      - common-accessioning-qa-b
+      - common-accessioning-qa-a
+      - common-accessioning-prod-d
+      - common-accessioning-prod-c
+      - common-accessioning-prod-b
+      - common-accessioning-prod-a
+    - [ ] Pre-assembly Robots (pre-assembly): stop the workers
+    - [ ] Robot Console
+      - robot-console-stage
+      - robot-console-qa
+      - robot-console-prod
+    - [ ] WAS Robots (was_robot_suite): stop the workers
+      - was-robots1-stage
+      - was-robots1-qa
+      - was-robots1-prod
+      - was-robots1-stage
+      - was-robots1-qa
+      - was-robots1-prod
+    - [ ] GIS Robots (gis-robot-suite): stop the workers
+    - [ ] Front-end Applications
+       - [ ] Argo
+         - argo-qa-a
+         - argo-qa-b
+         - argo-stage-a
+         - argo-stage-b
+         - argo-prod-02
+         - argo-prod-01
+       - [ ] Google Books: enable google books via the UI: https://sul-gbooks-prod.stanford.edu/features
+        - sul-gbooks-stage
+        - sul-gbooks-qa
+        - sul-gbooks-prod
+       - [ ] H2
+        - sul-h2-stage
+        - sul-h2-qa
+        - sul-h2-prod
+       - [ ] Hydrus
+         - sul-hydrus-stage
+         - sul-hydrus-qa
+         - sul-hydrus-prod
+       - [ ] Sul-Pub
+         - sul-pub-stage
+         - sul-pub-prod
+         - sul-pub-cap-uat
+         - sul-pub-cap-qa
+         - sul-pub-cap-dev
+         - sul-pub-cap-dev-a
+       - [ ] Suri
+         - sul-suri-stage
+         - sul-suri-qa
+         - sul-suri-prod
+       - [ ] WAS
+         - was-registrar-app-stage
+         - was-registrar-app
