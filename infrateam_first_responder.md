@@ -23,6 +23,7 @@ The DLSS Infrastructure team is using a rotating role of "first responder." This
 * [How to Triage Production Problems](#how-to-triage-production-problems)
   * [A note on prioritization](#a-note-on-prioritization)
 * [What if first responder isn't available?](#what-if-first-responder-isnt-available)
+* [What order should first responder shutdown/restart all services?](best-practices/infra_services_shutdown_restart.md)
 
 ## "First Responder" Rotation Premises
 

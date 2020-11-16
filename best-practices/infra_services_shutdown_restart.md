@@ -40,7 +40,7 @@ services.
    - [ ] WAS
      - was-registrar-app-stage
      - was-registrar-app
-- [ ] Worker and Robots VMs
+- [ ] Worker and Robots VMs (see checklist below for shutting down robots)
   - [ ] Preservation Robots (preservation_robots): stop the workers
     - preservation-robots1-stage
     - preservation-robots1-qa
@@ -230,3 +230,14 @@ services.
        - [ ] WAS
          - was-registrar-app-stage
          - was-registrar-app
+
+## Shutdown Robots
+1. Create a branch of each robot project off of master
+1. Set the worker counts to 0 in the `resque-pool.yml` file,
+1. Deployed that specific branch (don't merge to master of course).
+
+This was because the resque stop command wasn't working correctly.
+While we believe we have since fixed this issue with the rake command to stop
+workers, setting the workers to 0 may still be desirable to prevent the workers
+from starting up again when the servers are restarted (i.e. only if we are
+concerned about bringing them up in a specific order).
