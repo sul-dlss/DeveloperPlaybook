@@ -83,16 +83,9 @@ Status check from the server (ssh into the prod server for that project and then
 There are applications that need to be deployed separately (i.e., not using `sdr-deploy`):
 
 * **hydra_etd `uat` environment**: deploy via `cap uat deploy` in `hydra-etd`
-* **sul-pub environments beyond `stage` and `prod`**: deploy via `cap ENV deploy` ([ENV values](https://github.com/sul-dlss/sul_pub/tree/master/config/deploy))
+* **sul-pub environments beyond `qa`, `stage`, and `prod`**: deploy via `cap ENV deploy` ([ENV values](https://github.com/sul-dlss/sul_pub/tree/master/config/deploy))
 * **Sinopia apps**: deploy via terraform (see [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/sinopia/operations-concerns.md#deployment-info))
 * **dlme-transform**: deploy via terraform (see [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info))
-
-There are applications without a QA deploy environment which will show as a FAILURE when you use the `sdr-deploy` script against qa - this is expected:
-
-* hydrus
-* gis-robot-suite
-* sul-pub
-* was-registrar-app/
 
 ##### Code that isn't a Ruby Application
 
