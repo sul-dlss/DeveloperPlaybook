@@ -5,18 +5,19 @@ The DLSS Infrastructure team is using a rotating role of "first responder." This
 ## Table of Contents
 
 * ["First Responder" Rotation Premises](#first-responder-rotation-premises)
-  * ["First responder" != "on call"](#first-responder--on-call)
+  * ["First Responder" != "On Call"](#first-responder--on-call)
 * [Duties](#duties)
   * [Weekly Dependency Updates](#weekly-dependency-updates)
-    * [Ensure dependency update spreadsheet is created](#create-dependency-update-spreadsheet)
-    * [Ensure Monday dependency updates are completed](#ensure-monday-dependency-updates-are-completed)
-      * [Code that isn't a Ruby Application or Gem](#code-that-isnt-a-ruby-application-or-gem)
+    * [Merge 'em](#merge-em)
+    * [Deploy 'em](#deploy-em)
+      * [Important Exceptions](#important-exceptions)
+      * [Code that isn't a Ruby Application](#code-that-isnt-a-ruby-application)
   * [Verify / Notify Coverage for Following Week](#verify--notify-coverage-for-following-week)
   * [Sign Up for Your Next First Responder Shift](#sign-up-for-your-next-first-responder-shift)
-  * [Run infrastructure-integration-tests](#run-infrastructure-integration-tests )
+  * [Run infrastructure-integration-tests](#run-infrastructure-integration-tests)
   * [Proactively Check for Production Problems](#proactively-check-for-production-problems)
   * [Triage Production Problems](#triage-production-problems)
-  * [Improve Troubleshooting Documentation as Needed](#Improve-Troubleshooting-Documentation-as-Needed)
+  * [Improve Troubleshooting Documentation as Needed](#improve-troubleshooting-documentation-as-needed)
   * [Improve First Responder Instructions as Needed](#improve-first-responder-instructions-as-needed)
   * [Other Duties as Assigned](#other-duties-as-assigned)
 * [How to Proactively Check for Production Problems](#how-to-proactively-check-for-production-problems)
@@ -41,21 +42,13 @@ The idiosyncratic name of the role is intentional. It is not the duty of the fir
 
 ### Weekly Dependency Updates
 
-#### Create dependency update spreadsheet
-
-Instructions are here https://docs.google.com/spreadsheets/d/1LysSAPFsRGt9PteWpVswp74xnPXyLLxADpHRfh69VLQ/edit#gid=0
-
-This is how we track dependency updates over time.
-
-#### Complete Monday dependency updates
-
 The first responder needs to make sure that all codebases needing updates have updates merged and deployed. Note that some projects may need to have PRs created by hand where automatic creation may have failed. It is helpful to post updates in the `#dlss-infrastructure` Slack channel to make sure the team is aware of this work, in case anyone is working in related codebases or looking to deploy changes.
 
-##### Merge 'em
+#### Merge 'em
 
 Run the `merge-all` script to automatically merge all dependency update PRs: https://github.com/sul-dlss/access-update-scripts/blob/master/merge-all.rb. Note that this script will only work with Ruby 2.6 or greater.  See the comments at the top for how to run and note you will need a github access token if you haven't previously created one.  Instructions for creating a token are here:  https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line   Save your token somewhere secure for re-use since you won't be able to view it in the Github interface again.
 
-##### Deploy 'em
+#### Deploy 'em
 
 Use the `sdr-deploy` script to deploy all infrastructure projects (with **important exceptions** noted below) via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy
 
@@ -78,7 +71,7 @@ Status check from the server (ssh into the prod server for that project and then
 - Workflow server rails: `curl -i https://workflow-service-prod.stanford.edu/status/all`
 - Suri: `curl -i https://sul-suri-prod.stanford.edu/status/all`
 
-###### Important Exceptions
+##### Important Exceptions
 
 There are applications that need to be deployed separately (i.e., not using `sdr-deploy`):
 
@@ -91,15 +84,15 @@ There are applications that need to be deployed separately (i.e., not using `sdr
 
 We have codebases that aren't Ruby applications or gems. We have not yet settled on a long-term method for dealing with these:
 
-- java code
-  - the Infrastructure team is has the following Java repositories in our portfolio, none of which are actively maintained by the team
-    - [dlss-wowza](https://github.com/sul-dlss/dlss-wowza/)
-    - [etdpdf](https://github.com/sul-dlss/etdpdf)
-    - [openwayback](https://github.com/sul-dlss/openwayback)
-    - [wasapi-downloader](https://github.com/sul-dlss/wasapi-downloader)
-    - [WASMetadataExtractor](https://github.com/sul-dlss/WASMetadataExtractor)
-- Go projects (such as various RIALTO components)
-  - with the future of RIALTO in question, it's not likely to receive attention any time soon
+* java code
+  * the Infrastructure team is has the following Java repositories in our portfolio, none of which are actively maintained by the team
+    * [dlss-wowza](https://github.com/sul-dlss/dlss-wowza/)
+    * [etdpdf](https://github.com/sul-dlss/etdpdf)
+    * [openwayback](https://github.com/sul-dlss/openwayback)
+    * [wasapi-downloader](https://github.com/sul-dlss/wasapi-downloader)
+    * [WASMetadataExtractor](https://github.com/sul-dlss/WASMetadataExtractor)
+* Go projects (such as various RIALTO components)
+  * with the future of RIALTO in question, it's not likely to receive attention any time soon
 
 We currently do not have an automatic update mechanism for our Java projects.
 
