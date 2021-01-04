@@ -48,7 +48,11 @@ Having Your Code Reviewed
 Reviewing Code
 --------------
 
-Understand why the code is necessary (bug, user experience, refactoring). Then:
+* Understand why the code is necessary (bug, user experience, refactoring).
+* Read the code change, considering both the code that does the thing(s), and any testing
+of said code (whether unit, integration, manual, or otherwise -- see also [testing.md](../best-practices/testing.md)).
+
+Then:
 
 * Communicate which ideas you feel strongly about and those you don't.
 * Identify ways to simplify the code while still solving the problem.

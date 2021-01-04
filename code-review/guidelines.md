@@ -24,7 +24,7 @@
     * according to personal judgment
   * evaluate test coverage of the proposed changes
     * suggest areas where coverage may be improved
-  * evaluate changes in overall test coverage
+  * evaluate changes in overall test coverage.  strive for full coverage of modified code when making changes (see [testing.md](../best-practices/testing.md)).
 * be aware there are situations where the above guidelines may be bypassed
 * think of requests for changes in terms of “must do” “should do” and “would be nice to do”
 * collaborate with code authors to improve the code
