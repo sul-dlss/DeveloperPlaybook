@@ -78,7 +78,7 @@ There are applications that need to be deployed separately (i.e., not using `sdr
 * **hydra_etd `uat` environment**: deploy via `cap uat deploy` in `hydra-etd`
 * **sul-pub environments beyond `qa`, `stage`, and `prod`**: deploy via `cap ENV deploy` ([ENV values](https://github.com/sul-dlss/sul_pub/tree/master/config/deploy))
 * **Sinopia apps**: deploy via terraform (see [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/sinopia/operations-concerns.md#deployment-info))
-* **dlme-transform**: deploy via terraform (see [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info))
+* **dlme-transform**: deploy via terraform (see [README](https://github.com/sul-dlss/dlme-transform/#deploying) and [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info))
 
 ##### Code that isn't a Ruby Application
 
@@ -148,7 +148,7 @@ We need this document to be useful and current.  Please submit improvements as P
 ### Other Duties as Assigned
 
 * Management may choose to have the first responder handle a non-project work ticket
-  * If so, ensure you assign the ticket to yourself and put it in the "in progress" column the project board https://github.com/orgs/sul-dlss/projects/1
+  * If so, ensure you assign the ticket to yourself and put it in the "in progress" column of [the team's production priorities board](https://github.com/orgs/sul-dlss/projects/37)
 * First responder may be asked to spearhead a work estimate https://github.com/sul-dlss-labs/estimation (note that these are, by definition, meant to be done by more than one person; if it's smaller, should it be a ticket in a project?)
 
 ## How to Proactively Check for Production Problems
@@ -210,9 +210,7 @@ If a user reports a problem, or if one is surfaced from monitoring, the first re
       * First responder creates additional documentation (preferred) or a ticket for it
   * Fixing the problem will be as quick as writing up a ticket
     * First responder fixes the problem in this case.
-* All new tickets should be added to the infrastructure team's [general project board](https://github.com/orgs/sul-dlss/projects/1) (select project board from "projects" when on issue page)
-
-![Add to infrastructure project board](images/add_to_infra_proj_board.png)
+* All new tickets should be added to the infrastructure team's [production priorities board](https://github.com/orgs/sul-dlss/projects/37) (select `Infrastructure Portfolio Production Priorities` from the "Projects" dropdown on the GitHub issue page)
 
 ### A note on prioritization
 
