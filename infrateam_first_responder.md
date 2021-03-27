@@ -55,8 +55,10 @@ Use the `sdr-deploy` script to deploy all infrastructure projects (with **import
 Note that you will need to be sure you can ssh into each of the VMs from wherever you are running the deploy script.
 
 - qa: deploy to qa with script
-- stage: please run infrastructure-integration-tests before deploy to stage, then deploy to stage with script, then run tests after deploy to stage.
-    - take note in #dlss-infra-stage-use if there is active testing going on;  be sure to either comment out that app or coordinate with tester
+- stage: deploy to stage with script, then run infrastructure-integration-tests after deploy to stage.
+  - It's possible that individual tests will fail due to random network connection issues, and chances are not great that the full suite will pass in one go from a spotty off-campus connection.
+    - If a failed test passes upon retry against the same set of deployed codebases, that's fine.  If you're unsure whether a particular test failure indicates bad network luck, a regression in the application, or an out of date test, raise it for discussion (or another dev to retry from their laptop) in #dlss-infrastructure.
+  - before deploying, warn #dlss-infra-stage-use in case there is active testing going on;  be sure to either comment out that app or coordinate with tester
 - prod: if all tests passed for stage deploys, deploy to prod with script.
 
 Note that the deployment script will attempt to verify the status check URL for projects that have one and will report success or failure for each project.
