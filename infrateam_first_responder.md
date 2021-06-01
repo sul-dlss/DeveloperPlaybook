@@ -118,7 +118,7 @@ The infrastructure team has 8 developers, so you should be taking a shift every 
 
 We want the FR to be sure this test suite remains useful by running all the tests.
 
-This should be done as part of running autodeploy of dep updates to stage (e.g.:  run tests before deploy to stage, then deploy to stage, then run tests after deploy to stage)
+This should be done as part of running autodeploy of dep updates as described above in the dependency updates section.
 
 If some tests fail when running the whole test suite at once, but pass when run individually, that is ok -- as long as they all pass under some circumstances.
 
