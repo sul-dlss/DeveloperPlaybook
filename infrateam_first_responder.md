@@ -54,12 +54,12 @@ Use the `sdr-deploy` script to deploy all infrastructure projects (with **import
 
 Note that you will need to be sure you can ssh into each of the VMs from wherever you are running the deploy script.
 
-- qa: deploy to qa first with script, then run infrastructure-integration-tests after deploy to qa.  Note as below that some tests may fail but will pass if run individually.  If on a Mac, you will get better results if you stay in the same "space" as the running tests (avoids focus issues with the browser).
-- stage: deploy to stage with script, then run infrastructure-integration-tests after deploy to stage.
+- stage: deploy to stage with script, then run infrastructure-integration-tests after deploy to stage.  If on a Mac, you will get better results if you stay in the same "space" as the running tests (avoids focus issues with the browser).
   - It's possible that individual tests will fail due to random network connection issues, and chances are not great that the full suite will pass in one go from a spotty off-campus connection.
     - If a failed test passes upon retry against the same set of deployed codebases, that's fine.  If you're unsure whether a particular test failure indicates bad network luck, a regression in the application, or an out of date test, raise it for discussion (or another dev to retry from their laptop) in #dlss-infrastructure.
   - before deploying, warn #dlss-infra-stage-use in case there is active testing going on;  be sure to either comment out that app or coordinate with tester
-- prod: if all tests passed for stage deploys, deploy to prod with script.
+- qa: deploy to qa with script ... it is also acceptable to run infrastructure-integration-tests after deploy to qa as well or instead of in stage, it is generally not necessary to run in both qa and stage
+- prod: finally, deploy to prod with script
 
 Note that the deployment script will attempt to verify the status check URL for projects that have one and will report success or failure for each project.
 There are currently two projects which cannot be verified in production since those servers are locked down and do not allow external requests (even on full tunnel VPN).
