@@ -38,17 +38,17 @@ The DLSS Infrastructure team is using a rotating role of "first responder." This
 
 The idiosyncratic name of the role is intentional. It is not the duty of the first responder to be on-call outside of the first responder's normal work hours (which may not line up exactly with business hours in Palo Alto). The first responder rotation is an effort to watch and triage production issues in an intentional and organized fashion, since no engineer was officially assigned this responsibility in the past, and such minding of things was haphazard.
 
-## Duties
+# Duties
 
-### Weekly Dependency Updates
+## Weekly Dependency Updates
 
 The first responder needs to make sure that all codebases needing updates have updates merged and deployed. Note that some projects may need to have PRs created by hand where automatic creation may have failed. It is helpful to post updates in the `#dlss-infrastructure` Slack channel to make sure the team is aware of this work, in case anyone is working in related codebases or looking to deploy changes.
 
-#### Merge 'em
+### Merge 'em
 
 Run the `merge-all` script to automatically merge all dependency update PRs: https://github.com/sul-dlss/access-update-scripts/blob/master/merge-all.rb. Note that this script will only work with Ruby 2.6 or greater.  See the comments at the top for how to run and note you will need a github access token if you haven't previously created one.  Instructions for creating a token are here:  https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line   Save your token somewhere secure for re-use since you won't be able to view it in the Github interface again.
 
-#### Deploy 'em
+### Deploy 'em
 
 Use the `sdr-deploy` script to deploy all infrastructure projects (with **important exceptions** noted below) via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy
 
@@ -74,7 +74,7 @@ Status check from the server (ssh into the prod server for that project and then
 - Workflow server rails: `curl -i https://workflow-service-prod.stanford.edu/status/all`
 - Suri: `curl -i https://sul-suri-prod.stanford.edu/status/all`
 
-##### Important Exceptions
+#### Important Exceptions
 
 There are applications that need to be deployed separately (i.e., not using `sdr-deploy`):
 
@@ -83,7 +83,7 @@ There are applications that need to be deployed separately (i.e., not using `sdr
 * **Sinopia apps**: deploy via DockerHub and terraform (see [Release Process](https://github.com/LD4P/sinopia_editor/blob/main/release_process.md))
 * **dlme-transform**: deploy via DockerHub and terraform (see [README](https://github.com/sul-dlss/dlme-transform/#deploying) and [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info))
 
-##### Code that isn't a Ruby Application
+#### Code that isn't a Ruby Application
 
 We have codebases that aren't Ruby applications or gems. We have not yet settled on a long-term method for dealing with these:
 
@@ -101,7 +101,7 @@ We currently do not have an automatic update mechanism for our Java projects.
 
 Note that security updates affecting our Ruby **gems** will be caught when doing capistrano deployments via `gemfile audit`.  For some projects, we've also enabled a GitHub setting that allows GH to automatically create pull requests (via Dependabot) to address security vulnerabilities (for merge by human reviewers).
 
-### Verify / Notify Coverage for Following Week
+## Verify / Notify Coverage for Following Week
 
 1. Verify first responder for following week is still able to cover it. Check this with on deck person on Monday (and keep in mind throughout the week, e.g., if person becomes ill).  (schedule: https://docs.google.com/spreadsheets/u/1/d/13TJR93Yc9_eF5B7w4XDx6ggG_wb3aLkgCHjpLwmHPBA/)
   1. It's the scheduled responder's responsibility to find a swap, not current first responder.
@@ -110,12 +110,12 @@ Note that security updates affecting our Ruby **gems** will be caught when doing
   * Documentation on Slack's `/remind` command:  https://get.slack.help/hc/en-us/articles/208423427-Set-a-reminder
     * E.g., if Alice and Bob are up next week, `/remind #dlss-infrastructure Monday at 3 am "@alice is the first responder week of Monthuary 8, and @bob is on deck"`
 
-### Sign Up for Your Next First Responder Shift
+## Sign Up for Your Next First Responder Shift
 
 The infrastructure team has 8 developers, so you should be taking a shift every 8 or so weeks.
 * Schedule:  https://docs.google.com/spreadsheets/u/1/d/13TJR93Yc9_eF5B7w4XDx6ggG_wb3aLkgCHjpLwmHPBA/
 
-### Run infrastructure-integration-tests
+## Run infrastructure-integration-tests
 
 We want the FR to be sure this test suite remains useful by running all the tests.
 
@@ -123,15 +123,15 @@ This should be done as part of running autodeploy of dep updates as described ab
 
 If some tests fail when running the whole test suite at once, but pass when run individually, that is ok -- as long as they all pass under some circumstances.
 
-### Proactively Check for Production Problems
+## Proactively Check for Production Problems
 
 See [How to Proactively Check for Production Problems](#how-to-proactively-check-for-production-problems) section below for specifics.
 
-### Triage Production Problems
+## Triage Production Problems
 
 If a user reports a problem, or if one is surfaced from monitoring, the first responder ought to timebox an investigation of the problem (_TBD: 30 min?_). See [How to Triage Production Problems](#how-to-triage-production-problems) section below for more specifics.
 
-### Improve Troubleshooting Documentation as Needed
+## Improve Troubleshooting Documentation as Needed
 
 If you need to triage or troubleshoot a problem and realize some documentation is missing, please provide it. List of appropriate places:
 * https://github.com/sul-dlss/DevOpsDocs - e.g., what an ops or devops person would need to know to handle the situation
@@ -144,17 +144,17 @@ The above documents should be useful and current. Please submit improvements as 
 
 If for some reason documentation is a significant undertaking, the call for documentation can be filed as an issue and prioritized/resourced by management.
 
-### Improve First Responder Instructions as Needed
+## Improve First Responder Instructions as Needed
 
 We need this document to be useful and current.  Please submit improvements as PRs for review.
 
-### Other Duties as Assigned
+## Other Duties as Assigned
 
 * Management may choose to have the first responder handle a non-project work ticket
   * If so, ensure you assign the ticket to yourself and put it in the "in progress" column of [the team's production priorities board](https://github.com/orgs/sul-dlss/projects/37)
 * First responder may be asked to spearhead a work estimate https://github.com/sul-dlss-labs/estimation (note that these are, by definition, meant to be done by more than one person; if it's smaller, should it be a ticket in a project?)
 
-## How to Proactively Check for Production Problems
+# How to Proactively Check for Production Problems
 
 At the very least, the first responder should be watching:
 
@@ -204,7 +204,7 @@ Other places to monitor:
 infrastructure servers with the option to create customized dashboards.
 * If you hear about possible security issues through other avenues (e.g. `#iso-public` on Slack, your consumption of the news in general), and you feel that the issues may be relevant and uncaptured, file an issue and call attention to it as needed.
 
-## How to Triage Production Problems
+# How to Triage Production Problems
 
 If a user reports a problem, or if one is surfaced from monitoring, the first responder is meant to timebox an investigation of the problem (_TBD: no more than 30 min?_). It's fine to ask teammates with relevant expertise for help, but also think about what documentation is needed so the next person will need less help. It is _not_ the job of the first responder to fix the issue on the spot (though if the fix is trivial, it's fine to do so).
 
@@ -216,7 +216,7 @@ If a user reports a problem, or if one is surfaced from monitoring, the first re
     * First responder fixes the problem in this case.
 * All new tickets should be added to the infrastructure team's [production priorities board](https://github.com/orgs/sul-dlss/projects/37) (select `Infrastructure Portfolio Production Priorities` from the "Projects" dropdown on the GitHub issue page)
 
-### A note on prioritization
+## A note on prioritization
 
 Prioritization is the responsibility of management, not the responsibility of the first responder. Though of course, if a developer becomes aware of what may be a high priority issue, and is unsure whether management is aware of the issue (or sufficiently aware of its severity), the developer is certainly encouraged to bring the issue to their manager's attention.
 
@@ -227,7 +227,7 @@ Prioritization is the responsibility of management, not the responsibility of th
   * How many digital resources are affected?
   * Is it blocking time sensitive work?
 
-## What if first responder isn't available?
+# What if first responder isn't available?
 
 The idea is for the first responder to be "interruptible" for production problems during his/her week of coverage.  If there are significant blocks of time when this isn't true (e.g. ½ day meeting with no access to slack or email), or if life happens (illness, family emergency, etc.), hopefully the first responder can arrange for coverage.  ("I'll take one of your days if you can cover Tues for me").  Please notify `#dlss-infrastructure` Slack channel of changes.
 
