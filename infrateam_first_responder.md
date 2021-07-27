@@ -46,6 +46,12 @@ The idiosyncratic name of the role is intentional. It is not the duty of the fir
 
 # Duties
 
+## Help vet systemic puppet changes
+
+_Experiment starting July 2021_
+
+Ops will give a bit of advance notice to the infrastructure team before deploying systemic puppet changes (e.g. refactor/cleanup that touches many apps, networking changes, etc).  First responder will work with ops to determine whether testing is needed, and if so, what testing is appropriate, based on what we worry might break.  Running `infrastructure-integration-tests`  against stage after the puppet changes have been deployed there is a good default practice.  Don't hesitate to ask for help planning or performing the testing if needed.
+
 ## Weekly Dependency Updates
 
 The first responder needs to make sure that all codebases needing updates have updates merged and deployed. Note that some projects may need to have PRs created by hand where automatic creation may have failed. It is helpful to post updates in the `#dlss-infrastructure` Slack channel to make sure the team is aware of this work, in case anyone is working in related codebases or looking to deploy changes.
@@ -76,7 +82,7 @@ Then **run infrastructure-integration-tests** (see [documentation](#run-infrastr
 
 1. **Warn #dlss-infra-chg-mgmt** of the impending deployment to prod.
 
-2. **Turn Off Google Books when deploying to production** at https://sul-gbooks-prod.stanford.edu/features. This avoids failed deposit due to a temporary Cocina model mismatch. Unlike other applications, the deposits will fail without retry and require manual remediation.  
+2. **Turn Off Google Books when deploying to production** at https://sul-gbooks-prod.stanford.edu/features. This avoids failed deposit due to a temporary Cocina model mismatch. Unlike other applications, the deposits will fail without retry and require manual remediation.
 
 3. **Deploy the tag you created above to prod** using `sdr-deploy`.
 
@@ -215,7 +221,7 @@ Additionally, it's a good idea to keep an eye on:
       - for credentials, see https://github.com/sul-dlss/shared_configs/blob/dor-indexing-app-prod/config/settings/production.yml
   - google books (sidekiq)
     - https://sul-gbooks-prod.stanford.edu/queues
-  - happy-heron (i.e. H2 self deposit) 
+  - happy-heron (i.e. H2 self deposit)
     - rabbitmq: https://sul-rabbit-prod.stanford.edu/#/queues
       - for credentials, see https://github.com/sul-dlss/shared_configs/blob/sul-h2-prod/config/settings/production.yml
     - sidekiq: https://sdr.stanford.edu/queues
