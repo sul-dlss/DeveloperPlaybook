@@ -91,8 +91,11 @@ There are applications that need to be deployed separately (i.e., not using `sdr
 
 * **hydra_etd `uat` environment**: deploy via `cap uat deploy` in `hydra-etd`
 * **sul-pub `cap-dev` enviroment**: deploy via `cap cap-dev deploy` in `sul_pub` (note all [ENV values](https://github.com/sul-dlss/sul_pub/tree/main/config/deploy))
-* **Sinopia apps**: deploy via DockerHub and terraform (see [Release Process](https://github.com/LD4P/sinopia_editor/blob/main/release_process.md))
-* **dlme-transform**: deploy via DockerHub and terraform (see [README](https://github.com/sul-dlss/dlme-transform/#deploying) and [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info))
+
+**Note:** As of August 2021, manually deploying cloud projects (Sinopia and DLME) is no longer required. These are handled through CircleCI
+
+* Sinopia apps: Deployed on release (see [Release Process](https://github.com/LD4P/sinopia_editor/blob/main/release_process.md))
+* dlme-transform: Deployed on release (see [README](https://github.com/sul-dlss/dlme-transform/#deploying) and [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info))
 
 #### Code that isn't a Ruby Application
 
