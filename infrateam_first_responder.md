@@ -38,28 +38,40 @@ The DLSS Infrastructure team is using a rotating role of "first responder." This
 
 The idiosyncratic name of the role is intentional. It is not the duty of the first responder to be on-call outside of the first responder's normal work hours (which may not line up exactly with business hours in Palo Alto). The first responder rotation is an effort to watch and triage production issues in an intentional and organized fashion, since no engineer was officially assigned this responsibility in the past, and such minding of things was haphazard.
 
-## Duties
+# Duties
 
-### Weekly Dependency Updates
+## Weekly Dependency Updates
 
 The first responder needs to make sure that all codebases needing updates have updates merged and deployed. Note that some projects may need to have PRs created by hand where automatic creation may have failed. It is helpful to post updates in the `#dlss-infrastructure` Slack channel to make sure the team is aware of this work, in case anyone is working in related codebases or looking to deploy changes.
 
-#### Merge 'em
+### Merge 'em
 
 Run the `merge-all` script to automatically merge all dependency update PRs: https://github.com/sul-dlss/access-update-scripts/blob/master/merge-all.rb. Note that this script will only work with Ruby 2.6 or greater.  See the comments at the top for how to run and note you will need a github access token if you haven't previously created one.  Instructions for creating a token are here:  https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line   Save your token somewhere secure for re-use since you won't be able to view it in the Github interface again.
 
-#### Deploy 'em
+### Run infrastructure-integration-tests
 
-Use the `sdr-deploy` script to deploy all infrastructure projects (with **important exceptions** noted below) via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy
+We want the FR to ensure
+  - dependency updates don't break cross-app functionality
+  - this test suite remains useful
+
+To that end, all the infrastructure-integration-tests must be run successfully in the qa and/or stage environment before deploying to production (one of qa or stage is sufficient;  testing in environments helps ensure our environments are (still) set up properly.).  This should be done as part of deployment of dependency updates as described in the next section.
+
+If some tests fail when running the whole test suite at once, but pass when run individually, that is ok -- as long as they each pass under some circumstances. Chances are not great that the full suite will pass in one go from a spotty off-campus connection.
+
+If you're unsure whether a particular test failure indicates bad network luck, a regression in the application, or an out of date test, raise it for discussion (or ask another dev to retry from their laptop) in #dlss-infrastructure.
+
+If on a Mac, you will get better results if you stay in the same "space" as the running tests (avoids focus issues with the browser).
+
+### Deploy 'em
+
+Use the `sdr-deploy` script to deploy all infrastructure projects (with **required additional deploys** noted below) via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy
 
 Note that you will need to be sure you can ssh into each of the VMs from wherever you are running the deploy script.
 
-- qa: deploy to qa with script
-- stage: deploy to stage with script, then run infrastructure-integration-tests after deploy to stage.
-  - It's possible that individual tests will fail due to random network connection issues, and chances are not great that the full suite will pass in one go from a spotty off-campus connection.
-    - If a failed test passes upon retry against the same set of deployed codebases, that's fine.  If you're unsure whether a particular test failure indicates bad network luck, a regression in the application, or an out of date test, raise it for discussion (or another dev to retry from their laptop) in #dlss-infrastructure.
-  - before deploying, warn #dlss-infra-stage-use in case there is active testing going on;  be sure to either comment out that app or coordinate with tester
-- prod: if all tests passed for stage deploys, deploy to prod with script.
+- **stage**: deploy to stage with script, then **run infrastructure-integration-tests** after deploy to stage (and|or qa).  
+  - before deploying, **warn #dlss-infra-stage-use** in case there is active testing going on;  be sure to either comment out that app or coordinate with tester
+- **qa**: deploy to qa with script
+- **prod**: finally, deploy to prod with script
 
 Note that the deployment script will attempt to verify the status check URL for projects that have one and will report success or failure for each project.
 There are currently two projects which cannot be verified in production since those servers are locked down and do not allow external requests (even on full tunnel VPN).
@@ -73,7 +85,7 @@ Status check from the server (ssh into the prod server for that project and then
 - Workflow server rails: `curl -i https://workflow-service-prod.stanford.edu/status/all`
 - Suri: `curl -i https://sul-suri-prod.stanford.edu/status/all`
 
-##### Important Exceptions
+#### Required Additional Deploys
 
 There are applications that need to be deployed separately (i.e., not using `sdr-deploy`):
 
@@ -82,7 +94,7 @@ There are applications that need to be deployed separately (i.e., not using `sdr
 * **Sinopia apps**: deploy via DockerHub and terraform (see [Release Process](https://github.com/LD4P/sinopia_editor/blob/main/release_process.md))
 * **dlme-transform**: deploy via DockerHub and terraform (see [README](https://github.com/sul-dlss/dlme-transform/#deploying) and [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info))
 
-##### Code that isn't a Ruby Application
+#### Code that isn't a Ruby Application
 
 We have codebases that aren't Ruby applications or gems. We have not yet settled on a long-term method for dealing with these:
 
@@ -100,37 +112,29 @@ We currently do not have an automatic update mechanism for our Java projects.
 
 Note that security updates affecting our Ruby **gems** will be caught when doing capistrano deployments via `gemfile audit`.  For some projects, we've also enabled a GitHub setting that allows GH to automatically create pull requests (via Dependabot) to address security vulnerabilities (for merge by human reviewers).
 
-### Verify / Notify Coverage for Following Week
+## Verify / Notify Coverage for Following Week
 
 1. Verify first responder for following week is still able to cover it. Check this with on deck person on Monday (and keep in mind throughout the week, e.g., if person becomes ill).  (schedule: https://docs.google.com/spreadsheets/u/1/d/13TJR93Yc9_eF5B7w4XDx6ggG_wb3aLkgCHjpLwmHPBA/)
   1. It's the scheduled responder's responsibility to find a swap, not current first responder.
   1. The person covering the following week is "on deck" for this week.
 1. Set Slack reminders in `#dlss-infrastructure` for next week's Monday morning. The reminders should indicate who is first responder and who is on deck for that week, and should be set for 3 am Pacific time/6 am Eastern, so that the east coast early risers don't have to wait for it.
   * Documentation on Slack's `/remind` command:  https://get.slack.help/hc/en-us/articles/208423427-Set-a-reminder
-    * E.g., if Alice and Bob are up next week, `/remind #dlss-infrastructure Monday at 3 am "@alice is the first responder week of Monthuary 8, and @bob is on deck"`
+    * E.g., if Alice and Bob are up next week, `/remind #dlss-infrastructure "@alice is the first responder week of Monthuary 8, and @bob is on deck" Monday at 3 am`
 
-### Sign Up for Your Next First Responder Shift
+## Sign Up for Your Next First Responder Shift
 
 The infrastructure team has 8 developers, so you should be taking a shift every 8 or so weeks.
 * Schedule:  https://docs.google.com/spreadsheets/u/1/d/13TJR93Yc9_eF5B7w4XDx6ggG_wb3aLkgCHjpLwmHPBA/
 
-### Run infrastructure-integration-tests
-
-We want the FR to be sure this test suite remains useful by running all the tests.
-
-This should be done as part of running autodeploy of dep updates to stage (e.g.:  run tests before deploy to stage, then deploy to stage, then run tests after deploy to stage)
-
-If some tests fail when running the whole test suite at once, but pass when run individually, that is ok -- as long as they all pass under some circumstances.
-
-### Proactively Check for Production Problems
+## Proactively Check for Production Problems
 
 See [How to Proactively Check for Production Problems](#how-to-proactively-check-for-production-problems) section below for specifics.
 
-### Triage Production Problems
+## Triage Production Problems
 
 If a user reports a problem, or if one is surfaced from monitoring, the first responder ought to timebox an investigation of the problem (_TBD: 30 min?_). See [How to Triage Production Problems](#how-to-triage-production-problems) section below for more specifics.
 
-### Improve Troubleshooting Documentation as Needed
+## Improve Troubleshooting Documentation as Needed
 
 If you need to triage or troubleshoot a problem and realize some documentation is missing, please provide it. List of appropriate places:
 * https://github.com/sul-dlss/DevOpsDocs - e.g., what an ops or devops person would need to know to handle the situation
@@ -143,17 +147,17 @@ The above documents should be useful and current. Please submit improvements as 
 
 If for some reason documentation is a significant undertaking, the call for documentation can be filed as an issue and prioritized/resourced by management.
 
-### Improve First Responder Instructions as Needed
+## Improve First Responder Instructions as Needed
 
 We need this document to be useful and current.  Please submit improvements as PRs for review.
 
-### Other Duties as Assigned
+## Other Duties as Assigned
 
 * Management may choose to have the first responder handle a non-project work ticket
   * If so, ensure you assign the ticket to yourself and put it in the "in progress" column of [the team's production priorities board](https://github.com/orgs/sul-dlss/projects/37)
 * First responder may be asked to spearhead a work estimate https://github.com/sul-dlss-labs/estimation (note that these are, by definition, meant to be done by more than one person; if it's smaller, should it be a ticket in a project?)
 
-## How to Proactively Check for Production Problems
+# How to Proactively Check for Production Problems
 
 At the very least, the first responder should be watching:
 
@@ -203,7 +207,7 @@ Other places to monitor:
 infrastructure servers with the option to create customized dashboards.
 * If you hear about possible security issues through other avenues (e.g. `#iso-public` on Slack, your consumption of the news in general), and you feel that the issues may be relevant and uncaptured, file an issue and call attention to it as needed.
 
-## How to Triage Production Problems
+# How to Triage Production Problems
 
 If a user reports a problem, or if one is surfaced from monitoring, the first responder is meant to timebox an investigation of the problem (_TBD: no more than 30 min?_). It's fine to ask teammates with relevant expertise for help, but also think about what documentation is needed so the next person will need less help. It is _not_ the job of the first responder to fix the issue on the spot (though if the fix is trivial, it's fine to do so).
 
@@ -215,7 +219,7 @@ If a user reports a problem, or if one is surfaced from monitoring, the first re
     * First responder fixes the problem in this case.
 * All new tickets should be added to the infrastructure team's [production priorities board](https://github.com/orgs/sul-dlss/projects/37) (select `Infrastructure Portfolio Production Priorities` from the "Projects" dropdown on the GitHub issue page)
 
-### A note on prioritization
+## A note on prioritization
 
 Prioritization is the responsibility of management, not the responsibility of the first responder. Though of course, if a developer becomes aware of what may be a high priority issue, and is unsure whether management is aware of the issue (or sufficiently aware of its severity), the developer is certainly encouraged to bring the issue to their manager's attention.
 
@@ -226,7 +230,7 @@ Prioritization is the responsibility of management, not the responsibility of th
   * How many digital resources are affected?
   * Is it blocking time sensitive work?
 
-## What if first responder isn't available?
+# What if first responder isn't available?
 
 The idea is for the first responder to be "interruptible" for production problems during his/her week of coverage.  If there are significant blocks of time when this isn't true (e.g. ½ day meeting with no access to slack or email), or if life happens (illness, family emergency, etc.), hopefully the first responder can arrange for coverage.  ("I'll take one of your days if you can cover Tues for me").  Please notify `#dlss-infrastructure` Slack channel of changes.
 
