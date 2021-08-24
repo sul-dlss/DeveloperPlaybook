@@ -94,8 +94,8 @@ There are applications that need to be deployed separately (i.e., not using `sdr
 
 **Note:** As of August 2021, manually deploying cloud projects (Sinopia and DLME) is no longer required. These are handled through CircleCI
 
-* Sinopia apps: Deployed on release (see [Release Process](https://github.com/LD4P/sinopia_editor/blob/main/release_process.md))
-* dlme-transform: Deployed on release (see [README](https://github.com/sul-dlss/dlme-transform/#deploying) and [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info))
+* Sinopia apps:  Deployed on release.  Note:  the sinopia_editor project requires bumping the version number and a couple other steps before tagging a new release, see [Release Process](https://github.com/LD4P/sinopia_editor/blob/main/release_process.md) for details.
+* Dlme-transform: Deployed on release (see [README](https://github.com/sul-dlss/dlme-transform/#deploying) and [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info))
 
 #### Code that isn't a Ruby Application
 
