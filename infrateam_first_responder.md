@@ -108,8 +108,6 @@ We have codebases that aren't Ruby applications or gems. We have not yet settled
     * [openwayback](https://github.com/sul-dlss/openwayback)
     * [wasapi-downloader](https://github.com/sul-dlss/wasapi-downloader)
     * [WASMetadataExtractor](https://github.com/sul-dlss/WASMetadataExtractor)
-* Go projects (such as various RIALTO components)
-  * with the future of RIALTO in question, it's not likely to receive attention any time soon
 
 We currently do not have an automatic update mechanism for our Java projects.
 
