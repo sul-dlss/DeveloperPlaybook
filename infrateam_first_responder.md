@@ -87,15 +87,18 @@ Status check from the server (ssh into the prod server for that project and then
 
 #### Required Additional Deploys
 
-There are applications that need to be deployed separately (i.e., not using `sdr-deploy`):
+There are applications that need to be deployed separately (i.e., not using `sdr-deploy`).
+
+##### Ruby Projects with non-standard Capistrano targets
 
 * **hydra_etd `uat` environment**: deploy via `cap uat deploy` in `hydra-etd`
 * **sul-pub `cap-dev` enviroment**: deploy via `cap cap-dev deploy` in `sul_pub` (note all [ENV values](https://github.com/sul-dlss/sul_pub/tree/main/config/deploy))
 
-**Note:** As of August 2021, manually deploying cloud projects (Sinopia and DLME) is no longer required. These are handled through CircleCI
+##### Cloud Projects
+As of August 2021, deployment of cloud projects (Sinopia and DLME) happens via CircleCI, not manually.  You will need to make releases, however.
 
-* Sinopia apps:  Deployed on release.  Note:  the sinopia_editor project requires bumping the version number and a couple other steps before tagging a new release, see [Release Process](https://github.com/LD4P/sinopia_editor/blob/main/release_process.md) for details.
-* Dlme-transform: Deployed on release (see [README](https://github.com/sul-dlss/dlme-transform/#deploying) and [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info))
+* **Sinopia apps**:  Deployed when a new release is created.  Note:  the sinopia_editor project requires bumping the version number and a couple other steps before tagging a new release, see Sinopia [Release Process](https://github.com/LD4P/sinopia_editor/blob/main/release_process.md) for details.
+* **dlme-transform**: Deployed when a new release is created. See DLME [README](https://github.com/sul-dlss/dlme-transform/#deploying) and [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info) for details.
 
 #### Code that isn't a Ruby Application
 
@@ -111,7 +114,7 @@ We have codebases that aren't Ruby applications or gems. We have not yet settled
 
 We currently do not have an automatic update mechanism for our Java projects.
 
-Note that security updates affecting our Ruby **gems** will be caught when doing capistrano deployments via `gemfile audit`.  For some projects, we've also enabled a GitHub setting that allows GH to automatically create pull requests (via Dependabot) to address security vulnerabilities (for merge by human reviewers).
+Note that security updates affecting our Ruby **gems** will be caught when doing capistrano deployments via `gemfile audit`.  For some projects, we've also enabled a GitHub setting that allows GH to automatically create pull requests (via `Dependabot`) to address security vulnerabilities (for merge by human reviewers).
 
 ## Verify / Notify Coverage for Following Week
 
