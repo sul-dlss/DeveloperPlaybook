@@ -85,22 +85,22 @@ Status check from the server (ssh into the prod server for that project and then
 - Workflow server rails: `curl -i https://workflow-service-prod.stanford.edu/status/all`
 - Suri: `curl -i https://sul-suri-prod.stanford.edu/status/all`
 
-#### Required Additional Deploys
+### Required Additional Deploys
 
 There are applications that need to be deployed separately (i.e., not using `sdr-deploy`).
 
-##### Ruby Projects with non-standard Capistrano targets
+#### Ruby Projects with non-standard Capistrano targets
 
 * **hydra_etd `uat` environment**: deploy via `cap uat deploy` in `hydra-etd`
 * **sul-pub `cap-dev` enviroment**: deploy via `cap cap-dev deploy` in `sul_pub` (note all [ENV values](https://github.com/sul-dlss/sul_pub/tree/main/config/deploy))
 
-##### Cloud Projects
+#### Cloud Projects
 As of August 2021, deployment of cloud projects (Sinopia and DLME) happens via CircleCI, not manually.  You will need to make releases, however.
 
-* **Sinopia apps**:  Deployed when a new release is created.  Note:  the sinopia_editor project requires bumping the version number and a couple other steps before tagging a new release, see Sinopia [Release Process](https://github.com/LD4P/sinopia_editor/blob/main/release_process.md) for details.
-* **dlme-transform**: Deployed when a new release is created. See DLME [README](https://github.com/sul-dlss/dlme-transform/#deploying) and [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info) for details.
+* **Sinopia apps**:  Deployed when a new release is created. FR ACTION NEEDED: the sinopia_editor project requires bumping the version number and a couple other steps before tagging a new release, see Sinopia [Release Process](https://github.com/LD4P/sinopia_editor/blob/main/release_process.md) for details.
+* **dlme-transform**: Check that [CircleCI](https://app.circleci.com/pipelines/github/sul-dlss/dlme-transform) published the latest image after dependency updates were merged. This image is pulled afresh for every data transform. More details in [README](https://github.com/sul-dlss/dlme-transform/#deploying) and [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info).
 
-#### Code that isn't a Ruby Application
+### Code that isn't a Ruby Application
 
 We have codebases that aren't Ruby applications or gems. We have not yet settled on a long-term method for dealing with these:
 
