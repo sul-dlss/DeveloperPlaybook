@@ -6,18 +6,6 @@ we use [Delayed Job](https://github.com/collectiveidea/delayed_job),
 requirement for which technology to use, but most of us seem to prefer Sidekiq.
 
 
-## Delayed Job
-
-Delayed Job is usually considered a little easier to get started with than Sidekiq, since it allows
-you to use your (Rails) application's pre-existing database for storing the job queue. Like Sidekiq,
-Delayed Job supports [ActiveJob](http://guides.rubyonrails.org/active_job_basics.html).
-
-[This article](https://www.sitepoint.com/delayed-jobs-best-practices/) suggests some best practices
-for Delayed Job.
-
-Argo and Exhibits both use Delayed Job (with Active Job, see below).
-
-
 ## Resque
 
 [Resque](https://github.com/resque/resque) is a Ruby application with a companion Sinatra-based
@@ -58,6 +46,18 @@ docs.
 We use the [capistrano-sidekiq gem](https://github.com/seuros/capistrano-sidekiq) to let capistrano manage Sidekiq and sidekiq processes. If a machine with Sidekiq deployed to it reboots, there will be no sidekiq process without a developer to restart Sidekiq, either through a deployment, or `bundle` command. To solve this problem, we have a `puppet` class to set up an init script for a system level start on boot. It requires a `puppet` change, and that we manage concurrency settings in a Rails `config/sidekiq.yml` file. For example, see [exhibits](https://github.com/sul-dlss/exhibits/blob/master/config/sidekiq.yml) and [puppet](https://github.com/sul-dlss/puppet/blob/production/hieradata/node/exhibits-prod-a.stanford.edu.eyaml#L10).
 
 The [DPN Synchronization](https://github.com/dpn-admin/dpn-sync) application uses Sidekiq.
+
+
+
+## Delayed Job
+
+Like Sidekiq, Delayed Job supports [ActiveJob](http://guides.rubyonrails.org/active_job_basics.html).
+
+[This article](https://www.sitepoint.com/delayed-jobs-best-practices/) suggests some best practices
+for Delayed Job.
+
+[sul_pub](https://github.com/sul-dlss/sul_pub/blob/16525c3083ba5494428397168ca6de8d011e7b5e/Gemfile#L26) uses Delayed Job (with Active Job, see below).
+
 
 ## Active Job
 
