@@ -1,6 +1,6 @@
 # Debugging in Javascript
 
-If you'd like to use a stepwise debugging in javascript, consider using the following procedure when working in VSCode.
+If you'd like to use stepwise debugging in javascript, consider using the following procedure when working in VSCode.
 
 * Type <CMD><Shift>p to bring up the command palette
 * Search for “Debug: JavaScript Debug Terminal”
