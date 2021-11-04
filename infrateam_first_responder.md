@@ -187,8 +187,8 @@ At the very least, the first responder should be watching:
   - pre-assembly
     - https://sul-preassembly-prod.stanford.edu/resque/overview
   - preservation
-    - https://preservation-catalog-prod-01.stanford.edu/resque/overview
-      - https://preservation-catalog-prod-01.stanford.edu/resque/failed
+    - https://preservation-catalog-web-prod-01.stanford.edu/resque/overview
+      - https://preservation-catalog-web-prod-01.stanford.edu/resque/failed
         - When debugging pres_cat errors: https://github.com/sul-dlss/preservation_catalog/wiki/Investigating-failed-Resque-Jobs
   - web-registrar-app
     - https://was-registrar-app.stanford.edu/queues
