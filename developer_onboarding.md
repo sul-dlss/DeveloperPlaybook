@@ -35,8 +35,8 @@ Note: As a mentor, your responsibility is to help the new hire to go through the
 - Honeybadger
 - New Relic  - Ops
 - Slack (#software-developers)
-- Consul - Ops
-- JIRA - Ops
+- Consul - Ops (uses SU SSO)
+- JIRA - Ops (uses SU SSO)
 - k5users for starter projects?
 - Workgroups
 - List servs (dlss-developers@lists.stanford.edu)
@@ -69,13 +69,13 @@ Note: As a mentor, your responsibility is to help the new hire to go through the
 - Library systems
 - LOCKSS
 - PSM
-- Ops  (Review "to production" checklist, devops docs, puppet, nagios, monitoring, okcomputer, capistrano, travis, coveralls, honeybadger, shared_configs, gemnasium, SLAs)
-Digitization Services
+- Ops  (Review "to production" checklist, devops docs, puppet, nagios, monitoring, okcomputer, capistrano, continuous integration (e.g. CircleCI), coveralls, honeybadger, shared_configs, SLAs)
+- Digitization Services
 - Metadata
 - Digitization Lab Tour (Green Library Visit)
 ##### Processes
 - Overview of department meetings: Agile Groove, SprintOps, CodeClub, Developers Forum
-- Overview of SUL open source communities (Samvera, Code4lib, Blacklight)
+- Overview of SUL open source communities (Samvera, Code4lib, Blacklight, Sinopia)
 
 ## Weeks 5-6
 - Schedule onboarding retrospective
