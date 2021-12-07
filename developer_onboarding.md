@@ -1,3 +1,9 @@
+# IMPORTANT
+
+The information below has been deprecated.  Please see https://docs.google.com/document/d/1HjK3TlLZV92JFLn2ie1wfaGtOntVhMs92Z5mbXnNNOI
+
+
+--------------------------------------
 # Developer Onboarding
 The official onboarding process will take six weeks, after which we will be able to gather feedback about the process and collect changes for the next time. We recognize that mentoring a new developer is an important job that will require the mentor to take significant time off their regular work. Training a new hire is not just the responsibility of the supervisor and mentor, but the entire team. However, mentors are expected to take ownership of the process.  DLSS' technology stack and project portfolios are large and complicated, so try to pace the new developer carefully so he or she doesn’t feel as if they’re drinking from the fire-hose!
 
