@@ -6,4 +6,5 @@
 - Is the project a dependency or service used by other sul-dlss projects?
 - If the project is a gem, update the gem's description on RubyGems (e.g. DEPRECATED: this gem is no longer being supported)
 - Move the repo to [sul-dlss-deprecated](https://github.com/sul-dlss-deprecated) ownership 
-- Consider [archiving the repository](https://help.github.com/articles/archiving-a-github-repository/)
+- [OPTIONAL] Change the README and/or GitHub repository description to provide context around the deprecation (why? when? anything superseding? etc.)
+- [OPTIONAL] [Archive the repository](https://help.github.com/articles/archiving-a-github-repository/) on GitHub, making it read-only
