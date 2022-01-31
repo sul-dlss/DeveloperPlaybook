@@ -64,9 +64,9 @@ If on a Mac, you will get better results if you stay in the same "space" as the 
 
 ### Deploy 'em
 
-Use the `sdr-deploy` script to deploy all infrastructure projects (with **required additional deploys** noted below) via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy
+Use the `sdr-deploy` CLI to deploy all infrastructure projects (with **required additional deploys** noted below) via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy
 
-Note that you will need to be sure you can ssh into each of the VMs from wherever you are running the deploy script.
+Note that you will need to be sure you can ssh into each of the VMs from wherever you are running the `sdr-deploy` CLI.
 
 - **stage**: deploy to stage with script, then **run infrastructure-integration-tests** after deploy to stage (and|or qa).  
   - before deploying, **warn #dlss-infra-stage-qa-use** in case there is active testing going on;  be sure to either comment out that app or coordinate with tester
@@ -97,10 +97,14 @@ There are applications that need to be deployed separately (i.e., not using `sdr
 #### Cloud Projects
 As of August 2021, deployment of cloud projects (Sinopia and DLME) happens via CircleCI, not manually.  You will need to make releases, however.
 
-* **Sinopia apps**:  Deployed when a new release is created. FR ACTION NEEDED: the sinopia_editor project requires bumping the version number and a couple other steps before tagging a new release, see Sinopia [Release Process](https://github.com/LD4P/sinopia_editor/blob/main/release_process.md) for details.
 * **dlme-transform**: Check that [CircleCI](https://app.circleci.com/pipelines/github/sul-dlss/dlme-transform) published the latest image after dependency updates were merged. This image is pulled afresh for every data transform. More details in [README](https://github.com/sul-dlss/dlme-transform/#deploying) and [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info).
 
+* **Sinopia apps**:  As of January 2022, FR is responsible for ensuring the dependency update PR is merged. Libsys team does the rest (bumping the version number and a couple other steps before tagging a new release; see Sinopia [Release Process](https://github.com/LD4P/sinopia_editor/blob/main/release_process.md) for details).
+)
+
 ### Code that isn't a Ruby Application
+
+Note that security updates affecting our Ruby **gems** will be caught when doing capistrano deployments via `gemfile audit`.  For some projects, we've also enabled a GitHub setting that allows GH to automatically create pull requests (via `Dependabot`) to address security vulnerabilities (for merge by human reviewers).
 
 We have codebases that aren't Ruby applications or gems. We have not yet settled on a long-term method for dealing with these:
 
@@ -113,8 +117,6 @@ We have codebases that aren't Ruby applications or gems. We have not yet settled
     * [WASMetadataExtractor](https://github.com/sul-dlss/WASMetadataExtractor)
 
 We currently do not have an automatic update mechanism for our Java projects.
-
-Note that security updates affecting our Ruby **gems** will be caught when doing capistrano deployments via `gemfile audit`.  For some projects, we've also enabled a GitHub setting that allows GH to automatically create pull requests (via `Dependabot`) to address security vulnerabilities (for merge by human reviewers).
 
 ## Verify / Notify Coverage for Following Week
 
@@ -136,13 +138,13 @@ See [How to Proactively Check for Production Problems](#how-to-proactively-check
 
 ## Triage Production Problems
 
-If a user reports a problem, or if one is surfaced from monitoring, the first responder ought to timebox an investigation of the problem (_TBD: 30 min?_). See [How to Triage Production Problems](#how-to-triage-production-problems) section below for more specifics.
+If a user reports a problem, or if one is surfaced from monitoring, the first responder ought to timebox an investigation of the problem (_start with 30 min?_). See [How to Triage Production Problems](#how-to-triage-production-problems) section below for more specifics.
 
 ## Improve Troubleshooting Documentation as Needed
 
 If you need to triage or troubleshoot a problem and realize some documentation is missing, please provide it. List of appropriate places:
 * https://github.com/sul-dlss/DevOpsDocs - e.g., what an ops or devops person would need to know to handle the situation
-* README or other top level markdown doc in codebase (viewable via github)
+* `README.md` or other top level markdown doc in codebase (viewable via github)
   * Which codebase would need to be apparent from the problem
 * Wiki for the codebase
 * ? - in general, consider where the person interested in the info might look first. An end-user might go to the wiki, a dev might go to the README, ops folks might head to DevOpsDocs. Use your best judgement and ask for feedback if unsure.
@@ -180,33 +182,37 @@ At the very least, the first responder should be watching:
   - `#sul-cap-collab` - has developers in the School of Medicine working on the Profiles project (which we connect to with our sul-pub system)
   - `#web-archiving`
 * Queue dashboards:
-  - robots
+  - Resque failed jobs may need to be manually rerun from the "failed queue."  Resque is thought to be more "thread safe."
+  - Sidekiq failed jobs are automatically retried.
+
+  - robots (resque)
     - https://robot-console-prod.stanford.edu/overview
       - https://robot-console-prod.stanford.edu/failed
     - https://argo.stanford.edu/report/workflow_grid
-  - pre-assembly
+  - pre-assembly (resque)
     - https://sul-preassembly-prod.stanford.edu/resque/overview
-  - preservation
+    - Note: failed Discovery Reports are generally okay, as they are dry runs for pre-assembly jobs.
+  - preservation replication jobs (resque)
     - https://preservation-catalog-web-prod-01.stanford.edu/resque/overview
       - https://preservation-catalog-web-prod-01.stanford.edu/resque/failed
         - When debugging pres_cat errors: https://github.com/sul-dlss/preservation_catalog/wiki/Investigating-failed-Resque-Jobs
-  - web-registrar-app
-    - https://was-registrar-app.stanford.edu/queues
-  - dor-services-app sidekiq (for jobs run by workers in other threads):
+  - dor-services-app (sidekiq):
     - https://dor-services-prod.stanford.edu/queues/
-  - google books
+  - google books (sidekiq)
     - https://sul-gbooks-prod.stanford.edu/queues
-  - sdr-api
+  - sdr-api (sidekiq)
     - https://sdr-api-prod.stanford.edu/queues
-  - techmd service
-    - https://dor-techmd-prod.stanford.edu/queues
+  - techmd service (sidekiq)
+    - https://dor-techmd-prod-a.stanford.edu/queues
+  - web-registrar-app (sidekiq)
+    - https://was-registrar-app.stanford.edu/queues
 * cron daemon emails
 * GitHub security alerts
 
 As a loose guideline, we recommend checking each of these at least once or twice a day to stay on top of potential issues.
 
 Other places to monitor:
-* Nagios alerts (https://sul-nagios-prod.stanford.edu/nagios/  The Services tab on the left column will give overview of checks.  The Problems->Services tab will give you what’s alerting.)
+* Nagios alerts (https://sul-nagios-prod.stanford.edu/nagios/  The Services link in left column will give overview of checks.  The Problems->Services tab will give you what’s alerting.)
 * Grafana at https://sulstats.stanford.edu/ gives different visualizations of running
 infrastructure servers with the option to create customized dashboards.
 * If you hear about possible security issues through other avenues (e.g. `#iso-public` on Slack, your consumption of the news in general), and you feel that the issues may be relevant and uncaptured, file an issue and call attention to it as needed.
