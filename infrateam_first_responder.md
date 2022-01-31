@@ -69,7 +69,7 @@ Use the `sdr-deploy` script to deploy all infrastructure projects (with **requir
 Note that you will need to be sure you can ssh into each of the VMs from wherever you are running the deploy script.
 
 - **stage**: deploy to stage with script, then **run infrastructure-integration-tests** after deploy to stage (and|or qa).  
-  - before deploying, **warn #dlss-infra-stage-use** in case there is active testing going on;  be sure to either comment out that app or coordinate with tester
+  - before deploying, **warn #dlss-infra-stage-qa-use** in case there is active testing going on;  be sure to either comment out that app or coordinate with tester
 - **qa**: deploy to qa with script
 - **prod**: finally, deploy to prod with script
 
