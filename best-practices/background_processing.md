@@ -2,7 +2,7 @@
 
 There are many tools that provide background processing for Rails/Ruby-based applications. At DLSS,
 we use [Delayed Job](https://github.com/collectiveidea/delayed_job),
-[Resque](https://github.com/resque/resque) and [Sidekiq](http://sidekiq.org/). We don't have a set
+[Resque](https://github.com/resque/resque), [Sneakers](https://github.com/jondot/sneakers) and [Sidekiq](http://sidekiq.org/). We don't have a set
 requirement for which technology to use, but most of us seem to prefer Sidekiq.
 
 
@@ -47,6 +47,15 @@ We use the [capistrano-sidekiq gem](https://github.com/seuros/capistrano-sidekiq
 
 The [DPN Synchronization](https://github.com/dpn-admin/dpn-sync) application uses Sidekiq.
 
+
+## Sneakers
+
+Sneakers is used for processing RabbitMQ queues. These queues are bound to exchanges where messages are published.
+Remember you must remember to `ack` each job in your worker.
+
+Sneakers is used by:
+[dor_indexing_app](https://github.com/sul-dlss/dor_indexing_app/blob/e72cc7e01cc26f865a2f9cfdd52086df69ca0258/Gemfile#L25) 
+[h2](https://github.com/sul-dlss/happy-heron/blob/c0ffd3f06a4f33c3099394067b6da809929c7856/Gemfile#L72)
 
 
 ## Delayed Job
