@@ -169,7 +169,11 @@ At the very least, the first responder should be watching:
 
 * [Honeybadger alerts](https://app.honeybadger.io/projects) for projects in the Infrastructure portfolio
   * **Note** that you may want to resolve old alerts in the Honeybadger UI at the beginning of your first responder shift so you have a clean slate to monitor.
-* Feedback email lists, e.g. argo-feedback, sinopia-feedback, etc
+
+---
+
+Additionally, it's a good idea to keep an eye on:
+
 * Slack channels relevant to applications in the portfolio:
   - `#dlme` - "Digital Library of the Middle East" - we are responsible for dlme-transform, related to indexing of materials.
   - `#dlss-aaas` - "Accessioning as a Service" - where accessioneers may surface problems
@@ -206,6 +210,7 @@ At the very least, the first responder should be watching:
     - https://dor-techmd-prod-a.stanford.edu/queues
   - web-registrar-app (sidekiq)
     - https://was-registrar-app.stanford.edu/queues
+* User feedback email lists, e.g. argo-feedback, sinopia-feedback, etc
 * cron daemon emails
 * GitHub security alerts
 
