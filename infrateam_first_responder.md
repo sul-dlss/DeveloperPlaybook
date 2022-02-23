@@ -95,12 +95,10 @@ There are applications that need to be deployed separately (i.e., not using `sdr
 * **sul-pub `cap-dev` enviroment**: deploy via `cap cap-dev deploy` in `sul_pub` (note all [ENV values](https://github.com/sul-dlss/sul_pub/tree/main/config/deploy))
 
 #### Cloud Projects
-As of August 2021, deployment of cloud projects (Sinopia and DLME) happens via CircleCI, not manually.  You will need to make releases, however.
 
 * **dlme-transform**: Check that [CircleCI](https://app.circleci.com/pipelines/github/sul-dlss/dlme-transform) published the latest image after dependency updates were merged. This image is pulled afresh for every data transform. More details in [README](https://github.com/sul-dlss/dlme-transform/#deploying) and [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info).
 
 * **Sinopia apps**:  As of January 2022, FR is responsible for ensuring the dependency update PR is merged. Libsys team does the rest (bumping the version number and a couple other steps before tagging a new release; see Sinopia [Release Process](https://github.com/LD4P/sinopia_editor/blob/main/release_process.md) for details).
-)
 
 ### Code that isn't a Ruby Application
 
