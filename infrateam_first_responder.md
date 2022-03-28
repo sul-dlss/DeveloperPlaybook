@@ -48,6 +48,44 @@ The first responder needs to make sure that all codebases needing updates have u
 
 Run the `merge-all` script to automatically merge all dependency update PRs: https://github.com/sul-dlss/access-update-scripts/blob/master/merge-all.rb. Note that this script will only work with Ruby 2.6 or greater.  See the comments at the top for how to run and note you will need a github access token if you haven't previously created one.  Instructions for creating a token are here:  https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line   Save your token somewhere secure for re-use since you won't be able to view it in the Github interface again.
 
+### Deploy 'em
+
+Use the `sdr-deploy` CLI to deploy all infrastructure projects (with **required additional deploys** noted below) via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy
+
+Note that you will need to be sure you can ssh into each of the VMs from wherever you are running the `sdr-deploy` CLI. (See the [sdr-deploy README](https://github.com/sul-dlss/sdr-deploy/blob/main/README.md) for more about how to do this.)
+
+#### 1. Create a release tag
+
+First, use `sdr-deploy` to create a release tag. This lets you deploy a known point in time without asking others to hold merges to `main` while deployments are in process. It also lets us rollback to a known good tag. (See the [sdr-deploy README](https://github.com/sul-dlss/sdr-deploy/blob/main/README.md) for more about how to do this.)
+
+#### 2. Deploy to stage
+
+Then, **warn #dlss-infra-stage-qa-use** of the impending deployment to stage in case there is active testing going on; if so, be sure to either comment out that app or coordinate with tester and then deploy the tag you created above to stage using `sdr-deploy`.
+
+#### 3. Run integration tests in stage
+
+Then **run infrastructure-integration-tests** (see [documentation](#run-infrastructure-integration-tests) below) after deploy to stage.  
+
+#### 4. Deploy to QA
+
+Then, **warn #dlss-infra-stage-qa-use** of the impending deployment to QA in case there is active testing going on; if so, be sure to either comment out that app or coordinate with tester and then deploy the tag you created above to QA using `sdr-deploy`.
+
+#### 5. Deploy to prod
+
+Finally, **warn #dlss-infra-chg-mgmt** of the impending deployment to prod, and then deploy the tag you created above to prod using `sdr-deploy`.
+
+Note that the deployment script will attempt to verify the status check URL for projects that have one and will report success or failure for each project.
+
+There are currently two projects which cannot be verified in production since those servers are locked down and do not allow external requests (even on full tunnel VPN). These projects are `suri_rails` and `workflow-server-rails`.  To verify deployment, you can visit Honeybadger and curl from the servers:
+
+Honeybadger:
+- Workflow server rails: https://app.honeybadger.io/projects/58890/deploys
+- Suri : https://app.honeybadger.io/projects/70269/deploys
+
+Status check from the server (ssh into the prod server for that project and then use curl):
+- Workflow server rails: `curl -i https://workflow-service-prod.stanford.edu/status/all`
+- Suri: `curl -i https://sul-suri-prod.stanford.edu/status/all`
+
 ### Run infrastructure-integration-tests
 
 We want the FR to ensure
@@ -61,29 +99,6 @@ If some tests fail when running the whole test suite at once, but pass when run 
 If you're unsure whether a particular test failure indicates bad network luck, a regression in the application, or an out of date test, raise it for discussion (or ask another dev to retry from their laptop) in #dlss-infrastructure.
 
 If on a Mac, you will get better results if you stay in the same "space" as the running tests (avoids focus issues with the browser).
-
-### Deploy 'em
-
-Use the `sdr-deploy` CLI to deploy all infrastructure projects (with **required additional deploys** noted below) via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy
-
-Note that you will need to be sure you can ssh into each of the VMs from wherever you are running the `sdr-deploy` CLI.
-
-- **stage**: deploy to stage with script, then **run infrastructure-integration-tests** after deploy to stage (and|or qa).  
-  - before deploying, **warn #dlss-infra-stage-qa-use** in case there is active testing going on;  be sure to either comment out that app or coordinate with tester
-- **qa**: deploy to qa with script
-- **prod**: finally, deploy to prod with script
-
-Note that the deployment script will attempt to verify the status check URL for projects that have one and will report success or failure for each project.
-There are currently two projects which cannot be verified in production since those servers are locked down and do not allow external requests (even on full tunnel VPN).
-These projects are `suri_rails` and `workflow-server-rails`.  To verify deployment, you can visit Honeybadger and curl from the servers:
-
-Honeybadger:
-- Workflow server rails: https://app.honeybadger.io/projects/58890/deploys
-- Suri : https://app.honeybadger.io/projects/70269/deploys
-
-Status check from the server (ssh into the prod server for that project and then use curl):
-- Workflow server rails: `curl -i https://workflow-service-prod.stanford.edu/status/all`
-- Suri: `curl -i https://sul-suri-prod.stanford.edu/status/all`
 
 ### Required Additional Deploys
 
