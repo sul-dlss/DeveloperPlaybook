@@ -56,7 +56,7 @@ Note that you will need to be sure you can ssh into each of the VMs from whereve
 
 #### 1. Create a release tag
 
-First, use `sdr-deploy` to create a release tag. This lets you deploy a known point in time without, e.g., asking other developers to hold commits while deployments are in process. It also lets us rollback to a known good tag. (See the [sdr-deploy README](https://github.com/sul-dlss/sdr-deploy/blob/main/README.md) for more about how to do this.)
+First, use `sdr-deploy` to create a release tag. This lets you deploy a known point in time without asking others to hold merges to `main` while deployments are in process. It also lets us rollback to a known good tag. (See the [sdr-deploy README](https://github.com/sul-dlss/sdr-deploy/blob/main/README.md) for more about how to do this.)
 
 #### 2. Deploy to stage
 
