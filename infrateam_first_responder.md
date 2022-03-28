@@ -111,11 +111,6 @@ If on a Mac, you will get better results if you stay in the same "space" as the 
 
 There are applications that need to be deployed separately (i.e., not using `sdr-deploy`).
 
-#### Ruby Projects with non-standard Capistrano targets
-
-* **hydra_etd `uat` environment**: deploy via `cap uat deploy` in `hydra-etd`
-* **sul-pub `cap-dev` enviroment**: deploy via `cap cap-dev deploy` in `sul_pub` (note all [ENV values](https://github.com/sul-dlss/sul_pub/tree/main/config/deploy))
-
 #### Cloud Projects
 
 * **dlme-transform**: Check that [CircleCI](https://app.circleci.com/pipelines/github/sul-dlss/dlme-transform) published the latest image after dependency updates were merged. This image is pulled afresh for every data transform. More details in [README](https://github.com/sul-dlss/dlme-transform/#deploying) and [DevOpsDocs](https://github.com/sul-dlss/DevOpsDocs/blob/master/projects/dlme/operations-concerns.md#deployment-info).
