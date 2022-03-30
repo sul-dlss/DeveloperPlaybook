@@ -17,7 +17,6 @@ The DLSS Infrastructure team is using a rotating role of "first responder." This
       * [5. Deploy to prod](#5-deploy-to-prod)
     * [Run infrastructure-integration-tests](#run-infrastructure-integration-tests)
     * [Required Additional Deploys](#required-additional-deploys)
-      * [Ruby Projects with non-standard Capistrano targets](#ruby-projects-with-non-standard-capistrano-targets)
       * [Cloud Projects](#cloud-projects)
     * [Code that isn't a Ruby Application](#code-that-isnt-a-ruby-application)
   * [Verify / Notify Coverage for Following Week](#verify--notify-coverage-for-following-week)
