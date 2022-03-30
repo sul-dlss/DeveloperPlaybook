@@ -10,11 +10,17 @@ The DLSS Infrastructure team is using a rotating role of "first responder." This
   * [Weekly Dependency Updates](#weekly-dependency-updates)
     * [Merge 'em](#merge-em)
     * [Deploy 'em](#deploy-em)
-      * [Important Exceptions](#important-exceptions)
-      * [Code that isn't a Ruby Application](#code-that-isnt-a-ruby-application)
+      * [1. Create a release tag](#1-create-a-release-tag)
+      * [2. Deploy to stage](#2-deploy-to-stage)
+      * [3. Run integration tests in stage](#3-run-integration-tests-in-stage)
+      * [4. Deploy to QA](#4-deploy-to-qa)
+      * [5. Deploy to prod](#5-deploy-to-prod)
+    * [Run infrastructure-integration-tests](#run-infrastructure-integration-tests)
+    * [Required Additional Deploys](#required-additional-deploys)
+      * [Cloud Projects](#cloud-projects)
+    * [Code that isn't a Ruby Application](#code-that-isnt-a-ruby-application)
   * [Verify / Notify Coverage for Following Week](#verify--notify-coverage-for-following-week)
   * [Sign Up for Your Next First Responder Shift](#sign-up-for-your-next-first-responder-shift)
-  * [Run infrastructure-integration-tests](#run-infrastructure-integration-tests)
   * [Proactively Check for Production Problems](#proactively-check-for-production-problems)
   * [Triage Production Problems](#triage-production-problems)
   * [Improve Troubleshooting Documentation as Needed](#improve-troubleshooting-documentation-as-needed)
@@ -103,11 +109,6 @@ If on a Mac, you will get better results if you stay in the same "space" as the 
 ### Required Additional Deploys
 
 There are applications that need to be deployed separately (i.e., not using `sdr-deploy`).
-
-#### Ruby Projects with non-standard Capistrano targets
-
-* **hydra_etd `uat` environment**: deploy via `cap uat deploy` in `hydra-etd`
-* **sul-pub `cap-dev` enviroment**: deploy via `cap cap-dev deploy` in `sul_pub` (note all [ENV values](https://github.com/sul-dlss/sul_pub/tree/main/config/deploy))
 
 #### Cloud Projects
 
