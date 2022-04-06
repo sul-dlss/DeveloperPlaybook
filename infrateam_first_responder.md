@@ -80,6 +80,8 @@ Then, **warn #dlss-infra-stage-qa-use** of the impending deployment to QA in cas
 
 Finally, **warn #dlss-infra-chg-mgmt** of the impending deployment to prod, and then deploy the tag you created above to prod using `sdr-deploy`.
 
+Next, turn off Google Books when deploying to production at https://sul-gbooks-prod.stanford.edu/features. This avoids failed deposit due to a temporary Cocina model mismatch. Unlike other applications, the deposits will fail without retry and require manual remediation.  Don't forget to re-enable when prod deployments are complete!
+
 Note that the deployment script will attempt to verify the status check URL for projects that have one and will report success or failure for each project.
 
 There are currently two projects which cannot be verified in production since those servers are locked down and do not allow external requests (even on full tunnel VPN). These projects are `suri_rails` and `workflow-server-rails`.  To verify deployment, you can visit Honeybadger and curl from the servers:
