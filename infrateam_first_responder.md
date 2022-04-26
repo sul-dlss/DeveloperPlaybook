@@ -70,7 +70,7 @@ Then, **warn #dlss-infra-stage-qa-use** of the impending deployment to stage in 
 
 #### 3. Run integration tests in stage
 
-Then **run infrastructure-integration-tests** (see [documentation](#run-infrastructure-integration-tests) below) after deploy to stage.  
+Then **run infrastructure-integration-tests** (see [documentation](#run-infrastructure-integration-tests) below) after deploy to stage.
 
 #### 4. Deploy to QA
 
@@ -216,10 +216,18 @@ Additionally, it's a good idea to keep an eye on:
     - https://preservation-catalog-web-prod-01.stanford.edu/resque/overview
       - https://preservation-catalog-web-prod-01.stanford.edu/resque/failed
         - When debugging pres_cat errors: https://github.com/sul-dlss/preservation_catalog/wiki/Investigating-failed-Resque-Jobs
-  - dor-services-app (sidekiq):
+  - dor-services-app (sidekiq, rabbitmq):
     - https://dor-services-prod.stanford.edu/queues/
+    - https://sul-rabbit-prod.stanford.edu/#/queues
+    - see https://github.com/sul-dlss/shared_configs/blob/dor-services-app-prod/config/settings/production.yml for credentials
+  - dor-indexing-app (rabbitmq):
+    - https://sul-rabbit-prod.stanford.edu/#/queues
+    - see https://github.com/sul-dlss/shared_configs/blob/dor-indexing-app-prod/config/settings/production.yml for credentials
   - google books (sidekiq)
     - https://sul-gbooks-prod.stanford.edu/queues
+  - happy-heron (i.e. H2 self deposit) (rabbitmq):
+    - https://sul-rabbit-prod.stanford.edu/#/queues
+    - see https://github.com/sul-dlss/shared_configs/blob/sul-h2-prod/config/settings/production.yml for credentials
   - sdr-api (sidekiq)
     - https://sdr-api-prod.stanford.edu/queues
   - techmd service (sidekiq)
