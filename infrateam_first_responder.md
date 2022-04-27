@@ -205,6 +205,8 @@ Additionally, it's a good idea to keep an eye on:
   - Resque failed jobs may need to be manually rerun from the "failed queue."  Resque is thought to be more "thread safe."
   - Sidekiq failed jobs are automatically retried.
 
+  - argo bulk action jobs (sidekiq)
+    - https://argo.stanford.edu/queues/
   - robots (resque)
     - https://robot-console-prod.stanford.edu/overview
       - https://robot-console-prod.stanford.edu/failed
