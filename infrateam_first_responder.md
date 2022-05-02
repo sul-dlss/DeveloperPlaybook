@@ -219,15 +219,15 @@ Additionally, it's a good idea to keep an eye on:
   - dor-services-app (sidekiq, rabbitmq):
     - https://dor-services-prod.stanford.edu/queues/
     - https://sul-rabbit-prod.stanford.edu/#/queues
-    - see https://github.com/sul-dlss/shared_configs/blob/dor-services-app-prod/config/settings/production.yml for credentials
+      - for credentials, see https://github.com/sul-dlss/shared_configs/blob/dor-services-app-prod/config/settings/production.yml 
   - dor-indexing-app (rabbitmq):
     - https://sul-rabbit-prod.stanford.edu/#/queues
-    - see https://github.com/sul-dlss/shared_configs/blob/dor-indexing-app-prod/config/settings/production.yml for credentials
+      - for credentials, see https://github.com/sul-dlss/shared_configs/blob/dor-indexing-app-prod/config/settings/production.yml
   - google books (sidekiq)
     - https://sul-gbooks-prod.stanford.edu/queues
   - happy-heron (i.e. H2 self deposit) (rabbitmq):
     - https://sul-rabbit-prod.stanford.edu/#/queues
-    - see https://github.com/sul-dlss/shared_configs/blob/sul-h2-prod/config/settings/production.yml for credentials
+      - for credentials, see https://github.com/sul-dlss/shared_configs/blob/sul-h2-prod/config/settings/production.yml
   - sdr-api (sidekiq)
     - https://sdr-api-prod.stanford.edu/queues
   - techmd service (sidekiq)
