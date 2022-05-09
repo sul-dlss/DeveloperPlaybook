@@ -243,10 +243,14 @@ As a loose guideline, we recommend checking each of these at least once or twice
 Other places to monitor:
 * Nagios alerts (https://sul-nagios-prod.stanford.edu/nagios/  The Services link in left column will give overview of checks.  The Problems->Services tab will give you what’s alerting.)
   * Production
-    * (https://sul-nagios-prod.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-prod&style=detail)[All services]
-    * (https://sul-nagios-prod.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-prod&style=detail&servicestatustypes=28&hoststatustypes=15)[Service alerts]
-  * (https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-stage&style=detail)[All services], (https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-stage&style=detail&servicestatustypes=28&hoststatustypes=15)[Service alerts]
-  * (https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-qa&style=detail)[All services], (https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-qa&style=detail&servicestatustypes=28&hoststatustypes=15)[Service alerts] 
+    * [All services](https://sul-nagios-prod.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-prod&style=detail)
+    * [Service alerts](https://sul-nagios-prod.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-prod&style=detail&servicestatustypes=28&hoststatustypes=15)
+  * Stage
+    * [All services](https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-stage&style=detail)
+    * [Service alerts](https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-stage&style=detail&servicestatustypes=28&hoststatustypes=15)
+  * QA
+    * [All services](https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-qa&style=detail)
+    * [Service alerts](https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-qa&style=detail&servicestatustypes=28&hoststatustypes=15) 
 * Grafana at https://sulstats.stanford.edu/ gives different visualizations of running
 infrastructure servers with the option to create customized dashboards.
 * If you hear about possible security issues through other avenues (e.g. `#iso-public` on Slack, your consumption of the news in general), and you feel that the issues may be relevant and uncaptured, file an issue and call attention to it as needed.
