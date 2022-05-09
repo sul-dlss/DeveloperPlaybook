@@ -59,6 +59,12 @@ Account root: authorization for mysunetid@stanford.edu successful
 Changing uid to root (0)
 ```
 
+**NOTE**: You may need to source RVM into your root shell session and set the default Ruby as the system Ruby via:
+
+```
+$ source /etc/profile.d/rvm.sh && rvm use system
+```
+
 Now you have the ability to do a test puppet run. This will run the puppet agent against the branch that you pushed to puppet, but will not actually apply any of the changes. You will see a diff of changes that will be made when the PR is finally merged and puppetmaster picks up and applies the change on your server:
 
 ```
