@@ -56,31 +56,46 @@ Run the `merge-all` script to automatically merge all dependency update PRs: htt
 
 ### Deploy 'em
 
-Use the `sdr-deploy` CLI, from your laptop, to deploy all infrastructure projects (with **required additional deploys** noted below) via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy. 
+Use the `sdr-deploy` CLI, from your laptop, to deploy all infrastructure projects (with **required additional deploys** noted below) via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy.
 
 Note that you will need to be sure you can ssh into each of the VMs from your laptop. (See the [sdr-deploy README](https://github.com/sul-dlss/sdr-deploy/blob/main/README.md) for more about how to use the `check_ssh` command to do this.)
 
-#### 1. Create a release tag
+#### 1. Check server side gems for updates
+
+There are some gems that need to be installed manually on the servers for the app to start up (i.e. a `bundle install` during deployment is not sufficient).  Currently these are `io-wait` and `strscan`.  Check the slack notifications to see which gems were updated and if you notice either of these two gems were updated, you will need to have them manually installed on the servers.  If you don't do this and deploy the apps, you will see a generic passenger/apache error message.  The errors will not show up in the Rails log (because the Rails app hasn't even started yet), but will instead show up in the Apache log on the server (typically at `/var/log/httpd/error_log`).
+
+You can update the gem per app/environment with a capistrano command (this will install strscan to the 'qa' environment for a given app):
+
+```
+cap qa remote_execute['bash -lc "gem install strscan"']
+```
+Or even better, you can have sdr-deploy do it for all apps for a given environment, like this:
+
+```
+bin/sdr deploy -e stage -b 'bash -lc "gem install strscan"'
+```
+
+#### 2. Create a release tag
 
 First, use `sdr-deploy` to create a release tag. This lets you deploy a known point in time without asking others to hold merges to `main` while deployments are in process. It also lets us rollback to a known good tag. (See the [sdr-deploy README](https://github.com/sul-dlss/sdr-deploy/blob/main/README.md) for more about how to use the `tag` command do this.)
 
-#### 2. Deploy to stage
+#### 3. Deploy to stage
 
 Then, **warn #dlss-infra-stage-qa-use** of the impending deployment to stage in case there is active testing going on; if so, be sure to either comment out that app or coordinate with tester and then deploy the tag you created above to stage using `sdr-deploy`.
 
-#### 3. Run integration tests in stage
+#### 4. Run integration tests in stage
 
 Then **run infrastructure-integration-tests** (see [documentation](#run-infrastructure-integration-tests) below) after deploy to stage.
 
-#### 4. Deploy to QA
+#### 5. Deploy to QA
 
 Then, **warn #dlss-infra-stage-qa-use** of the impending deployment to QA in case there is active testing going on; if so, be sure to either comment out that app or coordinate with tester and then deploy the tag you created above to QA using `sdr-deploy`.
 
-#### 5. Deploy to prod
+#### 6. Deploy to prod
 
 Finally, **warn #dlss-infra-chg-mgmt** of the impending deployment to prod, and then deploy the tag you created above to prod using `sdr-deploy`.
 
-Next, turn off Google Books when deploying to production at https://sul-gbooks-prod.stanford.edu/features. This avoids failed deposit due to a temporary Cocina model mismatch. Unlike other applications, the deposits will fail without retry and require manual remediation.  Don't forget to re-enable when prod deployments are complete!
+Next, **turn off Google Books when deploying to production** at https://sul-gbooks-prod.stanford.edu/features. This avoids failed deposit due to a temporary Cocina model mismatch. Unlike other applications, the deposits will fail without retry and require manual remediation.  Don't forget to re-enable when prod deployments are complete!
 
 Note that the deployment script will attempt to verify the status check URL for projects that have one and will report success or failure for each project.
 
@@ -93,6 +108,8 @@ Honeybadger:
 Status check from the server (ssh into the prod server for that project and then use curl):
 - Workflow server rails: `curl -i https://workflow-service-prod.stanford.edu/status/all`
 - Suri: `curl -i https://sul-suri-prod.stanford.edu/status/all`
+
+When deployment is complete,  **turn on Google Books again**.
 
 ### Run infrastructure-integration-tests
 
@@ -219,7 +236,7 @@ Additionally, it's a good idea to keep an eye on:
   - dor-services-app (sidekiq, rabbitmq):
     - https://dor-services-prod.stanford.edu/queues/
     - https://sul-rabbit-prod.stanford.edu/#/queues
-      - for credentials, see https://github.com/sul-dlss/shared_configs/blob/dor-services-app-prod/config/settings/production.yml 
+      - for credentials, see https://github.com/sul-dlss/shared_configs/blob/dor-services-app-prod/config/settings/production.yml
   - dor-indexing-app (rabbitmq):
     - https://sul-rabbit-prod.stanford.edu/#/queues
       - for credentials, see https://github.com/sul-dlss/shared_configs/blob/dor-indexing-app-prod/config/settings/production.yml
@@ -250,7 +267,7 @@ Other places to monitor:
     * [Service alerts](https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-stage&style=detail&servicestatustypes=28&hoststatustypes=15)
   * QA
     * [All services](https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-qa&style=detail)
-    * [Service alerts](https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-qa&style=detail&servicestatustypes=28&hoststatustypes=15) 
+    * [Service alerts](https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-qa&style=detail&servicestatustypes=28&hoststatustypes=15)
 * Grafana at https://sulstats.stanford.edu/ gives different visualizations of running
 infrastructure servers with the option to create customized dashboards.
 * If you hear about possible security issues through other avenues (e.g. `#iso-public` on Slack, your consumption of the news in general), and you feel that the issues may be relevant and uncaptured, file an issue and call attention to it as needed.
