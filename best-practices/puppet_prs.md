@@ -76,3 +76,9 @@ $ puppet agent --test --environment=production
 ```
 
 ...or else the next person who comes along will be confused as to why their puppet changes are not being propagated, or there may be errors because the environment's branch that you used is no longer available!
+
+If you get a ruby-related error with the above, try:
+
+```
+$ source /etc/profile.d/rvm.sh && rvm use system
+```
