@@ -145,7 +145,6 @@ We have codebases that aren't Ruby applications or gems. We have not yet settled
   * the Infrastructure team is has the following Java repositories in our portfolio, none of which are actively maintained by the team
     * [dlss-wowza](https://github.com/sul-dlss/dlss-wowza/)
     * [etdpdf](https://github.com/sul-dlss/etdpdf)
-    * [openwayback](https://github.com/sul-dlss/openwayback)
     * [wasapi-downloader](https://github.com/sul-dlss/wasapi-downloader)
     * [WASMetadataExtractor](https://github.com/sul-dlss/WASMetadataExtractor)
 
