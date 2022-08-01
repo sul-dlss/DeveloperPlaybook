@@ -89,7 +89,7 @@ Then **run infrastructure-integration-tests** (see [documentation](#run-infrastr
 
 #### 5. Deploy to prod
 
-Finally, **warn #dlss-infra-chg-mgmt** of the impending deployment to prod, and then deploy the tag you created above to prod using `sdr-deploy`.
+**Warn #dlss-infra-chg-mgmt** of the impending deployment to prod, and then deploy the tag you created above to prod using `sdr-deploy`.
 
 Next, **turn off Google Books when deploying to production** at https://sul-gbooks-prod.stanford.edu/features. This avoids failed deposit due to a temporary Cocina model mismatch. Unlike other applications, the deposits will fail without retry and require manual remediation.  Don't forget to re-enable when prod deployments are complete!
 
