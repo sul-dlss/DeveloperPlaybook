@@ -89,23 +89,29 @@ Then **run infrastructure-integration-tests** (see [documentation](#run-infrastr
 
 #### 5. Deploy to prod
 
-Next, **turn off Google Books when deploying to production** at https://sul-gbooks-prod.stanford.edu/features. This avoids failed deposit due to a temporary Cocina model mismatch. Unlike other applications, the deposits will fail without retry and require manual remediation.  
+1. **Warn #dlss-infra-chg-mgmt** of the impending deployment to prod.
 
-**Warn #dlss-infra-chg-mgmt** of the impending deployment to prod, and then deploy the tag you created above to prod using `sdr-deploy`.
+2. **Turn Off Google Books when deploying to production** at https://sul-gbooks-prod.stanford.edu/features. This avoids failed deposit due to a temporary Cocina model mismatch. Unlike other applications, the deposits will fail without retry and require manual remediation.  
 
-Note that the deployment script will attempt to verify the status check URL for projects that have one and will report success or failure for each project.
+3. **Deploy the tag you created above to prod** using `sdr-deploy`.
 
-There are currently two projects which cannot be verified in production since those servers are locked down and do not allow external requests (even on full tunnel VPN). These projects are `suri_rails` and `workflow-server-rails`.  To verify deployment, you can visit Honeybadger and curl from the servers:
+  Note that the deployment script will
+  - pull the latest repo content from github
+  - check cocina-model versions for agreement
+  - attempt to verify the status check URL for projects that have one and will report success or failure for each project.
 
-Honeybadger:
-- Workflow server rails: https://app.honeybadger.io/projects/58890/deploys
-- Suri : https://app.honeybadger.io/projects/70269/deploys
+  There are currently two projects which cannot be verified in production since those servers are locked down and do not allow external requests (even on full tunnel VPN). These projects are `suri_rails` and `workflow-server-rails`.  To verify deployment, you can visit Honeybadger and curl from the servers:
 
-Status check from the server (ssh into the prod server for that project and then use curl):
-- Workflow server rails: `curl -i https://workflow-service-prod.stanford.edu/status/all`
-- Suri: `curl -i https://sul-suri-prod.stanford.edu/status/all`
+  Honeybadger:
+  - Workflow server rails: https://app.honeybadger.io/projects/58890/deploys
+  - Suri : https://app.honeybadger.io/projects/70269/deploys
 
-When deployment is complete, **turn on Google Books again**.
+  Status check from the server (ssh into the prod server for that project and then use curl):
+  - Workflow server rails: `curl -i https://workflow-service-prod.stanford.edu/status/all`
+  - Suri: `curl -i https://sul-suri-prod.stanford.edu/status/all`
+
+
+4. **Turn On Google Books again** when deployment is complete and statuses are clear.
 
 #### 6. Deploy to QA
 
