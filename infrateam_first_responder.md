@@ -89,9 +89,9 @@ Then **run infrastructure-integration-tests** (see [documentation](#run-infrastr
 
 #### 5. Deploy to prod
 
-**Warn #dlss-infra-chg-mgmt** of the impending deployment to prod, and then deploy the tag you created above to prod using `sdr-deploy`.
+Next, **turn off Google Books when deploying to production** at https://sul-gbooks-prod.stanford.edu/features. This avoids failed deposit due to a temporary Cocina model mismatch. Unlike other applications, the deposits will fail without retry and require manual remediation.  
 
-Next, **turn off Google Books when deploying to production** at https://sul-gbooks-prod.stanford.edu/features. This avoids failed deposit due to a temporary Cocina model mismatch. Unlike other applications, the deposits will fail without retry and require manual remediation.  Don't forget to re-enable when prod deployments are complete!
+**Warn #dlss-infra-chg-mgmt** of the impending deployment to prod, and then deploy the tag you created above to prod using `sdr-deploy`.
 
 Note that the deployment script will attempt to verify the status check URL for projects that have one and will report success or failure for each project.
 
@@ -105,8 +105,7 @@ Status check from the server (ssh into the prod server for that project and then
 - Workflow server rails: `curl -i https://workflow-service-prod.stanford.edu/status/all`
 - Suri: `curl -i https://sul-suri-prod.stanford.edu/status/all`
 
-When deployment is complete,  **turn on Google Books again**.
-
+When deployment is complete, **turn on Google Books again**.
 
 #### 6. Deploy to QA
 
