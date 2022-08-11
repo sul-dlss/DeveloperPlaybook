@@ -62,17 +62,21 @@ Note that you will need to be sure you can ssh into each of the VMs from your la
 
 #### 1. Check server side gems for updates
 
-There are some gems that need to be installed manually on the servers for the app to start up (i.e. a `bundle install` during deployment is not sufficient).  Currently these are `io-wait` and `strscan`.  Check the slack notifications to see which gems were updated and if you notice either of these two gems were updated, you will need to have them manually installed on the servers.  If you don't do this and deploy the apps, you will see a generic passenger/apache error message.  The errors will not show up in the Rails log (because the Rails app hasn't even started yet), but will instead show up in the Apache log on the server (typically at `/var/log/httpd/error_log`).
+There are some gems that need to be installed manually on the servers for the app to start up (i.e. a `bundle install` during deployment is not sufficient).  Currently these are `io-wait` and `strscan`.  Check the slack notifications to see which gems were updated and if you notice either of these two gems were updated, you may need to update them manually installed on the servers. 
 
-You can update the gem per app/environment with a capistrano command (this will install strscan to the 'qa' environment for a given app):
+Note that as of 2022-08, dlss-capistrano will try to update strscan for you (https://github.com/sul-dlss/dlss-capistrano/blob/main/lib/dlss/capistrano/tasks/strscan.rake). 
+
+If the gems need updating and aren't updated, you will see a generic passenger/apache error message.  The errors will not show up in the Rails log (because the Rails app hasn't even started yet), but will instead show up in the Apache log on the server (typically at `/var/log/httpd/error_log`).
+
+You can update the gem per app/environment with the capistrano `remote_execute` command (this will install io-wait to the 'qa' environment for a given app):
 
 ```
-cap qa remote_execute['bash -lc "gem install strscan"']
+cap qa remote_execute['bash -lc "gem install io-wait"']
 ```
 Or even better, you can have sdr-deploy do it for all apps for a given environment, like this:
 
 ```
-bin/sdr deploy -e stage -b 'bash -lc "gem install strscan"'
+bin/sdr deploy -e stage -b 'bash -lc "gem install io-wait"'
 ```
 
 #### 2. Create a release tag
