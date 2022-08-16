@@ -102,18 +102,7 @@ Then **run infrastructure-integration-tests** (see [documentation](#run-infrastr
   Note that the deployment script will
   - pull the latest repo content from github
   - check cocina-model versions for agreement
-  - attempt to verify the status check URL for projects that have one and will report success or failure for each project.
-
-  There are currently two projects which cannot be verified in production since those servers are locked down and do not allow external requests (even on full tunnel VPN). These projects are `suri_rails` and `workflow-server-rails`.  To verify deployment, you can visit Honeybadger and curl from the servers:
-
-  Honeybadger:
-  - Workflow server rails: https://app.honeybadger.io/projects/58890/deploys
-  - Suri : https://app.honeybadger.io/projects/70269/deploys
-
-  Status check from the server (ssh into the prod server for that project and then use curl):
-  - Workflow server rails: `curl -i https://workflow-service-prod.stanford.edu/status/all`
-  - Suri: `curl -i https://sul-suri-prod.stanford.edu/status/all`
-
+  - open the Nagios dashboard for the environment
 
 4. **Turn On Google Books again** when deployment is complete and statuses are clear.
 
