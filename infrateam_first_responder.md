@@ -62,9 +62,9 @@ Note that you will need to be sure you can ssh into each of the VMs from your la
 
 #### 1. Check server side gems for updates
 
-There are some gems that need to be installed manually on the servers for the app to start up (i.e. a `bundle install` during deployment is not sufficient).  Currently these are `io-wait` and `strscan`.  Check the slack notifications to see which gems were updated and if you notice either of these two gems were updated, you may need to update them manually installed on the servers. 
+There are some gems that need to be installed manually on the servers for the app to start up (i.e. a `bundle install` during deployment is not sufficient).  Currently these are `io-wait` and `strscan`.  Check the slack notifications to see which gems were updated and if you notice either of these two gems were updated, you may need to update them manually installed on the servers.
 
-Note that as of 2022-08, dlss-capistrano will try to update strscan for you (https://github.com/sul-dlss/dlss-capistrano/blob/main/lib/dlss/capistrano/tasks/strscan.rake). 
+Note that as of 2022-08, dlss-capistrano will try to update strscan for you (https://github.com/sul-dlss/dlss-capistrano/blob/main/lib/dlss/capistrano/tasks/strscan.rake).
 
 If the gems need updating and aren't updated, you will see a generic passenger/apache error message.  The errors will not show up in the Rails log (because the Rails app hasn't even started yet), but will instead show up in the Apache log on the server (typically at `/var/log/httpd/error_log`).
 
@@ -236,8 +236,8 @@ Additionally, it's a good idea to keep an eye on:
     - https://robot-console-prod.stanford.edu/overview
       - https://robot-console-prod.stanford.edu/failed
     - https://argo.stanford.edu/report/workflow_grid
-  - pre-assembly (resque)
-    - https://sul-preassembly-prod.stanford.edu/resque/overview
+  - pre-assembly (sidekiq)
+    - https://sul-preassembly-prod.stanford.edu/queues
     - Note: failed Discovery Reports are generally okay, as they are dry runs for pre-assembly jobs.
   - preservation replication jobs (resque)
     - https://preservation-catalog-web-prod-01.stanford.edu/resque/overview
