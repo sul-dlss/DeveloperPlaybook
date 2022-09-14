@@ -71,12 +71,12 @@ If the gems need updating and aren't updated, you will see a generic passenger/a
 You can update the gem per app/environment with the capistrano `remote_execute` command (this will install io-wait to the 'qa' environment for a given app):
 
 ```
-cap qa remote_execute['bash -lc "gem install io-wait"']
+cap qa remote_execute['gem install io-wait']
 ```
 Or even better, you can have sdr-deploy do it for all apps for a given environment, like this:
 
 ```
-bin/sdr deploy -e stage -b 'bash -lc "gem install io-wait"'
+bin/sdr deploy -e stage -b 'gem install io-wait'
 ```
 
 #### 2. Create a release tag
