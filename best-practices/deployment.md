@@ -91,6 +91,10 @@ Make sure that `linked_dirs` includes `config/settings`. e.g.:
 set :linked_dirs, %w(log config/settings config/certs)
 ```
 
+### Vault
+
+See directions at https://consul.stanford.edu/display/systeam/Vault+for+Developers
+
 ### Communications
 
 When deploying a codebase to production (outside of patch parties and organized work cycles), you should notify the Operations team with a message in the #dlss-operations Slack channel. To ensure that the service/product owner(s) are aware, notify the service owner via the service’s dedicated channel (if there is one), notify the PSM team via the #dlss-psm channel, and/or contact the individual service owner directly.
