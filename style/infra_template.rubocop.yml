@@ -72,9 +72,4 @@ RSpec/MultipleMemoizedHelpers:
 
 RSpec/NestedGroups:
   Max: 4 # default: 3
-
-Style/SymbolArray:
-  MinSize: 4 # default 2
-
-Style/WordArray:
-  MinSize: 4 # default 2
+  
