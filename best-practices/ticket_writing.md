@@ -7,7 +7,7 @@ The purpose of a ticket is to communicate to a designer or developer the problem
 The three fields give the implementer understanding that they need to properly implement the feature.
 
 * The Actor - Who is using the feature. We may also ask, "Who is prevented from using the feature?"
-* The intent - Here we're describing what they are trying to acchieve.  This should not be describing any part of the UI, it's about what the user wants to do.
+* The intent - Here we're describing what they are trying to achieve.  This should not be describing any part of the UI, it's about what the user wants to do.
 * The goal - What does the end state look like?  What is the big picture goal?
 
 
