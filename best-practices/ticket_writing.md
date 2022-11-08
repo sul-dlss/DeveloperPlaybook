@@ -21,5 +21,5 @@ The three fields give the implementer understanding that they need to properly i
 
 ## When is a story template not appropriate for a ticket?
 
-1. Many times bugs are obvious and are existing in a feature that already would have had a story.  Mearly describing the bug is often sufficient.
+1. Many times bugs are obvious and are existing in a feature that already would have had a story.  Merely describing the bug is often sufficient.
 2. Simple UI changes. (e.g. "Switch this icon to that one", "use colors from the brand guide", etc.)
