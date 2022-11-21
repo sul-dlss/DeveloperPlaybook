@@ -8,13 +8,14 @@ In DLSS, we practice [semantic versioning](http://semver.org) for our gems.
 
 ## Bundler tasks
 
-We use Bundler's rake tasks to release and push our gems. By including:
+We use Bundler's rake tasks to release and push our gems. As long as the gem's Rakefile includes the following, 
+we have `build`, `install` and `release` Rake tasks available. 
 
-```ruby
-Bundler::GemHelper.install_tasks
+```
+require 'bundler/gem_tasks'
 ```
 
-In our `Rakefile`, bundler adds the `build`, `install` and `release` Rake tasks. These tasks make it easy to build gem releases, consistently tag the gem release in git, and push the gem to rubygems.org.
+These tasks make it easy to build gem releases, consistently tag the gem release in git, and push the gem to rubygems.org.
 
 ## Team ownership of gems
 
