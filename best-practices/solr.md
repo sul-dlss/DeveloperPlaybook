@@ -7,3 +7,6 @@ Many DLSS applications use Apache Solr for their indexing and searching needs. T
 To add a new Solr collection, change the schema or configuration of an existing collection, or remove a collection, create a pull request 
 in the [sul-solr-configs](https://github.com/sul-dlss/sul-solr-configs/) repository ([example](https://github.com/sul-dlss/sul-solr-configs/pull/240)). 
 Please include in the pull request when you would like the change(s) to be applied no later than, though note that the next steps are a manual process.
+
+
+[Next Steps](https://consul.stanford.edu/display/DLSSINFRAAPP/SUL+Solr+Infrastructure)
