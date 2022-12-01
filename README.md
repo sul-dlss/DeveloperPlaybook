@@ -4,7 +4,7 @@ A place to organize style guides, best practices, tools, and techniques for Stan
 
 - [Best Practices](/best-practices)
   - [Documentation](/best-practices/documentation)
-  - [Automating Deployment Notifications on Slack](/best-practices/README.md)
+  - [Automating Deployment](/best-practices/automated_deployment.md)
   - [Background Processing at DLSS](/best-practices/background_processing.md)
   - [Communication](/best-practices/communication.md)
   - [Deployment](/best-practices/deployment.md)
