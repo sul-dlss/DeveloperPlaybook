@@ -228,10 +228,9 @@ Additionally, it's a good idea to keep an eye on:
   - pre-assembly (sidekiq)
     - https://sul-preassembly-prod.stanford.edu/queues
     - Note: failed Discovery Reports are generally okay, as they are dry runs for pre-assembly jobs.
-  - preservation replication jobs (resque)
+  - preservation catalog (sidekiq)
     - https://preservation-catalog-web-prod-01.stanford.edu/resque/overview
-      - https://preservation-catalog-web-prod-01.stanford.edu/resque/failed
-        - When debugging pres_cat errors: https://github.com/sul-dlss/preservation_catalog/wiki/Investigating-failed-Resque-Jobs
+      - When debugging pres_cat errors: https://github.com/sul-dlss/preservation_catalog/wiki/Investigating-failed-Resque-Jobs
   - dor-services-app (sidekiq, rabbitmq):
     - https://dor-services-prod.stanford.edu/queues/
     - https://sul-rabbit-prod.stanford.edu/#/queues
