@@ -143,7 +143,6 @@ We have codebases that aren't Ruby applications or gems. We have not yet settled
 * java code
   * the Infrastructure team is has the following Java repositories in our portfolio, none of which are actively maintained by the team
     * [dlss-wowza](https://github.com/sul-dlss/dlss-wowza/)
-    * [etdpdf](https://github.com/sul-dlss/etdpdf)
     * [wasapi-downloader](https://github.com/sul-dlss/wasapi-downloader)
 
 We currently do not have an automatic update mechanism for our Java projects.
