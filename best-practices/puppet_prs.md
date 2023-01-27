@@ -70,7 +70,7 @@ Now you have the ability to do a test puppet run. This will run the puppet agent
 ```
 $ puppet agent --test --noop --environment=sunetidFeature
 ```
-Note: "environment" is the name of your puppet branch, and is not related to a Rails environment.
+Note: the value of "environment" above is the name of your puppet branch, and is not related to a Rails environment.
 
 :exclamation: WARNING :exclamation:
 Please make sure that you use the `--noop` flag :exclamation: or else the puppet will try to apply the configuration from whatever environment is specified; in the example above
