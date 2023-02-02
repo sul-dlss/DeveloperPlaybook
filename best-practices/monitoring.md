@@ -23,6 +23,10 @@ Cron check-ins are typically configured in the following locations:
 3. `config/settings/production.yml` in shared_configs: This contains the actual check-in keys (per environment for any environment that should actually checkin, usually production).
 4. HB notification page: Check-ins are configured per project in HB. To configure a check-in, the cron schedule will be needed, which can be found with `bundle exec whenever`. After a check-in is created, the check-in key will be available. (If the URL is `https://api.honeybadger.io/v1/check_in/rkIdpB` then the check-in key will be `rkIdpB`).
 
+Some examples below:
+- Schedule file:  https://github.com/sul-dlss/happy-heron/blob/main/config/schedule.rb
+- HB Checkin Setup: https://app.honeybadger.io/projects/77112/check_ins
+- HB keys configured: https://github.com/sul-dlss/shared_configs/blob/sul-h2-prod/config/settings/production.yml
 
 ### Slack Integrations
 
