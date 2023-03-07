@@ -154,7 +154,7 @@ We currently do not have an automatic update mechanism for our Java projects.
   1. The person covering the following week is "on deck" for this week.
 1. Set Slack reminders in `#dlss-infrastructure` for next week's Monday morning. The reminders should indicate who is first responder and who is on deck for that week, and should be set for 3 am Pacific time/6 am Eastern, so that the east coast early risers don't have to wait for it.
   * Documentation on Slack's `/remind` command:  https://get.slack.help/hc/en-us/articles/208423427-Set-a-reminder
-    * E.g., if Alice and Bob are up next week, `/remind #dlss-infrastructure "@alice is the first responder week of Monthuary 8, and @bob is on deck" Monday at 3 am`
+    * E.g., if Alice and Bob are up next week, `/remind #dlss-infrastructure "@alice is the first responder week of January 8, and @bob is on deck" Monday at 3 am`
 
 ## Sign Up for Your Next First Responder Shift
 
@@ -215,24 +215,18 @@ Additionally, it's a good idea to keep an eye on:
   - `#sul-cap-collab` - has developers in the School of Medicine working on the Profiles project (which we connect to with our sul-pub system)
   - `#web-archiving`
 * Queue dashboards:
-  - Resque failed jobs may need to be manually rerun from the "failed queue."  Resque is thought to be more "thread safe."
-  - Sidekiq failed jobs are automatically retried.
-
   - argo bulk action jobs (sidekiq)
     - https://argo.stanford.edu/queues/
-  - robots (resque)
-    - https://robot-console-prod.stanford.edu/overview
-      - https://robot-console-prod.stanford.edu/failed
+  - robots (sidekiq)
+    - https://robot-console-prod.stanford.edu
     - https://argo.stanford.edu/report/workflow_grid
   - pre-assembly (sidekiq)
     - https://sul-preassembly-prod.stanford.edu/queues
     - Note: failed Discovery Reports are generally okay, as they are dry runs for pre-assembly jobs.
-  - preservation replication jobs (resque)
-    - https://preservation-catalog-web-prod-01.stanford.edu/resque/overview
-      - https://preservation-catalog-web-prod-01.stanford.edu/resque/failed
-        - When debugging pres_cat errors: https://github.com/sul-dlss/preservation_catalog/wiki/Investigating-failed-Resque-Jobs
+  - preservation replication jobs (sidekiq)
+    - https://preservation-catalog-web-prod-01.stanford.edu/queues/
   - dor-services-app (sidekiq, rabbitmq):
-    - https://dor-services-prod.stanford.edu/queues/
+    - https://dor-services-prod.stanford.edu/queues
     - https://sul-rabbit-prod.stanford.edu/#/queues
       - for credentials, see https://github.com/sul-dlss/shared_configs/blob/dor-services-app-prod/config/settings/production.yml
   - dor-indexing-app (rabbitmq):
