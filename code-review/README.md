@@ -1,7 +1,7 @@
 Code Review
 ===========
 
-Enthusiastically copied from https://github.com/thoughtbot/guides/blob/master/code-review/README.md
+Enthusiastically copied from https://github.com/thoughtbot/guides/tree/main/code-review/
 
 A guide for reviewing code and having your code reviewed.
 

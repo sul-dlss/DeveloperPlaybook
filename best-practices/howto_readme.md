@@ -14,7 +14,7 @@ All projects should have a `README.md` file. This file should try to answer the 
       - [CircleCI](https://circleci.com/docs/2.0/status-badges/)
     - Current version (if a published package)
       - E.g., if Ruby: [Gem Version](http://badge.fury.io/for/rb)
-    - Test coverage 
+    - Test coverage
       - [CodeClimate](https://codeclimate.com/); or
       - Coveralls (though CodeClimate is preferred as of 2020)
     - Code quality
@@ -25,13 +25,13 @@ All projects should have a `README.md` file. This file should try to answer the 
       -  [Microbadger](https://microbadger.com/#badges)
 
 ## Example
-    [![Build Status](https://travis-ci.org/sul-dlss/name-of-the-project.svg?branch=master)](https://travis-ci.org/sul-dlss/name-of-the-project) 
+    [![Build Status](https://travis-ci.org/sul-dlss/name-of-the-project.svg?branch=main)](https://travis-ci.org/sul-dlss/name-of-the-project)
     [![Code Climate](https://codeclimate.com/github/sul-dlss/name-of-the-project/badges/gpa.svg)](https://codeclimate.com/github/sul-dlss/name-of-the-project)
-    [![Code Climate Test Coverage](https://codeclimate.com/github/sul-dlss/name-of-the-project/badges/badges/coverage.svg)](https://codeclimate.com/github/sul-dlss/name-of-the-project/badges/coverage) 
+    [![Code Climate Test Coverage](https://codeclimate.com/github/sul-dlss/name-of-the-project/badges/badges/coverage.svg)](https://codeclimate.com/github/sul-dlss/name-of-the-project/badges/coverage)
     [![Dependency Status](https://gemnasium.com/sul-dlss/name-of-the-project.svg)](https://gemnasium.com/sul-dlss/name-of-the-project) [![Gem Version](https://badge.fury.io/rb/name-of-the-project.svg)](http://badge.fury.io/rb/name-of-the-project)
-    [![OpenAPI Validator](http://validator.swagger.io/validator?url=https://raw.githubusercontent.com/sul-dlss/name-of-the-project/master/openapi.yml)](http://validator.swagger.io/validator/debug?url=https://raw.githubusercontent.com/sul-dlss/name-of-the-project/master/openapi.yml)
+    [![OpenAPI Validator](http://validator.swagger.io/validator?url=https://raw.githubusercontent.com/sul-dlss/name-of-the-project/main/openapi.yml)](http://validator.swagger.io/validator/debug?url=https://raw.githubusercontent.com/sul-dlss/name-of-the-project/main/openapi.yml)
     [![Docker image](https://images.microbadger.com/badges/image/suldlss/name-of-the-project.svg)](https://microbadger.com/images/suldlss/name-of-the-project "Get your own image badge on microbadger.com")
-    
+
     # Name of the Project
 
     This project provides an implementation of the [XKCD Random Number](https://xkcd.com/221/) generator. This random number generator is particularly useful when predictable random numbers can improve performance.
@@ -68,7 +68,7 @@ All projects should have a `README.md` file. This file should try to answer the 
     ```console
     $ rake
     ```
-    
+
 ## Other Examples
 
 - [spotlight](https://github.com/sul-dlss/spotlight)
