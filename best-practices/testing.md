@@ -26,7 +26,9 @@ test coverage could be better (maybe file an issue, too).
 
 Ruby projects in DLSS should use the [RSpec](https://rspec.info/) framework for testing.
 There is a `rspec-rails` gem for integrating with Rails projects. Much of the [Blacklight](http://projectblacklight.org/) and [Samvera](https://samvera.org/)
-community have chosen to use RSpec; we should be consistent unless there is a reason not to.
+community have chosen to use RSpec; we should be consistent unless there is a reason not to. 
+
+For best practices when using RSpec, see https://www.betterspecs.org/
 
 ### JavaScript
 
