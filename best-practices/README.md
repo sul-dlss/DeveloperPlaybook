@@ -17,6 +17,7 @@
 - [Updating NodeJS](/best-practices/updating-nodejs.md)
 - [Updating Ruby](/best-practices/updating-ruby.md)
 - [Version Control](/best-practices/version_control.md)
+- [Accessibility (Infrastructure)](/best-practices/infra-accessibility.md)
 
 Best practices guides should attempt to answer the question:
 
