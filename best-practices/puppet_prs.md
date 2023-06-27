@@ -36,7 +36,7 @@ git push origin sunetidFeature
 
 ### Testing your puppet changes
 
-If you need to have the ability on the development machine to do a test run of the proposed puppet changes, you need to have access to the machine as the root user. Add `ksu: true` to the `app_user` configuration as shown:
+If you need to have the ability on the development machine to do a test run of the proposed puppet changes, you need to have access to the machine as the root user. Add `ksu: true` to the `app_user` configuration as shown (note: this may already be applied):
 
 ```
 role::params::app_user:
@@ -50,7 +50,7 @@ role::params::app_user:
 
 Be aware that this will give root access to all of the `k5users`, so be certain that you actually need this level of access and that all of the k5users can have this level of access. Once the PR is submitted with this change the ops team will review and merge it as described above, and after the puppetmaster applies the configuration on the next run, the k5users will have root access to do test puppet runs.
 
-The next time you create a new puppet branch and commit/push to the puppet Github repository, you will be able to do a test run of the proposed puppet configuration to see what changes would actually be applied. To do this use the `ksu` command:
+The next time you create a new puppet branch and commit/push to the puppet Github repository, you will be able to do a test run of the proposed puppet configuration to see what changes would actually be applied. To do this use the `ksu` command on the server you are testing the puppet change on:
 
 ```
 $ ksu
@@ -70,6 +70,7 @@ Now you have the ability to do a test puppet run. This will run the puppet agent
 ```
 $ puppet agent --test --noop --environment=sunetidFeature
 ```
+Note: the value of "environment" above is the name of your puppet branch, and is not related to a Rails environment.
 
 :exclamation: WARNING :exclamation:
 Please make sure that you use the `--noop` flag :exclamation: or else the puppet will try to apply the configuration from whatever environment is specified; in the example above
