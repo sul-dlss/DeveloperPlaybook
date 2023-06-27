@@ -32,7 +32,7 @@ OpenAPI Specifications may be expressed as either YAML or JSON. Thus far, we hav
 
 Here are the steps we have been following:
 
-1. Create `openapi.yml`: feel free to copy from an existing project, paste, and adjust ([example](https://github.com/sul-dlss/technical-metadata-service/blob/master/openapi.yml))
+1. Create `openapi.yml`: feel free to copy from an existing project, paste, and adjust ([example](https://github.com/sul-dlss/technical-metadata-service/blob/main/openapi.yml))
 1. Validate `openapi.yml` in the CI build ([CircleCI example](https://github.com/sul-dlss/technical-metadata-service/blob/6c8151b1ca713061c227e8030f03c6531eee1093/.circleci/config.yml#L103-L114))
 1. Add OpenAPI validation badge to the README ([example](https://github.com/sul-dlss/technical-metadata-service/blob/6c8151b1ca713061c227e8030f03c6531eee1093/README.md#L5))
 1. Add Committee gem, which allows automagic validation of requests and responses based on your API specification, as a dependency ([example](https://github.com/sul-dlss/technical-metadata-service/blob/6c8151b1ca713061c227e8030f03c6531eee1093/Gemfile#L9))

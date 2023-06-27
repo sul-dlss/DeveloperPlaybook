@@ -8,8 +8,8 @@ In DLSS, we practice [semantic versioning](http://semver.org) for our gems.
 
 ## Bundler tasks
 
-We use Bundler's rake tasks to release and push our gems. As long as the gem's Rakefile includes the following, 
-we have `build`, `install` and `release` Rake tasks available. 
+We use Bundler's rake tasks to release and push our gems. As long as the gem's Rakefile includes the following,
+we have `build`, `install` and `release` Rake tasks available.
 
 ```
 require 'bundler/gem_tasks'
@@ -27,7 +27,7 @@ In order for all of us to maintain and release our gems, we expect all new gems 
 $ gem owner base_indexer -a sul-devops-team@lists.stanford.edu
 ```
 
-The service account (`sul-devops-team@lists.stanford.edu`) will ensure we all have access to our collective work. 
+The service account (`sul-devops-team@lists.stanford.edu`) will ensure we all have access to our collective work.
 
 ### Adding/removing owners
 
@@ -37,6 +37,6 @@ See the [README](https://github.com/sul-dlss/rubygem-update-scripts/blob/master/
 
 ## Steps to release a new version of a gem
 
-1. Update the version of the gem in the default branch (typically `master`) according to the above [semantic versioning](http://semver.org) guidelines.
+1. Update the version of the gem in the default branch (typically `main`) according to the above [semantic versioning](http://semver.org) guidelines.
 1. Run `rake release` in the gem directory
 1. Add appropriate [release notes and publish the release](https://help.github.com/articles/creating-releases/)
