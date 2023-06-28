@@ -4,6 +4,7 @@ A place to organize style guides, best practices, tools, and techniques for Stan
 
 - [Best Practices](/best-practices)
   - [Documentation](/best-practices/documentation)
+  - [Writing Tickets](/best-practices/ticket_writing.md)
   - [Automating Deployment](/best-practices/automated_deployment.md)
   - [Background Processing at DLSS](/best-practices/background_processing.md)
   - [Communication](/best-practices/communication.md)
@@ -21,6 +22,7 @@ A place to organize style guides, best practices, tools, and techniques for Stan
   - [Pair Programming](/best-practices/pair_programming.md)
   - [Version Control](/best-practices/version_control.md)
   - [Multi-factor Auth/Two Factor Auth](/best-practices/2FA.md)
+  - [Accessibility (Infrastructure)](/best-practices/infra-accessibility.md)
 - [Style](/style)
 - [Code Review](/code-review)
 

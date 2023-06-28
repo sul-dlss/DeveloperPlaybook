@@ -13,8 +13,8 @@ The DLSS Infrastructure team is using a rotating role of "first responder." This
       * [1. Create a release tag](#1-create-a-release-tag)
       * [2. Deploy to stage](#2-deploy-to-stage)
       * [3. Run integration tests in stage](#3-run-integration-tests-in-stage)
-      * [4. Deploy to QA](#4-deploy-to-qa)
-      * [5. Deploy to prod](#5-deploy-to-prod)
+      * [4. Deploy to prod](#4-deploy-to-prod)
+      * [5. Deploy to QA](#5-deploy-to-qa)
     * [Run infrastructure-integration-tests](#run-infrastructure-integration-tests)
     * [Required Additional Deploys](#required-additional-deploys)
       * [Cloud Projects](#cloud-projects)
@@ -60,38 +60,19 @@ Use the `sdr-deploy` CLI, from your laptop, to deploy all infrastructure project
 
 Note that you will need to be sure you can ssh into each of the VMs from your laptop. (See the [sdr-deploy README](https://github.com/sul-dlss/sdr-deploy/blob/main/README.md) for more about how to use the `check_ssh` command to do this.)
 
-#### 1. Check server side gems for updates
-
-There are some gems that need to be installed manually on the servers for the app to start up (i.e. a `bundle install` during deployment is not sufficient).  Currently these are `io-wait` and `strscan`.  Check the slack notifications to see which gems were updated and if you notice either of these two gems were updated, you may need to update them manually installed on the servers.
-
-Note that as of 2022-08, dlss-capistrano will try to update strscan for you (https://github.com/sul-dlss/dlss-capistrano/blob/main/lib/dlss/capistrano/tasks/strscan.rake).
-
-If the gems need updating and aren't updated, you will see a generic passenger/apache error message.  The errors will not show up in the Rails log (because the Rails app hasn't even started yet), but will instead show up in the Apache log on the server (typically at `/var/log/httpd/error_log`).
-
-You can update the gem per app/environment with the capistrano `remote_execute` command (this will install io-wait to the 'qa' environment for a given app):
-
-```
-cap qa remote_execute['gem install io-wait']
-```
-Or even better, you can have sdr-deploy do it for all apps for a given environment, like this:
-
-```
-bin/sdr deploy -e stage -b 'gem install io-wait'
-```
-
-#### 2. Create a release tag
+#### 1. Create a release tag
 
 First, use `sdr-deploy` to create a release tag. This lets you deploy a known point in time without asking others to hold merges to `main` while deployments are in process. It also lets us rollback to a known good tag. (See the [sdr-deploy README](https://github.com/sul-dlss/sdr-deploy/blob/main/README.md) for more about how to use the `tag` command do this.)
 
-#### 3. Deploy to stage
+#### 2. Deploy to stage
 
 Then, **warn #dlss-infra-stage-qa-use** of the impending deployment to stage in case there is active testing going on; if so, be sure to either comment out that app or coordinate with tester and then deploy the tag you created above to stage using `sdr-deploy`.
 
-#### 4. Run integration tests in stage
+#### 3. Run integration tests in stage
 
 Then **run infrastructure-integration-tests** (see [documentation](#run-infrastructure-integration-tests) below) after deploy to stage.
 
-#### 5. Deploy to prod
+#### 4. Deploy to prod
 
 1. **Warn #dlss-infra-chg-mgmt** of the impending deployment to prod.
 
@@ -106,7 +87,7 @@ Then **run infrastructure-integration-tests** (see [documentation](#run-infrastr
 
 4. **Turn On Google Books again** when deployment is complete and statuses are clear.
 
-#### 6. Deploy to QA
+#### 5. Deploy to QA
 
 To complete the cycle, and ensure QA has the common environment, deploy there as well. Then, **warn #dlss-infra-stage-qa-use** of the impending deployment to QA in case there is active testing going on; if so, be sure to either skip that app or coordinate with tester and then deploy the tag you created above to QA using `sdr-deploy`.
 
@@ -143,7 +124,6 @@ We have codebases that aren't Ruby applications or gems. We have not yet settled
 * java code
   * the Infrastructure team is has the following Java repositories in our portfolio, none of which are actively maintained by the team
     * [dlss-wowza](https://github.com/sul-dlss/dlss-wowza/)
-    * [etdpdf](https://github.com/sul-dlss/etdpdf)
     * [wasapi-downloader](https://github.com/sul-dlss/wasapi-downloader)
 
 We currently do not have an automatic update mechanism for our Java projects.
@@ -155,7 +135,7 @@ We currently do not have an automatic update mechanism for our Java projects.
   1. The person covering the following week is "on deck" for this week.
 1. Set Slack reminders in `#dlss-infrastructure` for next week's Monday morning. The reminders should indicate who is first responder and who is on deck for that week, and should be set for 3 am Pacific time/6 am Eastern, so that the east coast early risers don't have to wait for it.
   * Documentation on Slack's `/remind` command:  https://get.slack.help/hc/en-us/articles/208423427-Set-a-reminder
-    * E.g., if Alice and Bob are up next week, `/remind #dlss-infrastructure "@alice is the first responder week of Monthuary 8, and @bob is on deck" Monday at 3 am`
+    * E.g., if Alice and Bob are up next week, `/remind #dlss-infrastructure "@alice is the first responder week of January 8, and @bob is on deck" Monday at 3 am`
 
 ## Sign Up for Your Next First Responder Shift
 
@@ -216,24 +196,18 @@ Additionally, it's a good idea to keep an eye on:
   - `#sul-cap-collab` - has developers in the School of Medicine working on the Profiles project (which we connect to with our sul-pub system)
   - `#web-archiving`
 * Queue dashboards:
-  - Resque failed jobs may need to be manually rerun from the "failed queue."  Resque is thought to be more "thread safe."
-  - Sidekiq failed jobs are automatically retried.
-
   - argo bulk action jobs (sidekiq)
     - https://argo.stanford.edu/queues/
-  - robots (resque)
-    - https://robot-console-prod.stanford.edu/overview
-      - https://robot-console-prod.stanford.edu/failed
+  - robots (sidekiq)
+    - https://robot-console-prod.stanford.edu
     - https://argo.stanford.edu/report/workflow_grid
   - pre-assembly (sidekiq)
     - https://sul-preassembly-prod.stanford.edu/queues
     - Note: failed Discovery Reports are generally okay, as they are dry runs for pre-assembly jobs.
-  - preservation replication jobs (resque)
-    - https://preservation-catalog-web-prod-01.stanford.edu/resque/overview
-      - https://preservation-catalog-web-prod-01.stanford.edu/resque/failed
-        - When debugging pres_cat errors: https://github.com/sul-dlss/preservation_catalog/wiki/Investigating-failed-Resque-Jobs
+  - preservation replication jobs (sidekiq)
+    - https://preservation-catalog-web-prod-01.stanford.edu/queues/
   - dor-services-app (sidekiq, rabbitmq):
-    - https://dor-services-prod.stanford.edu/queues/
+    - https://dor-services-prod.stanford.edu/queues
     - https://sul-rabbit-prod.stanford.edu/#/queues
       - for credentials, see https://github.com/sul-dlss/shared_configs/blob/dor-services-app-prod/config/settings/production.yml
   - dor-indexing-app (rabbitmq):

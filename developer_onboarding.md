@@ -28,7 +28,7 @@ Note: As a mentor, your responsibility is to help the new hire to go through the
 - Ensure that both the mentor and the supervisor of the new hire are present for their first day.
 
 ## Ongoing Tasks
-- [__Pair programming__](https://github.com/sul-dlss/DeveloperPlaybook/blob/master/best-practices/pair_programming.md)
+- [__Pair programming__](/best-practices/pair_programming.md)
 - Check in at least twice a day
 - Taking the new hires to meetings & standups
 - Ensure they can find lunch
