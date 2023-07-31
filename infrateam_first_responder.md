@@ -145,7 +145,7 @@ We currently do not have an automatic update mechanism for our Java projects.
 
 ## Sign Up for Your Next First Responder Shift
 
-The infrastructure team has 9 developers, so you should be taking a shift every 9 or so weeks.
+The infrastructure team has 8 developers, so you should be taking a shift every 6 or so weeks.
 * Schedule:  https://docs.google.com/spreadsheets/u/1/d/13TJR93Yc9_eF5B7w4XDx6ggG_wb3aLkgCHjpLwmHPBA/
 
 ## Proactively Check for Production Problems
