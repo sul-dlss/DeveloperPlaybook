@@ -18,6 +18,7 @@
 - [Updating Ruby](/best-practices/updating-ruby.md)
 - [Version Control](/best-practices/version_control.md)
 - [Accessibility (Infrastructure)](/best-practices/infra-accessibility.md)
+- [Resetting the db for a deployed Rails application](/best-practices/db_reset.md)
 
 Best practices guides should attempt to answer the question:
 
