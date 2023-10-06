@@ -29,7 +29,7 @@ psql
 
 Note:
 * The db server may be local (i.e., the same as the server running the Rails application) or a separate, dedicated server.
-* If local, execute the following before running puppet: `source /etc/profile.d/rvm.sh`
+* If local, execute the following before running puppet: `source /etc/profile.d/rvm.sh && rvm use system`
 
 4. Migrate: `RAILS_ENV=production bundle exec rails db:migrate`
 
