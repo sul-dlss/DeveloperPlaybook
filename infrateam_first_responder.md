@@ -168,7 +168,7 @@ Nagios alerts (https://sul-nagios-prod.stanford.edu/nagios/  The Services link i
 ### Monitor Grafana Dashboards
 Grafana dashboards provided detailed statistics / instrumentation / performance monitoring.
 * [Solr](https://sulstats.stanford.edu/d/sul-solr-overview/sul-solr?orgId=1)
-* [DOR Services App DB](https://sulstats.stanford.edu/d/000000039/postgresql-database?orgId=1&refresh=10s&var-DS_PROMETHEUS=Prometheus&var-interval=$__auto_interval_interval&var-namespace=&var-release=&var-instance=workflow-service-db-prod.stanford.edu:9187&var-datname=All&var-mode=All)
+* [DOR Services App DB](https://sulstats.stanford.edu/d/000000039/postgresql-database?orgId=1&refresh=10s&var-DS_PROMETHEUS=Prometheus&var-interval=$__auto_interval_interval&var-namespace=&var-release=&var-instance=dor-services-app-db-prod-a.stanford.edu:9187&var-datname=All&var-mode=All)
 * [Workflow Service DB](https://sulstats.stanford.edu/d/000000039/postgresql-database?orgId=1&refresh=10s&var-DS_PROMETHEUS=Prometheus&var-interval=$__auto_interval_interval&var-namespace=&var-release=&var-instance=workflow-service-db-prod.stanford.edu:9187&var-datname=All&var-mode=All)
 
 ### Other Duties as Assigned
