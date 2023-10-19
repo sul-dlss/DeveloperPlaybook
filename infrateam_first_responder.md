@@ -165,6 +165,11 @@ Nagios alerts (https://sul-nagios-prod.stanford.edu/nagios/  The Services link i
     * [All services](https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-qa&style=detail)
     * [Service alerts](https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-qa&style=detail&servicestatustypes=28&hoststatustypes=15)
 
+### Monitor Grafana Dashboards
+Grafana dashboards provided detailed statistics / instrumentation / performance monitoring.
+* [Solr](https://sulstats.stanford.edu/d/sul-solr-overview/sul-solr?orgId=1)
+* [DOR Services App DB](https://sulstats.stanford.edu/d/000000039/postgresql-database?orgId=1&refresh=10s&var-DS_PROMETHEUS=Prometheus&var-interval=$__auto_interval_interval&var-namespace=&var-release=&var-instance=workflow-service-db-prod.stanford.edu:9187&var-datname=All&var-mode=All)
+* [Workflow Service DB](https://sulstats.stanford.edu/d/000000039/postgresql-database?orgId=1&refresh=10s&var-DS_PROMETHEUS=Prometheus&var-interval=$__auto_interval_interval&var-namespace=&var-release=&var-instance=workflow-service-db-prod.stanford.edu:9187&var-datname=All&var-mode=All)
 
 ### Other Duties as Assigned
 * Management may choose to have the first responder handle a non-project work ticket
