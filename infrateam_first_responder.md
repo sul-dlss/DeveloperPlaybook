@@ -170,6 +170,7 @@ Grafana dashboards provided detailed statistics / instrumentation / performance 
 * [Solr](https://sulstats.stanford.edu/d/sul-solr-overview/sul-solr?orgId=1)
 * [DOR Services App DB](https://sulstats.stanford.edu/d/000000039/postgresql-database?orgId=1&refresh=10s&var-DS_PROMETHEUS=Prometheus&var-interval=$__auto_interval_interval&var-namespace=&var-release=&var-instance=dor-services-app-db-prod-a.stanford.edu:9187&var-datname=All&var-mode=All)
 * [Workflow Service DB](https://sulstats.stanford.edu/d/000000039/postgresql-database?orgId=1&refresh=10s&var-DS_PROMETHEUS=Prometheus&var-interval=$__auto_interval_interval&var-namespace=&var-release=&var-instance=workflow-service-db-prod.stanford.edu:9187&var-datname=All&var-mode=All)
+* [Apache](https://sulstats.stanford.edu/d/c558ecce-310d-465a-aa7d-787a74cc3cbd/apache-via-prometheus?orgId=1&refresh=1m): Various servers are available under "host".
 
 ### Other Duties as Assigned
 * Management may choose to have the first responder handle a non-project work ticket
