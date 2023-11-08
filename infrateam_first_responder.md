@@ -172,6 +172,13 @@ Grafana dashboards provided detailed statistics / instrumentation / performance 
 * [Workflow Service DB](https://sulstats.stanford.edu/d/000000039/postgresql-database?orgId=1&refresh=10s&var-DS_PROMETHEUS=Prometheus&var-interval=$__auto_interval_interval&var-namespace=&var-release=&var-instance=workflow-service-db-prod.stanford.edu:9187&var-datname=All&var-mode=All)
 * [Apache](https://sulstats.stanford.edu/d/c558ecce-310d-465a-aa7d-787a74cc3cbd/apache-via-prometheus?orgId=1&refresh=1m): Various servers are available under "host".
 
+### Check the logs
+SDR logs are aggregated in AWS Cloudwatch. To view/search them, log into AWS Console as `ReadOnlyRole@sul-dlss-production` in `us-west-2`. Logs are in the following log groups:
+
+* sdr-production
+* sdr-stage
+* sdr-qa
+
 ### Other Duties as Assigned
 * Management may choose to have the first responder handle a non-project work ticket
   * If so, ensure you assign the ticket to yourself and put it in the "in progress" column of [the team's production priorities board](https://github.com/orgs/sul-dlss/projects/58)
