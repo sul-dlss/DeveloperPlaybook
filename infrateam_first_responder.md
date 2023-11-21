@@ -43,16 +43,12 @@ If on a Mac, you will get better results if you stay in the same "space" as the 
 
 1. **Warn #dlss-infra-chg-mgmt** of the impending deployment to prod.
 
-2. **Turn Off Google Books when deploying to production** at https://sul-gbooks-prod.stanford.edu/features. This avoids failed deposit due to a temporary Cocina model mismatch. Unlike other applications, the deposits will fail without retry and require manual remediation.
-
-3. **Deploy the tag you created above to prod** using `sdr-deploy`.
+2. **Deploy the tag you created above to prod** using `sdr-deploy`.
 
   Note that the deployment script will
   - pull the latest repo content from github
   - check cocina-model versions for agreement
   - open the Nagios dashboard for the environment
-
-4. **Turn On Google Books again** when deployment is complete and statuses are clear.
 
 ##### 5. Deploy to QA
 
