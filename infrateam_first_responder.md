@@ -11,6 +11,8 @@ The first responder needs to make sure that all codebases needing updates have u
 
 Run the `merge-all` script to automatically merge all dependency update PRs: https://github.com/sul-dlss/access-update-scripts/blob/master/merge-all.rb. Note that this script will only work with Ruby 2.6 or greater.  See the comments at the top for how to run and note you will need a github access token if you haven't previously created one.  Instructions for creating a token are here:  https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line   Save your token somewhere secure for re-use since you won't be able to view it in the Github interface again.
 
+It can be helpful to scan the list of PRs generated in Slack.  If you notice some projects don't have a PR even though the list of updated gems suggest they should, you can look at the log output of the dependecy update script: https://sul-ci-prod.stanford.edu/job/SUL-DLSS/job/access-update-scripts/job/master/  One potential problem would be an older unmerged or existing `update-dependencies` branch that prevented the creation of a new one by the script.
+
 #### Deploy 'em
 
 Use the `sdr-deploy` CLI, from your laptop, to deploy all infrastructure projects via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy.
