@@ -43,8 +43,6 @@ If on a Mac, you will get better results if you stay in the same "space" as the 
 
 ##### 4. Deploy to prod
 
-NOTE: if you are also rolling out a new cocina-models update with the deployments, please [disable Google Books in production](https://sul-gbooks-prod.stanford.edu/features) before the deploy, and re-enable afterwards (notifying in the slack #google-books channel).  This avoids failed deposit due to a temporary Cocina model mismatch. Unlike other applications, the deposits will fail without retry and require manual remediation.
-
 1. **Warn #dlss-infra-chg-mgmt** of the impending deployment to prod.
 
 2. **Deploy the tag you created above to prod** using `sdr-deploy`.
