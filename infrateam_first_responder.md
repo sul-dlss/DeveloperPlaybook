@@ -15,9 +15,61 @@ It can be helpful to scan the list of PRs generated in Slack.  If you notice som
 
 #### Deploy 'em
 
-Use the `sdr-deploy` CLI, from your laptop, to deploy all infrastructure projects via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy.
+Use the `sdr-deploy` CLI, from the sdr-infra server, to deploy all infrastructure projects via capistrano to deployed environments: https://github.com/sul-dlss/sdr-deploy.
 
-Note that you will need to be sure you can ssh into each of the VMs from your laptop. (See the [sdr-deploy README](https://github.com/sul-dlss/sdr-deploy/blob/main/README.md) for more about how to use the `check_ssh` command to do this.)
+Note that you will need to be sure you can ssh into each of the VMs from sdr-infra. (See the [sdr-deploy README](https://github.com/sul-dlss/sdr-deploy/blob/main/README.md) for more about how to use the `check_ssh` command to do this.)
+
+##### 1. Setup sdr-infra for deploying
+
+###### Login with Multi-factor Authentication (MFA)
+
+From your laptop:
+```
+ssh -t sdr-infra.stanford.edu
+```
+Note: the `-t` is important here to forward your ssh agent key(s) Once logged in you can verify your key(s) are available with `ssh-add -L` and compare to your local output.
+
+You will be presented with an MFA Challenge:
+```
+(amcollie@sdr-infra.stanford.edu) Duo two-factor login for amcollie
+
+Enter a passcode or select one of the following options:
+
+ 1. Duo Push to XXX-XXX-####
+ 2. Phone call to XXX-XXX-####
+ 3. SMS passcodes to XXX-XXX-####
+
+Passcode or option (1-3):
+```
+
+Select your MFA option.
+
+###### Set your bundler path
+
+Individual user accounts do not have write access to the default bundler path
+so set the path in your local config. Example:
+
+```
+bundle config --global path /home/[username]/.vendor/bundle
+```
+
+###### Setup Github Authentication through forwarding
+
+Follow the [Github Documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) if you need to establish new ssh keys.
+
+1. Enable Agent fowarding in your `.ssh/config` file. Mine looks like:
+```
+Host * *.stanford.edu
+ GSSAPIAuthentication yes
+ GSSAPIDelegateCredentials yes
+ UseKeychain yes
+ ForwardAgent yes
+ ```
+(The `ForwardAgent yes` bit is the addition)
+
+###### Enable Sidekiq gem installation
+
+Set the `BUNDLE_GEMS__CONTRIBSYS__COM` ENV variable (copy the value that you have set on your laptop)
 
 ##### 1. Create a release tag
 
