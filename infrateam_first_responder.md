@@ -15,9 +15,7 @@ It can be helpful to scan the list of PRs generated in Slack.  If you notice som
 
 #### Deploy 'em
 
-Use the `sdr-deploy` CLI, from the sdr-infra server (see the [README](https://github.com/sul-dlss/sdr-deploy) for instructions) to deploy all infrastructure projects via capistrano to deployed environments.
-
-Note that you will need to be sure you can ssh into each of the VMs from sdr-infra. (See the [sdr-deploy README](https://github.com/sul-dlss/sdr-deploy/blob/main/README.md) for more about how to use the `check_ssh` command to do this.)
+Use the `sdr-deploy` CLI to deploy all infrastructure portfolio projects to deployed environments. This CLI can be used either on the `sdr-infra` server, or from your laptop (if you've set up SSH with multiplexing and proxy jump per [playbook documentation of common SSH configuration](/best-practices/ssh_configuration.md)). See the [`sdr-deploy` README](https://github.com/sul-dlss/sdr-deploy) for more about how to use the CLI for mass deploys, and how to use the CLI's `check_ssh` command to verify access to all of the VMs in a given environment.
 
 ##### 1. Create a release tag
 
