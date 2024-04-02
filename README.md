@@ -11,6 +11,7 @@ A place to organize style guides, best practices, tools, and techniques for Stan
   - [How To - Readme](/best-practices/howto_readme.md)
   - [Licensing](/best-practices/licensing.md)
   - [Monitoring](/best-practices/monitoring.md)
+  - [SSH Configuration](/best-practices/ssh_configuration.md)
   - [Puppet Prs](/best-practices/puppet_prs.md)
   - [Releasing Gems](/best-practices/releasing_gems.md)
   - [Using robots.txt](/best-practices/robots_txt.md)

@@ -59,7 +59,7 @@ Note: As a mentor, your responsibility is to help the new hire to go through the
     - ruby version manager
     - ssh config / kinit
     - VPN
-  - kerb/ssh setup: https://consul.stanford.edu/display/dlssdev/New+Developer+Setup
+  - [kerb/ssh setup](/best-practices/ssh_configuration.md)
   - Ruby on mac setup: https://gorails.com/setup
 - Go to bookstore to buy peripherals (show them PCard docs)
 - Meet with Expert Partner (EP) and get run down of encryption/configuration
