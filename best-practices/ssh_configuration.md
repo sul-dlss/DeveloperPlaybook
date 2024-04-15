@@ -11,17 +11,22 @@ Things you'll need to know before applying the configuration below:
 ```ssh-config
 # ~/.ssh/config
 
+# Ignore platform-specific options. This is intentionally the first line.
+IgnoreUnknown GSSAPIKeyExchange,GSSAPIClientIdentity,UseKeychain
+
 # First, set up a jump/bastion host. You'll generally want your SSH config ordered from more
 # specific `Host` entries to less specific ones due to how the configs are applied (first matching).
-Host sdr-infra # If your team doesn't use `sdr-infra`, you probably want `dlss-ci-prod` here
+#
+# If your team doesn't use `sdr-infra`, you probably want `dlss-ci-prod` here
+Host sdr-infra
     # Start multiplexing if no current master, else use current master
     ControlMaster auto
     # Path to unique socket file based on username, hostname, and port
     ControlPath ~/.ssh/%r@%h:%p
     # How long to keep jump host connection persisted, tune this for your needs
     ControlPersist 1h
-    # Host name of jump/bastion host
-    HostName sdr-infra.stanford.edu # You might prefer dlss-ci-prod.stanford.edu here.
+    # Host name of jump/bastion host (you might prefer dlss-ci-prod.stanford.edu here)
+    HostName sdr-infra.stanford.edu
     # Prevent an endless proxy jump loop
     ProxyJump none
 
@@ -37,15 +42,13 @@ Host *.stanford.edu
     GSSAPIDelegateCredentials yes
     # Set up Kerberos key exchange (Linux-only option)
     GSSAPIKeyExchange yes
-    # Set a jump/bastion host for Stanford SSH connections
-    ProxyJump sdr-infra # You might prefer dlss-ci-prod here.
+    # Set a jump/bastion host for Stanford SSH connections (you might prefer dlss-ci-prod here)
+    ProxyJump sdr-infra
     # Set a default username for Stanford SSH connections (no `@stanford.edu`)
     User YOUR_SUNET_ID
 
 # Finally, apply settings to all SSH connections unless overridden above
 Host *
-    # Ignore platform-specific options. This is intentionally the first setting in the `Host *` block`
-    IgnoreUnknown GSSAPIKeyExchange,GSSAPIClientIdentity,UseKeychain
     # Specify domain names to be used by CanonicalizeHostname below
     CanonicalDomains stanford.edu
     # Append a domain name (above) to hostnames w/o domains and re-apply configs above to fully-qualified hostname
@@ -54,6 +57,6 @@ Host *
     AddKeysToAgent yes
     # Store SSH passphrases in the keychain (MacOS-only option)
     UseKeychain yes
-    # Path to your private SSH key
-    IdentityFile ~/.ssh/id_ed25519 # or e.g. ~/.ssh/id_rsa
+    # Path to your private SSH key (or, e.g., ~/.ssh/id_rsa)
+    IdentityFile ~/.ssh/id_ed25519
 ```
