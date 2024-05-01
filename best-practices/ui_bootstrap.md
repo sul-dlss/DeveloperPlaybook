@@ -1,6 +1,6 @@
-# Twitter Bootstrap
+# Bootstrap
 
-When building front-end interfaces, we should use [Twitter Bootstrap](http://getbootstrap.com/) to provide a base layout, common user interface components, and easily sharable SUL branding and look and feel across DLSS projects.
+When building front-end interfaces, we should use [Bootstrap](http://getbootstrap.com/) to provide a base layout, common user interface components, and easily sharable SUL branding and look and feel across DLSS projects.
 
 Projects should override bootstrap variables (following SCSS conventions) to customize the Bootstrap theme, e.g.:
 
@@ -17,7 +17,7 @@ $btn-primary-border: darken($btn-primary-bg, 9.8%);
 
 ## Additional Recommendations for Rails projects
 
-Rails projects should use the [`bootstrap-sass`](https://github.com/twbs/bootstrap-sass) and [`bootstrap_form`](https://github.com/bootstrap-ruby/rails-bootstrap-forms) gems, which integrate well with the Rails asset pipeline and Rails form helpers.
+Rails projects should use the [`bootstrap`](https://github.com/twbs/bootstrap) and [`bootstrap_form`](https://github.com/bootstrap-ruby/rails-bootstrap-forms) gems, which integrate well with the Rails asset pipeline and Rails form helpers.
 
 ## Examples
 
