@@ -47,7 +47,7 @@ hydra_etd has a submit_marc queue for CreateStubMarcRecordJob, with its own proc
 
 
 ### Before the rollover
-* Quiet the relevant processes which monitor queues for jobs that update FOLIO. Quieting queues means that they finish any in-flight jobs and don't pick up any more jobs. Use the Sidekiq UI to quiet the queue by using the "Pause" button.
+* Quiet the relevant processes which monitor queues for jobs that update FOLIO. Quieting queues means that they finish any in-flight jobs and don't pick up any more jobs. Use the Sidekiq UI "Quiet" button to quiet the queue.
   * releaseWF_update-marc_dsa queue: https://robot-console-prod.stanford.edu/busy
   * ETD process monitoring the submit_marc queue. https://etd.stanford.edu/queues/busy
 
