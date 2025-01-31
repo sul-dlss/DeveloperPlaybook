@@ -10,15 +10,13 @@ All projects should have a `README.md` file. This file should try to answer the 
 - How to run the tests
 - Include relevant badges:
     - Build status
-      - [TravisCI](http://docs.travis-ci.com/user/status-images/); or
+      - [GitHub](https://github.com/features/actions); or
       - [CircleCI](https://circleci.com/docs/2.0/status-badges/)
     - Current version (if a published package)
       - E.g., if Ruby: [Gem Version](http://badge.fury.io/for/rb)
     - Test coverage
-      - [CodeClimate](https://codeclimate.com/); or
-      - Coveralls (though CodeClimate is preferred as of 2020)
-    - Code quality
-      - CodeClimate
+      - [CodeCov](https://app.codecov.io); or
+      - [CodeClimate](https://codeclimate.com/)
     - API validation (if project declares an HTTP API using the [OpenAPI Specification](http://spec.openapis.org/oas/v3.0.2))
       - [OpenAPI validator](http://validator.swagger.io/validator)
     - Docker image (if project publishes one or more docker images)

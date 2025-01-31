@@ -14,8 +14,8 @@ Use the [config](https://github.com/railsconfig/config) gem for configuration ma
 ## Continuous Integration
 Projects should have implemented continuous integration. The following services are used often:
 
- - [travis-ci](https://travis-ci.com/) or [CircleCI](https://circleci.com/) for running test suites
- - [codeclimate](https://codeclimate.com/) for code coverage and code quality
+ - [GitHub](https://github.com/features/actions) or [CircleCI](https://circleci.com/) for running test suites
+ - [CodeCov](https://app.codecov.io) or [CodeClimate](https://codeclimate.com/) for test coverage
 
 ## Application Monitoring
 See [Monitoring](/best-practices/monitoring.md).
