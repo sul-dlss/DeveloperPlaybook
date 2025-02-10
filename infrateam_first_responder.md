@@ -54,6 +54,10 @@ If on a Mac, you will get better results if you stay in the same "space" as the 
 
 To complete the cycle, and ensure QA has the common environment, deploy there as well. Then, **warn #dlss-infra-stage-qa-use** of the impending deployment to QA in case there is active testing going on; if so, be sure to either skip that app or coordinate with tester and then deploy the tag you created above to QA using `sdr-deploy`.
 
+##### 6. Deploy to AWS
+
+The [speech-to-text](https://github.com/sul-dlss/speech-to-text) project is deployed automatically to qa and stage environments in AWS when a version is tagged `rel-YYYY-MM-DD`. If the integration tests runs clean then you can trigger a production deploy by manually [creating a release](https://github.com/sul-dlss/speech-to-text/releases/new) in Github, using the `rel-YYYY-MM-DD` tag.
+
 ### Notify Coverage for Following Week
 
 Set Slack reminders in `#dlss-infrastructure` for next week's Monday morning. The reminders should indicate [who is first responder](https://docs.google.com/spreadsheets/d/13TJR93Yc9_eF5B7w4XDx6ggG_wb3aLkgCHjpLwmHPBA/) and who is on deck for that week, and should be set for 3 am Pacific time/6 am Eastern, so that the east coast early risers don't have to wait for it.
