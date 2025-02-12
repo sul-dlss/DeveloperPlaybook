@@ -6,6 +6,8 @@ When Folio is upgraded, SDR integrations should be tested.  This is typically do
 
 The following are some tests that can be done to verify the SDR integrations continue to work as expected.  It is not necessarily exhaustive, but will cover the major touch points.
 
+Note: it is possible that the data in Folio stage may not match the data in Argo stage, which will lead to barcodes/instance HRIDs in argo stage that are not found in Folio stage.  This may be because the data in Folio stage was replaced with a snapshot of Folio prod data.  This may mean you will need to ask for help in #sdr-operations or #libsys-infra-folio-integration to find example objects to work with (or trying looking in Argo prod for relevant objects).
+
 ### Integration Tests
 
 Run the following infrastructure integration tests and ensure they pass:
@@ -16,7 +18,7 @@ Run the following infrastructure integration tests and ensure they pass:
 
 ### Searchworks Release
 
-1. Find an item in Argo stage with a Folio Instance HRID, so that it can be released.
+1. Find an item in Argo stage with a Folio Instance HRID, so that it can be released.  Here is one example: https://argo-stage.stanford.edu/view/druid:bc930hq4019, ask in #sdr-operations or #libsys-infra-folio-integration for others).
 2. Go to Folio stage (folio-stage.stanford.edu) (presuming this is the environment that was upgraded and you are testing) and find the record via the Folio Instance HRID by using the "Inventory" search feature in Folio.  Check to see if it has PURL URL already listed in the record details.  It will be under a heading called "Electronic Access" as a resource (you will need to scroll down to find this section).  If a URL exists, the item has already been released...if not, it has not been released.  A non-released item is best.
 3. Back in Argo, use the "Manage release" button to release the item to Searchworks.  Verify that the job completes successfully and then on the item details page, verify that the releaseWF completed successfully.
 4. Back in Folio stage, refresh the item details and verify the electronic resource PURL now appears in the record.
@@ -24,12 +26,12 @@ Run the following infrastructure integration tests and ensure they pass:
 
 ### Google Books Barcode Lookup
 
-1. Find an item with a barcode in Argo stage.
+1. Find an item with a barcode in Argo stage (see also the note above about how data may not match with Folio stage).  https://argo-stage.stanford.edu/catalog?all=true&f%5Bidentifiers%5D%5B%5D=has_barcode
 2. Go to the google-books stage VM and on the rails console, lookup the record for this barcode, e.g.
 
 `FolioClient.fetch_marc_xml(barcode: '36105123784501')`
 
-You should get an XML back.
+You should get an XML record back.
 
 ### ETD Catalog Status Check
 
