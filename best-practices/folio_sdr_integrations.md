@@ -18,7 +18,7 @@ Run the following infrastructure integration tests and ensure they pass:
 
 ### Searchworks Release
 
-1. Find an item in Argo stage with a Folio Instance HRID, so that it can be released.  Here is one example: https://argo-stage.stanford.edu/view/druid:bc930hq4019, ask in #sdr-operations or #libsys-infra-folio-integration for others).
+1. Find an item in Argo stage with a Folio Instance HRID, so that it can be released.  Here is one example: https://argo-stage.stanford.edu/view/druid:bc930hq4019, ask in #sdr-operations or #libsys-infra-folio-integration for others.
 2. Go to Folio stage (folio-stage.stanford.edu) (presuming this is the environment that was upgraded and you are testing) and find the record via the Folio Instance HRID by using the "Inventory" search feature in Folio.  Check to see if it has PURL URL already listed in the record details.  It will be under a heading called "Electronic Access" as a resource (you will need to scroll down to find this section).  If a URL exists, the item has already been released...if not, it has not been released.  A non-released item is best.
 3. Back in Argo, use the "Manage release" button to release the item to Searchworks.  Verify that the job completes successfully and then on the item details page, verify that the releaseWF completed successfully.
 4. Back in Folio stage, refresh the item details and verify the electronic resource PURL now appears in the record.
