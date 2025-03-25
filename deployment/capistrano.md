@@ -8,7 +8,7 @@ We maintain [`dlss-capistrano`](https://github.com/sul-dlss/dlss-capistrano), a 
 
 - `capistrano/one_time_key`, for integrating Capistrano with our kerberos-based environment;
 - `capistrano/bundle_audit`, for checking applications for known security vulnerabilities before launching.
-- `capistrano/shared_configs`, for getting the latest relevant files from our [shared_configs](https://github.com/sul-dlss/shared_configs) repo as part of deployment.
+- `capistrano/shared_configs`, for getting the latest relevant files from our [shared_configs](/best-practices/shared_configs.md) repo as part of deployment.
 
 Other common plugins (not bundled in `dlss-capistrano`) include:
 

@@ -9,7 +9,8 @@ DLSS projects should be open source by default. See [licensing](/best-practices/
 We use capistrano for deployment. [More information](deployment.md)
 
 ## Configuration
-Use the [config](https://github.com/railsconfig/config) gem for configuration management. Use [shared-configs](https://github.com/sul-dlss/shared_configs) to store senstive data.
+Use the [config](https://github.com/railsconfig/config) gem for configuration management. Use [Vault](https://consul.stanford.edu/x/uYGqCQ) to store sensitive data, not [shared_configs](/best-practices/shared_configs.md
+).
 
 ## Continuous Integration
 Projects should have implemented continuous integration. The following services are used often:
