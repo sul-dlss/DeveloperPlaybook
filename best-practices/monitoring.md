@@ -9,7 +9,7 @@ Go to [honeybadger UI](https://app.honeybadger.io/projects) and click "Add a Pro
 
 The [honeybadger docs](https://docs.honeybadger.io/ruby/integration-guides/rails-exception-tracking.html) contain instructions for how to set it up in a Rails application, but there is a wrinkle to consider as you do so. The instructions point out that installing will "[g]enerate a config/honeybadger.yml file. If you don't like config files, you can place your API key in the $HONEYBADGER_API_KEY environment variable."
 
-If you decide on the former approach, you will want to set up your honeybadger config file in [sul-dlss/shared_configs](https://github.com/sul-dlss/shared_configs). If you would like to use environment variables instead, you will need some assistance from operations to encrypt your project's API key and set up the necessary environment variables via [sul-dlss/puppet](https://github.com/sul-dlss/puppet).
+If you decide on the former approach, you will want to set up your honeybadger config file in [shared_configs](/best-practices/shared_configs.md). If you would like to use environment variables instead, you should store your project's API key in [Vault](https://consul.stanford.edu/x/uYGqCQ) and set up the necessary environment variables via [sul-dlss/puppet](https://github.com/sul-dlss/puppet).
 
 ### Checkins
 
@@ -20,7 +20,7 @@ Some projects that define cron jobs (configured via the whenever gem) are integr
 Cron check-ins are typically configured in the following locations:
 1. `config/schedule.rb`: This specifies which cron jobs check-in and what setting keys to use for the checkin key. See this file for more details.  It often defines a custom task that wraps running rake or rails runner along with the curl needed to perform the checkin.
 2. `config/settings.yml`: Stubs out a Honeybadger check-in key for each cron job. Since we may not want to have a check-in for all environments, this stub key will be used and produce a null check-in.  The actual keys are created in the Honeybadger project when you create a specific check-in in the Checkin tab in HB.
-3. `config/settings/production.yml` in shared_configs: This contains the actual check-in keys (per environment for any environment that should actually checkin, usually production).
+3. `config/settings/production.yml` in [shared_configs](/best-practices/shared_configs.md): This contains the actual check-in keys (per environment for any environment that should actually checkin, usually production).
 4. HB notification page: Check-ins are configured per project in HB. To configure a check-in, the cron schedule will be needed, which can be found with `bundle exec whenever`. After a check-in is created, the check-in key will be available. (If the URL is `https://api.honeybadger.io/v1/check_in/rkIdpB` then the check-in key will be `rkIdpB`).
 
 Some examples below:

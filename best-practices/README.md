@@ -12,6 +12,7 @@
 - [Puppet Prs](/best-practices/monitoring.md)
 - [Releasing Gems](/best-practices/releasing_gems.md)
 - [Setting Up Rails Projects](/best-practices/setting_up_rails_projects.md)
+- [Shared Configs](/best-practices/shared_configs.md)
 - [Testing](/best-practices/testing.md)
 - [UI/Bootstrap](/best-practices/ui_bootstrap.md)
 - [Updating NodeJS](/best-practices/updating-nodejs.md)
