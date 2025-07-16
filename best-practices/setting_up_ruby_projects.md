@@ -6,7 +6,7 @@ Many of the DLSS software projects are [Rails](http://rubyonrails.org/) applicat
 DLSS projects should be open source by default. See [licensing](/best-practices/licensing.md). Developers should _never_ check in api keys or private information (see `Configuration` section below). If you have any questions, check with fellow developers first.
 
 ## Deployment
-We use [capistrano](deployment.md) for deployment
+We use [Capistrano](/deployment/capistrano.md) for deployment
 
 ## Configuration
 Use the [ruby config](https://github.com/railsconfig/config) gem for configuration management and [shared_configs](/best-practices/shared_configs.md
