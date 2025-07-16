@@ -15,7 +15,7 @@ A place to organize style guides, best practices, tools, and techniques for Stan
   - [Puppet PRs](/best-practices/puppet_prs.md)
   - [Releasing Gems](/best-practices/releasing_gems.md)
   - [Using robots.txt](/best-practices/robots_txt.md)
-  - [Setting Up Rails Projects](/best-practices/setting_up_rails_projects.md)
+  - [Setting Up Ruby Projects](/best-practices/setting_up_ruby_projects.md)
   - [Shared Configs](/best-practices/shared_configs.md)
   - [Testing](/best-practices/testing.md)
   - [UI/Bootstrap](/best-practices/ui_bootstrap.md)
