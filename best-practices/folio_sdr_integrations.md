@@ -66,7 +66,7 @@ When all of FOLIO (or its Okapi API gateway) are taken down for maintenance, SDR
 ### After downtime
 * Restart the processes on dor-services-app and hydra_etd:
 
-`bundle exec cap sidekiq_systemd:restart`
+`bundle exec cap <env> sidekiq_systemd:restart`
 
 * Turn Google Books retrieval setting back on.
 * Monitor Sidekiq, Honeybadger, and the Argo workflow grid.
