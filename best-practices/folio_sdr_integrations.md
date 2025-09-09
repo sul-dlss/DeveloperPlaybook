@@ -12,12 +12,14 @@ Note: it is possible that the data in Folio stage may not match the data in Argo
 
 As of Sep 2025, the following apps connect to Folio.  See https://github.com/search?q=org%3Asul-dlss%20gem%20%27folio_client%27&type=code
 
-- DSA
-- Google Books
-- Rialto-orgs
-- Argo
-- Hydra ETD
-- Heracles
+They use the folio-client gem: https://github.com/sul-dlss/folio_client
+
+- DSA - connects to Folio to fetch marc records (to lookup metadata by barcode/key), and write marc records (when released to Searchworks for example)
+- Google Books - connects to Folio to fetch marc records when harvesting google books
+- Rialto-orgs - connects to Folio during scheduled data harvests (every ~2 weeks) to pull information about a users' primary department affiliation
+- Argo - connects to Folio to verify a catalog record exists when a user enters a barcode/key during registration
+- Hydra ETD - connects to Folio to check if an ETD is cataloged, and then to write the stub marc record
+- Heracles ETD - connects to Folio to check if an ETD is cataloged, and then to write the stub marc record
 
 ### Integration Tests
 
