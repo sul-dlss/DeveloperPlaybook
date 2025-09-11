@@ -14,7 +14,7 @@ As of Sep 2025, the following apps connect to Folio.  See https://github.com/sea
 
 They use the folio-client gem: https://github.com/sul-dlss/folio_client
 
-- DSA - connects to Folio to fetch marc records (to lookup metadata by barcode/key), and write marc records (when released to Searchworks for example)
+- DSA - connects to Folio to fetch MARC records (to refresh descriptive metadata or look up metadata by barcode/key), and write to MARC records (when released to Searchworks for example).
 - Google Books - connects to Folio to fetch marc records when harvesting google books
 - Rialto-orgs - connects to Folio during scheduled data harvests (every ~2 weeks) to pull information about a users' primary department affiliation
 - Argo - connects to Folio to verify a catalog record exists when a user enters a barcode/key during registration
