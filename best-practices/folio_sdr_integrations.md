@@ -8,6 +8,19 @@ The following are some tests that can be done to verify the SDR integrations con
 
 Note: it is possible that the data in Folio stage may not match the data in Argo stage, which will lead to barcodes/instance HRIDs in argo stage that are not found in Folio stage.  This may be because the data in Folio stage was replaced with a snapshot of Folio prod data.  This may mean you will need to ask for help in #sdr-operations or #libsys-infra-folio-integration to find example objects to work with (or trying looking in Argo prod for relevant objects).
 
+### Infra Apps Using Folio
+
+As of Sep 2025, the following apps connect to Folio.  See https://github.com/search?q=org%3Asul-dlss%20gem%20%27folio_client%27&type=code
+
+They use the folio-client gem: https://github.com/sul-dlss/folio_client
+
+- DSA - connects to Folio to fetch MARC records (to refresh descriptive metadata or look up metadata by barcode/key), and write to MARC records (when released to Searchworks for example).
+- Google Books - connects to Folio to fetch marc records when harvesting google books
+- Rialto-orgs - connects to Folio during scheduled data harvests (every ~2 weeks) to pull information about a users' primary department affiliation
+- Argo - connects to Folio to verify a catalog record exists when a user enters a barcode/key during registration
+- Hydra ETD - connects to Folio to write a stub MARC record and then check if an ETD is fully cataloged before accessioning.
+- Heracles ETD - connects to Folio to write a stub MARC record and then check if an ETD is fully cataloged before accessioning.
+
 ### Integration Tests
 
 Run the following infrastructure integration tests and ensure they pass:
