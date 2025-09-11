@@ -19,7 +19,7 @@ They use the folio-client gem: https://github.com/sul-dlss/folio_client
 - Rialto-orgs - connects to Folio during scheduled data harvests (every ~2 weeks) to pull information about a users' primary department affiliation
 - Argo - connects to Folio to verify a catalog record exists when a user enters a barcode/key during registration
 - Hydra ETD - connects to Folio to check if an ETD is cataloged, and then to write the stub marc record
-- Heracles ETD - connects to Folio to check if an ETD is cataloged, and then to write the stub marc record
+- Heracles ETD - connects to Folio to write a stub MARC record and then check if an ETD is fully cataloged before accessioning.
 
 ### Integration Tests
 
