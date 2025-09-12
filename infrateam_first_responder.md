@@ -142,10 +142,12 @@ Queue dashboards:
       - for credentials, see https://github.com/sul-dlss/shared_configs/blob/dor-services-app-prod/config/settings/production.yml
   - google books (sidekiq)
     - https://sul-gbooks-prod.stanford.edu/queues
-  - happy-heron (i.e. H2 self deposit)
+  - heracles-etd
+    - mission_control: https://etd.stanford.edu/jobs
+  - hungry-hungry-hippo (i.e. H2 self deposit)
     - rabbitmq: https://sul-rabbit-prod.stanford.edu/#/queues
-      - for credentials, see https://github.com/sul-dlss/shared_configs/blob/sul-h2-prod/config/settings/production.yml
-    - sidekiq: https://sdr.stanford.edu/queues
+      - for credentials, see https://github.com/sul-dlss/shared_configs/blob/sul-h3-prod/config/settings/production.yml
+    - mission_control: https://sdr.stanford.edu/jobs
   - sdr-api (sidekiq)
     - https://sdr-api-prod.stanford.edu/queues
   - techmd service (sidekiq)
