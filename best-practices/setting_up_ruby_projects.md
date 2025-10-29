@@ -19,7 +19,13 @@ Projects should have implemented continuous integration so that proposed code ch
  - [CodeCov](https://app.codecov.io) or [CodeClimate](https://codeclimate.com/) for test coverage
 
 ### CodeCov Integration with GitHub
-We currently have CodeCov configured with access to *selected* repos within the sul-dlss org, not all the repos. To grant access to new repos, add them via the [sul-dlss CodeCov app page on GitHub](https://github.com/organizations/sul-dlss/settings/installations/342140). *Note* that this URL is only accessible to GitHub sul-dlss org owners. You can ask the `#dlss-github-owners` Slack channel for help if you do not have access.
+We currently have CodeCov configured with access to *selected* repos within the sul-dlss org, not all the repos. To get a repository working with CodeCov:
+
+1. add the repo to the codecov app in the org settings for the codecov app.  apps listed here: https://github.com/organizations/sul-dlss/settings/installations (need sul-dlss org owner to do this, ask in #dlss-github-owners channel)
+2. add the CODECOV_TOKEN env var to circle or github actions or wherever CI is run
+3. if the repo isn't one that uses CircleCI and the DLSS ruby-rails orb, set up the codecov reporting step in the CI workflow, after specs run.
+4. put up a PR against the repo
+5. go to branch protection rules for the repo, select edit for main, go to "Require status checks to pass before merging", check that box, then search for the codecov check to add using the text field. save the settings change.
 
 ## Application Monitoring
 See [Monitoring](/best-practices/monitoring.md).
