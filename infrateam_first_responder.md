@@ -96,7 +96,6 @@ All missing production checkins should be addressed. The following are current c
 
 * PresCat: https://app.honeybadger.io/projects/54415/check_ins
 * Sul-Pub: https://app.honeybadger.io/projects/50046/check_ins
-* H2: https://app.honeybadger.io/projects/77112/check_ins
 * WAS Robot Suite: https://app.honeybadger.io/projects/51141/check_ins
 * DSA: https://app.honeybadger.io/projects/50568/check_ins
 * SDR API: https://app.honeybadger.io/projects/67994/check_ins
@@ -146,7 +145,7 @@ Queue dashboards:
     - https://sul-gbooks-prod.stanford.edu/queues
   - heracles-etd
     - mission_control: https://etd.stanford.edu/jobs
-  - hungry-hungry-hippo (i.e. H2 self deposit)
+  - hungry-hungry-hippo (i.e. self deposit)
     - rabbitmq: https://sul-rabbit-prod.stanford.edu/#/queues
       - for credentials, see https://github.com/sul-dlss/shared_configs/blob/sul-h3-prod/config/settings/production.yml
     - mission_control: https://sdr.stanford.edu/jobs
