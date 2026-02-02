@@ -48,7 +48,7 @@ If on a Mac, you will get better results if you stay in the same "space" as the 
   Note that the deployment script will
   - pull the latest repo content from github
   - check cocina-model versions for agreement
-  - open the Nagios dashboard for the environment
+  - open the Zabbix dashboard for the environment
 
 NOTE: The `sul-dlss/rialto-airflow` project has a check (via a capistrano task) to stop the deploy if any DAG is currently running.  This is because the deploy would restart docker and thus kill the running DAG (which we do not want).   This is more likely to happen in production. If this happens, it will look like the deploy has failed (which it has, on purpose).  However, the sdr-deploy deployment script will not show you the reason.  To verify the deployment failed because the DAG was running, you can clone the repo separately (if you don't have it installed already) and then try to deploy it on its own.  The error message will be clearly shown in the capistrano output.  If the reason for the failure is that the DAG is running, you can safely skip the dependency update deploy and let it occur the next time a deployment is done.
 
@@ -157,24 +157,11 @@ Queue dashboards:
   - web-registrar-app (sidekiq)
     - https://was-registrar-app.stanford.edu/queues
 
-### Monitor Nagios
-Nagios alerts (https://sul-nagios-prod.stanford.edu/nagios/  The Services link in left column will give overview of checks.  The Problems->Services tab will give you what’s alerting.)
-  * Production
-    * [All services](https://sul-nagios-prod.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-prod&style=detail)
-    * [Service alerts](https://sul-nagios-prod.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-prod&style=detail&servicestatustypes=28&hoststatustypes=15)
-  * Stage
-    * [All services](https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-stage&style=detail)
-    * [Service alerts](https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-stage&style=detail&servicestatustypes=28&hoststatustypes=15)
-  * QA
-    * [All services](https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-qa&style=detail)
-    * [Service alerts](https://sul-nagios-stage.stanford.edu/nagios/cgi-bin/status.cgi?hostgroup=infrastructure-qa&style=detail&servicestatustypes=28&hoststatustypes=15)
-
-### Monitor Grafana Dashboards
-Grafana dashboards provided detailed statistics / instrumentation / performance monitoring.
-* [Solr](https://sulstats.stanford.edu/d/sul-solr-overview/sul-solr?orgId=1)
-* [DOR Services App DB](https://sulstats.stanford.edu/d/000000039/postgresql-database?orgId=1&refresh=10s&var-DS_PROMETHEUS=Prometheus&var-interval=$__auto_interval_interval&var-namespace=&var-release=&var-instance=dor-services-app-db-prod-a.stanford.edu:9187&var-datname=All&var-mode=All)
-* [Workflow Service DB](https://sulstats.stanford.edu/d/000000039/postgresql-database?orgId=1&refresh=10s&var-DS_PROMETHEUS=Prometheus&var-interval=$__auto_interval_interval&var-namespace=&var-release=&var-instance=workflow-service-db-prod.stanford.edu:9187&var-datname=All&var-mode=All)
-* [Apache](https://sulstats.stanford.edu/d/c558ecce-310d-465a-aa7d-787a74cc3cbd/apache-via-prometheus?orgId=1&refresh=1m): Various servers are available under "host".
+### Monitor Zabbix
+[Zabbix](https://dlss-zabbix.stanford.edu/zabbix.php?action=dashboard.list) provides monitoring of servers. (This is a replacement for Nagios.)
+  * Production: https://dlss-zabbix.stanford.edu/zabbix.php?action=dashboard.view&dashboardid=397
+  * Stage: https://dlss-zabbix.stanford.edu/zabbix.php?action=dashboard.view&dashboardid=399
+  * QA: https://dlss-zabbix.stanford.edu/zabbix.php?action=dashboard.view&dashboardid=398
 
 ### Check the logs
 SDR logs are aggregated in AWS Cloudwatch. To view/search them, log into AWS Console as `ReadOnlyRole@sul-dlss-production` in `us-west-2`. Logs are in the following log groups:
