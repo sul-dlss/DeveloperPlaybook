@@ -15,7 +15,7 @@ Shared configs should be used for settings that vary by deployment environment. 
 * All usernames / passwords / secrets: should be put in vault and set in puppet as env variables.
 * Settings that must be env variables: should be set in puppet (e.g., TMPDIR).
 * Honeybadger configuration: common Honeybadger configuration should be set in `config/honeybadger.yml` stored in the repo; environment specific Honeybadger settings should be set as env variables in puppet.
-* Settings that don't vary by environment: common configuration should be set in `settings.yml` stored in the repo.
+* Settings that don't vary by environment: common configuration should be set in `config/settings.yml` stored in the repo.
 
 ## Searching shared_configs branches
 
