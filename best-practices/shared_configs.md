@@ -8,6 +8,15 @@ Most of our Ruby-based projects use a convention we call "shared configs," which
 
 For more information about how to set up shared_configs or how it all works, see [the shared_configs README](https://github.com/sul-dlss/shared_configs).
 
+## Use of shared configs (Infra team practice)
+
+Shared configs should be used for settings that vary by deployment environment. This excludes the following:
+
+* All usernames / passwords / secrets: should be put in vault and set in puppet as env variables.
+* Settings that must be env variables: should be set in puppet (e.g., TMPDIR).
+* Honeybadger configuration: common Honeybadger configuration should be set in `config/honeybadger.yml` stored in the repo; environment specific Honeybadger settings should be set as env variables in puppet.
+* Settings that don't vary by environment: common configuration should be set in `config/settings.yml` stored in the repo.
+
 ## Searching shared_configs branches
 
 Because shared_configs is a large collection of unrelated git branches and the GitHub web user interface only allows searching against the HEAD branch of a repository, you might want to search your local checkout instead. For instance, when trying to answer questions about how many or which services are pointing at a particular API or URL. To do this, you might consider copy/pasting this script into an executable file on your PATH:
