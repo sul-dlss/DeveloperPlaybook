@@ -1,55 +1,42 @@
 # Background Processing at DLSS
 
-There are many tools that provide background processing for Rails/Ruby-based applications. At DLSS,
-we use [Sneakers](https://github.com/jondot/sneakers) and [Sidekiq](http://sidekiq.org/).
+There are several tools that provide background processing for Rails/Ruby-based applications. At DLSS,
+we use [Sidekiq](http://sidekiq.org/), [Solid Queue](https://github.com/rails/solid_queue), and [Kicks (FKA Sneakers)](https://github.com/ruby-amqp/kicks).
 
 ## Sidekiq
 
 Sidekiq relies on Redis for queue management and uses threads to run its jobs in the same process. This means that if there is any chance of your background jobs stepping on one another, you need to ensure that both your code and the gems that your code uses when processing background jobs are thread-safe. A common example of non-thread-safe code is `Dir.chdir` and the `Timeout` library. Avoid using these entirely.
 
-It's fairly common to run Redis on its own server. If you do this, you need to know that Redis
-doesn't have any notion of separate "accounts". The implication is that if several applications
-share the same Redis server for ease of administration, they may step on each other and wipe out
-each other's data if you're not careful. The
-[redis-namespace gem](https://github.com/resque/redis-namespace) can help alleviate some of this
-issue. There also seems to be a higher risk that you'll experience
-[performance problems](https://redislabs.com/blog/benchmark-shared-vs-dedicated-redis-instances#.V7IfjrVrgUE)
-when running shared Redis instances.
+Contributed Systems (ContribSys), the organization behind Sidekiq, offers paid support licenses (see `Sidekiq Pro` below), which provide enhanced features. However, the source code is hosted on [GitHub](https://github.com/mperham/sidekiq). The project also has a detailed [Wiki](https://github.com/mperham/sidekiq/wiki) page with links to best practices.
 
-The organization behind Sidekiq offers paid support licenses, which also provide enhanced
-features. However, the source code is hosted on [GitHub](https://github.com/mperham/sidekiq). The
-project also has a nice [Wiki](https://github.com/mperham/sidekiq/wiki) page with links to best
-practices etc. Overall I would say that the Sidekiq documentation is better than the Delayed Job
-docs.
+We use a mix of the [`capistrano-sidekiq`](https://github.com/seuros/capistrano-sidekiq) and [`dlss-capistrano`](https://github.com/sul-dlss/dlss-capistrano/#sidekiq-via-systemd) gems to manage Sidekiq processes on servers. 
 
-We use the [capistrano-sidekiq gem](https://github.com/seuros/capistrano-sidekiq) to let capistrano manage Sidekiq and sidekiq processes. If a machine with Sidekiq deployed to it reboots, there will be no sidekiq process without a developer to restart Sidekiq, either through a deployment, or `bundle` command. To solve this problem, we have a `puppet` class to set up an init script for a system level start on boot. It requires a `puppet` change, and that we manage concurrency settings in a Rails `config/sidekiq.yml` file. For example, see [exhibits](https://github.com/sul-dlss/exhibits/blob/master/config/sidekiq.yml) and [puppet](https://github.com/sul-dlss/puppet/blob/production/hieradata/node/exhibits-prod-a.stanford.edu.eyaml#L10).
+If a machine with Sidekiq deployed to it via `capistrano-sidekiq` reboots, there will be no Sidekiq process without a developer to restart it, either through a deployment, or `bundle` command. To solve this problem, we have a `puppet` class to set up an init script for a system-level start on boot. It requires a `puppet` change, and some concurrency settings in an application `config/sidekiq.yml` file. For example, see [exhibits](https://github.com/sul-dlss/exhibits/blob/master/config/sidekiq.yml) and [puppet](https://github.com/sul-dlss/puppet/blob/production/hieradata/node/exhibits-prod-a.stanford.edu.eyaml#L10).
 
-The [DPN Synchronization](https://github.com/dpn-admin/dpn-sync) application uses Sidekiq.
+### Sidekiq Pro
 
+Some of our apps require more background job resilience than others (e.g., dor-services-app, SDR robots, preservation_catalog). These applications use the paid Sidekiq Pro gem for one or both of these Pro-only features: [super fetch](https://github.com/sidekiq/sidekiq/wiki/Reliability#using-super_fetch), to prevent losing jobs that die if a VM goes down while Sidekiq workers are processing jobs; and [reliable push](https://github.com/sidekiq/sidekiq/wiki/Pro-Reliability-Client), to safeguard against network errors when pushing jobs to Redis.
 
-## Sneakers
+To configure Sidekiq Pro, credentials must be present. See the [documentation](https://github.com/sul-dlss/common-accessioning/tree/main?tab=readme-ov-file#configuration) on how to set this up and where to get the credentials.
 
-Sneakers is used for processing RabbitMQ queues. These queues are bound to exchanges where messages are published.
+#### Subscription Renewal
+
+Our subscription to Sidekiq Pro must be renewed every year (we pay one year at a time, not one month at a time). How does this work? Every February, ContribSys will send email to [`sul-devops-team@lists.stanford.edu`](https://mailman.stanford.edu/mailman/listinfo/sul-devops-team) with a magic link where payment method information can be put in such as `https://billing.stripe.com/p/subscription/recovery/live_YWNjdF8wSEpnRHRqb0oxbkJFNFFOUFNxeixfVHVkMWtjUDh5cWxwajFuamhoV3BFOVpEZ2IzWUhERQ0100tCoKveTm` (bogus link, just for example). The developers on the `sul-devops-team` list should all see this message, and as of Feb. 2026, this list has two folks from Ops, two folks from E&D Access, and four folks from E&D Infrastructure, to make sure we don't miss these messages. If the payment method is not updated within 6-7 days, the account will be cancelled, and that will cause problems with production deployments of applications that use Sidekiq Pro. Should this happen, it is simple to re-establish the subscription without having to change application credentials. To do so, you should head to the [ContribSys billing page](https://billing.contribsys.com/spro/) and click `Buy a new Sidekiq Pro subscription`. To link this up to the credentials used before, the key is to use the above `sul-devops-team` email address when filling out the new subscription form.
+
+## Solid Queue
+
+With newer applications (ca. 2024 on), we have tended to use the new Rails default background management gem, [Solid Queue](https://github.com/rails/solid_queue), which "supports delayed jobs, concurrency controls, recurring jobs, pausing queues, numeric priorities per job, priorities by queue order, and bulk enqueuing..." Solid Queue does not rely on Redis or RabbitMQ; its only dependency is a database, and our apps already have databases set up. Deployment of Solid Queue is managed by [dlss-capistrano](https://github.com/sul-dlss/dlss-capistrano#solidqueue-via-systemd).
+
+## Kicks (FKA Sneakers)
+
+Kicks is used for processing RabbitMQ queues. These queues are bound to exchanges where messages are published.
 Remember you must remember to `ack` each job in your worker.
 
-Sneakers is used by:
-[dor_indexing_app](https://github.com/sul-dlss/dor_indexing_app/blob/e72cc7e01cc26f865a2f9cfdd52086df69ca0258/Gemfile#L25) 
-[h2](https://github.com/sul-dlss/happy-heron/blob/c0ffd3f06a4f33c3099394067b6da809929c7856/Gemfile#L72)
+Kicks is used by dor-services-app, H3, and pre-assembly, and deployment is handled by [dlss-capistrano](https://github.com/sul-dlss/dlss-capistrano#sneakers-via-systemd).
 
+## ActiveJob
 
-## Active Job
-
-[Active Job](http://guides.rubyonrails.org/active_job_basics.html) is a Rails framework for
+[ActiveJob](http://guides.rubyonrails.org/active_job_basics.html) is a Rails framework for
 declaring and running background jobs. It supports a variety of technologies, including Sidekiq.
-Active Job is attractive, because it lets you switch out back ends with minimal impact
-on your application code. Note, however, that Active Job does not currently have a mechanism for
-detecting when a background job has failed. Most of the actual processing libraries (e.g.
-Sidekiq etc.) have facilities for recognizing when a job has failed, though, so if this is important
-to you, it may be necessary to go without the layer of convenience and consistency that Active Job
-provides.
-
-
-## Deployment
-
-[Capistrano::Sidekiq](https://github.com/seuros/capistrano-sidekiq) provides
-specific Capistrano tasks for Sidekiq.
+ActiveJob is attractive, because it lets you switch out back ends with minimal impact 
+on your application code.
