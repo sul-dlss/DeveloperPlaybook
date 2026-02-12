@@ -1,32 +1,11 @@
 # Background Processing at DLSS
 
 There are many tools that provide background processing for Rails/Ruby-based applications. At DLSS,
-we use [Delayed Job](https://github.com/collectiveidea/delayed_job),
-[Resque](https://github.com/resque/resque), [Sneakers](https://github.com/jondot/sneakers) and [Sidekiq](http://sidekiq.org/). We don't have a set
-requirement for which technology to use, but most of us seem to prefer Sidekiq.
-
-
-## Resque
-
-[Resque](https://github.com/resque/resque) is a Ruby application with a companion Sinatra-based
-monitoring web app. It uses [Redis](http://redis.io) as its backend for managing the queues. Each queue is a
-multivalued record (a List data structure) in Redis and Redis handles all the queueing issues like
-concurrency, etc.
-
-Resque workers poll one or more queues to get work. For each job they receive, they fork a process
-to run the job using the self.perform(*args) method. You can run multiple workers per queue if you
-want to have concurrent jobs for a queue. When a worker polls more than 1 queue, it does so in order
-per job which you can leverage to implement priority queues.
-
-Note that per the lead maintainer, Resque is currently
-[in maintenance mode](http://resque.github.io/2016/03/10/resque-1.26.0-released.html).
-
-The DOR Workflow Service framework uses Resque.
-
+we use [Sneakers](https://github.com/jondot/sneakers) and [Sidekiq](http://sidekiq.org/).
 
 ## Sidekiq
 
-I believe Sidekiq was inspired by Resque, and is considered by most to improve on its ancestor. Like Resque, Sidekiq relies on Redis for queue management. Note that Sidekiq uses threads to run its jobs in the same process. This means that if there is any chance of your background jobs stepping on one another, you need to ensure that both your code and the gems that your code uses when processing background jobs are thread-safe. A common example of non-thread-safe code is `Dir.chdir` and the `Timeout` library. Avoid using these entirely.
+Sidekiq relies on Redis for queue management and uses threads to run its jobs in the same process. This means that if there is any chance of your background jobs stepping on one another, you need to ensure that both your code and the gems that your code uses when processing background jobs are thread-safe. A common example of non-thread-safe code is `Dir.chdir` and the `Timeout` library. Avoid using these entirely.
 
 It's fairly common to run Redis on its own server. If you do this, you need to know that Redis
 doesn't have any notion of separate "accounts". The implication is that if several applications
@@ -58,23 +37,13 @@ Sneakers is used by:
 [h2](https://github.com/sul-dlss/happy-heron/blob/c0ffd3f06a4f33c3099394067b6da809929c7856/Gemfile#L72)
 
 
-## Delayed Job
-
-Like Sidekiq, Delayed Job supports [ActiveJob](http://guides.rubyonrails.org/active_job_basics.html).
-
-[This article](https://www.sitepoint.com/delayed-jobs-best-practices/) suggests some best practices
-for Delayed Job.
-
-[sul_pub](https://github.com/sul-dlss/sul_pub/blob/16525c3083ba5494428397168ca6de8d011e7b5e/Gemfile#L26) uses Delayed Job (with Active Job, see below).
-
-
 ## Active Job
 
 [Active Job](http://guides.rubyonrails.org/active_job_basics.html) is a Rails framework for
-declaring and running background jobs. It supports a variety of technologies, including Delayed Job
-and Sidekiq. Active Job is attractive, because it lets you switch out back ends with minimal impact
+declaring and running background jobs. It supports a variety of technologies, including Sidekiq.
+Active Job is attractive, because it lets you switch out back ends with minimal impact
 on your application code. Note, however, that Active Job does not currently have a mechanism for
-detecting when a background job has failed. Most of the actual processing libraries (Delayed Job,
+detecting when a background job has failed. Most of the actual processing libraries (e.g.
 Sidekiq etc.) have facilities for recognizing when a job has failed, though, so if this is important
 to you, it may be necessary to go without the layer of convenience and consistency that Active Job
 provides.
@@ -82,6 +51,5 @@ provides.
 
 ## Deployment
 
-[Capistrano::Sidekiq](https://github.com/seuros/capistrano-sidekiq) and
-[Capistrano::DelayedJob](https://github.com/AgileConsultingLLC/capistrano3-delayed-job) provide
-specific Capistrano tasks for Sidekiq and Delayed Job respectively.
+[Capistrano::Sidekiq](https://github.com/seuros/capistrano-sidekiq) provides
+specific Capistrano tasks for Sidekiq.
