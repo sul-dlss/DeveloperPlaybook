@@ -24,6 +24,7 @@ A place to organize style guides, best practices, tools, and techniques for Stan
   - [Version Control](/best-practices/version_control.md)
   - [Multi-factor Auth/Two Factor Auth](/best-practices/2FA.md)
   - [Accessibility (Infrastructure)](/best-practices/infra-accessibility.md)
+  - [AI coding tools](/best-practices/ai_coding_tools.md)
 - Deployment
   - [Automating Deployment](/deployment/automated_deployment.md)
   - [Capistrano](/deployment/capistrano.md)
