@@ -17,6 +17,23 @@ Other common plugins (not bundled in `dlss-capistrano`) include:
 - `capistrano-sidekiq`, for integrating deploys with Sidekiq background jobs
 - `whenever/capistrano`, for integrating deploys with whenever cron jobs
 
+### Deploying Private Repositories
+
+If the Github repository you are deploying is private, you need to add the following lines to your `deploy.rb` file, with `forward_agent: true` being important:
+
+```
+set :ssh_options,   keys: [Capistrano::OneTimeKey.temporary_ssh_private_key_path],
+                    forward_agent: true,
+                    auth_methods: %w[publickey password]
+```
+
+Also, ensure your repo URL is in the `git:` format, and not `https://` format, like this example:
+
+```
+set :repo_url, 'git@github.com:sul-dlss/rialto-orgs.git'
+```
+
+
 ### Hostnames and Usernames
 
 We do not consider hostnames and application usernames as "sensitive" information, so they may be present in capistrano deploy files in a public github repo.
