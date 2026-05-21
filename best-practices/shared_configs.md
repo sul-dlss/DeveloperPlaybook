@@ -17,6 +17,13 @@ Shared configs should be used for settings that vary by deployment environment. 
 * Honeybadger configuration: common Honeybadger configuration should be set in `config/honeybadger.yml` stored in the repo; environment specific Honeybadger settings should be set as env variables in puppet.
 * Settings that don't vary by environment: common configuration should be set in `config/settings.yml` stored in the repo.
 
+## Where are the secrets?
+
+They are in Vault. E.g., for dockerhub:
+
+* `DOCKER_USER`: In vault at `puppet/application/dockerhub/username`
+* `DOCKER_PASS`: In vault at `puppet/application/dockerhub/password`
+
 ## Searching shared_configs branches
 
 Because shared_configs is a large collection of unrelated git branches and the GitHub web user interface only allows searching against the HEAD branch of a repository, you might want to search your local checkout instead. For instance, when trying to answer questions about how many or which services are pointing at a particular API or URL. To do this, you might consider copy/pasting this script into an executable file on your PATH:
