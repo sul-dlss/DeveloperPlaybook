@@ -27,17 +27,17 @@ Then, **warn #dlss-infra-stage-qa-use** of the impending deployment to stage in 
 
 ##### 3. Run integration tests in stage
 
-Then **run infrastructure-integration-tests** (see [documentation](#run-infrastructure-integration-tests) below) after deploy to stage.
+Then **run infrastructure-integration-tests** (see [documentation](#run-infrastructure-integration-tests) below) after deploy to stage. Since preassembly tests will get skipped when the test suite is run, be sure to also run:
+
+```
+bin/rspec --tag type:preassembly`
+```
 
 We want the FR to ensure
   - dependency updates don't break cross-app functionality
   - this test suite remains useful
 
-If some tests fail when running the whole test suite at once, but pass when run individually, that is ok -- as long as they each pass under some circumstances. Chances are not great that the full suite will pass in one go from a spotty off-campus connection.
-
-If you're unsure whether a particular test failure indicates bad network luck, a regression in the application, or an out of date test, raise it for discussion (or ask another dev to retry from their laptop) in #dlss-infrastructure.
-
-If on a Mac, you will get better results if you stay in the same "space" as the running tests (avoids focus issues with the browser).
+If some tests fail when running the whole test suite at once, but pass when run individually, that is ok -- as long as they each pass under some circumstances. If you're unsure whether a particular test failure indicates bad network luck, a regression in the application, or an out of date test, raise it for discussion (or ask another dev to retry from their laptop) in #dlss-infrastructure.
 
 ##### 4. Deploy to prod
 
