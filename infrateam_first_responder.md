@@ -27,7 +27,16 @@ Then, **warn #dlss-infra-stage-qa-use** of the impending deployment to stage in 
 
 ##### 3. Run integration tests in stage
 
-Then **run infrastructure-integration-tests** (see [documentation](#run-infrastructure-integration-tests) below) after deploy to stage.
+Then **run infrastructure-integration-tests** after deploy to stage.
+
+Run with:
+
+```
+bin/rspec
+bin/rspec --tag type:preassembly`
+```
+
+See https://github.com/sul-dlss/infrastructure-integration-test/blob/main/README.md for more info.
 
 We want the FR to ensure
   - dependency updates don't break cross-app functionality
