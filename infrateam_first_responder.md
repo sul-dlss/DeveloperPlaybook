@@ -33,7 +33,6 @@ Run with:
 
 ```
 bin/rspec
-bin/rspec --tag type:preassembly`
 ```
 
 See https://github.com/sul-dlss/infrastructure-integration-test/blob/main/README.md for more info.
