@@ -93,28 +93,32 @@ When all of FOLIO (or its Okapi API gateway) are taken down for maintenance, SDR
 During rollover, do not run workflow steps that update FOLIO records, since FOLIO data may need to be wiped/restored as part of rollover. FOLIO itself, including Okapi, is usually up during this time.
 
 Relevant workflow steps:
-* etdSubmitWF
-  * submit-marc: creates a stub marc record and submits it to FOLIO.
-  * check-marc: cron job to check whether cataloger has fully cataloged ETD. This can still run while rollover happens, because all it does is look for is a status change. It does not change any FOLIO record.
-  * catalog-status: once the ETD is cataloged fully, the ETD can be accessioned and released to SW. This WF is OK to run since it does not change FOLIO records.
 * releaseWF
   * releaseWF_update-marc_dsa: adds/updates MARC 856 links to purl
-
-hydra_etd has a submit_marc queue for CreateStubMarcRecordJob, with its own process.
+* heracles-etd has a submit_marc queue for CreateStubMarcRecordJob, with its own process.
 
 
 ### Before the rollover
-* Quiet the relevant processes which monitor queues for jobs that update FOLIO. Quieting queues means that they finish any in-flight jobs and don't pick up any more jobs. Use the Sidekiq UI "Quiet" button to quiet the queue.
+* Quiet the relevant processes which monitor queues for jobs that update FOLIO. Quieting queues means that they finish any in-flight jobs and don't pick up any more jobs. Use the Sidekiq UI "Quiet" button or the SolidQueue UI "pause" button to quiet the queue.
   * releaseWF_update-marc_dsa queue: https://robot-console-prod.stanford.edu/busy
-  * ETD process monitoring the submit_marc queue. https://etd.stanford.edu/queues/busy
+  * ETD process monitoring the submit_marc queue. https://etd.stanford.edu/jobs
+
+*Note:* It's possible that the `submit_marc` will not be visible in the interface if no jobs have been enqueued since the most recent deploy. In that case you can pause from the rails console:
+
+```
+SolidQueue::Queue.find_by_name("submit_marc").pause
+SolidQueue::Queue.find_by_name("submit_marc").resume
+```
 
 ### During rollover
 * Monitor #folio-implementation for updates.
 * Monitor Honeybadger
 
 ### After rollover completed
-Restart the process on dor-services-app and hydra_etd:
+Restart the process on dor-services-app and heracles-etd:
 
 `bundle exec cap sidekiq_systemd:restart`
+
+Unpause/resume the `submit_marc` queue at https://etd.stanford.edu/jobs 
 
 Monitor Sidekiq, Honeybadger, and the Argo workflow grid.
