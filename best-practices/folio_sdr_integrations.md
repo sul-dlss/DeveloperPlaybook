@@ -87,38 +87,42 @@ When all of FOLIO (or its Okapi API gateway) are taken down for maintenance, SDR
   * spec/features/sdr_deposit_spec.rb
 
 
-## FOLIO FY Rollover (FYRO)
+## Folio Fiscal Year Rollover (FYRO)
 
 ### Requirements
-During rollover, do not run workflow steps that update FOLIO records, since FOLIO data may need to be wiped/restored as part of rollover. FOLIO itself, including Okapi, is usually up during this time.
+During rollover, do not run workflow steps that update Folio records, since Folio data may need to be wiped/restored as part of rollover. Folio itself (including API services) is usually up during this time.
 
 Relevant workflow steps:
-* releaseWF
-  * releaseWF_update-marc_dsa: adds/updates MARC 856 links to purl
-* heracles-etd has a submit_marc queue for CreateStubMarcRecordJob, with its own process.
+* `releaseWF`
+  * `releaseWF_update-marc_dsa`: adds/updates MARC 856 links to purl
+* Heracles (ETD) has a `submit_marc` queue for `CreateStubMarcRecordJob`
 
 
 ### Before the rollover
-* Quiet the relevant processes which monitor queues for jobs that update FOLIO. Quieting queues means that they finish any in-flight jobs and don't pick up any more jobs. Use the Sidekiq UI "Quiet" button or the SolidQueue UI "pause" button to quiet the queue.
-  * releaseWF_update-marc_dsa queue: https://robot-console-prod.stanford.edu/busy
-  * ETD process monitoring the submit_marc queue. https://etd.stanford.edu/jobs
+* Quiet the relevant processes which monitor queues for jobs that update Folio. Quieting queues means that they finish any in-flight jobs and don't pick up any more jobs. Use the Sidekiq UI "Quiet" button or the SolidQueue UI "pause" button to quiet the queue.
+  * `releaseWF_update-marc_dsa` queue: https://robot-console-prod.stanford.edu/busy
+  * ETD process monitoring the `submit_marc` queue. https://etd.stanford.edu/jobs
+    * *Note:* It's possible that the `submit_marc` will not be visible in the interface if no jobs have been enqueued since the most recent deploy. In that case you can pause from the rails console:
 
-*Note:* It's possible that the `submit_marc` will not be visible in the interface if no jobs have been enqueued since the most recent deploy. In that case you can pause from the rails console:
-
-```
+```ruby
 SolidQueue::Queue.find_by_name("submit_marc").pause
-SolidQueue::Queue.find_by_name("submit_marc").resume
 ```
 
 ### During rollover
-* Monitor #folio-implementation for updates.
+* Monitor [`#libsys-infra-folio-integration`](https://stanford.enterprise.slack.com/archives/C04EZLBMLQN) for updates.
 * Monitor Honeybadger
 
 ### After rollover completed
-Restart the process on dor-services-app and heracles-etd:
+Restart / unquiet / unpause the queues on dor-services-app and heracles-etd:
 
-`bundle exec cap sidekiq_systemd:restart`
+```shell
+# In your local DSA checkout, use capistrano to restart queues
+bundle exec cap prod sidekiq_systemd:restart
+```
 
-Unpause/resume the `submit_marc` queue at https://etd.stanford.edu/jobs 
+```ruby
+# SSH to the prod heracles_etd VM, drop into the Rails console, and resume the paused queue:
+SolidQueue::Queue.find_by_name("submit_marc").resume
+```
 
 Monitor Sidekiq, Honeybadger, and the Argo workflow grid.
