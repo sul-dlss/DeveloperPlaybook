@@ -26,3 +26,8 @@ To change the offset (where :7 in the topic indicates the partition):
 ```
 /opt/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group purl-updates-consumer --reset-offsets --topic purl-updates:7 --to-offset 695369 --execute
 ```
+
+Watch the total lag live:
+```
+watch -n 10 '/opt/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group earthworks_prod_indexer | awk "NR>1 {sum += \$6} END {print \"Total LAG:\", sum}"'
+```
