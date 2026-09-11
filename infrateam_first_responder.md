@@ -13,6 +13,8 @@ Run the `merge-all` script to automatically merge all dependency update PRs: htt
 
 It can be helpful to scan the list of PRs generated in Slack.  If you notice some projects don't have a PR even though the list of updated gems suggest they should, you can look at the log output of the dependecy update script: https://sul-ci-prod.stanford.edu/job/SUL-DLSS/job/access-update-scripts/job/main/  One potential problem would be an older unmerged or existing `update-dependencies` branch that prevented the creation of a new one by the script.
 
+NOTE: Should any of the builds fail due to errors updating the CircleCI ruby-rails orb version, see the `Jenkins CircleCI Integration` section below
+
 #### Deploy 'em
 
 Use the `sdr-deploy` CLI to deploy all infrastructure portfolio projects to deployed environments. This CLI can be used either on the `sdr-infra` server, or from your laptop (if you've set up SSH with multiplexing and proxy jump per [playbook documentation of common SSH configuration](/best-practices/ssh_configuration.md)). See the [`sdr-deploy` README](https://github.com/sul-dlss/sdr-deploy) for more about how to use the CLI for mass deploys, and how to use the CLI's `check_ssh` command to verify access to all of the VMs in a given environment.
@@ -115,6 +117,30 @@ All missing production checkins should be addressed. The following are current c
 
 Note that checkin updates are also sent to various slack channels.
 
+### Jenkins CircleCI Integration
+
+Infrastructure team projects use CircleCI for continuous integration, and the vast majority of these projects use a [CircleCI Orb](https://circleci.com/developer/orbs/orb/sul-dlss/ruby-rails) the team manages to run Ruby / Rails tests. Weekly dependency updates include checking for new versions of the orb and bumping the version in the project's CircleCI configuration. When the weekly updates run, Jenkins uses an access token stored in Vault to interact with the CircleCI API. Should you need to know or change these values, they are located at:
+
+* puppet/application/jenkins/circle_token
+  * NOTE: This entry includes both a `content` value (the token itself) and an `expiry_date` value, since the max life for a CircleCI access token is one year.
+* puppet/application/jenkins/circle_login
+* puppet/application/jenkins/circle_passwd
+* puppet/application/jenkins/circle_recovery_code
+  * NOTE: You'll need to use this recovery code in lieu of a 2FA code, at which point CircleCI will generate a new recovery code. Make sure to update vault with this new value!
+
+##### Renewing the Access Token (once per year)
+
+In advance of the access token aging out...
+
+1. Log in to CircleCI using the Vault credentials above. Note the new recovery code and be sure to update this value in Vault!
+2. Generate a new access token at https://app.circleci.com/settings/user/tokens
+3. Set the name of the new token to something like `access-update-scripts` (it doesn't much matter), and set the expiry date for a year after creation. 
+4. Update the `circle_token` entry in Vault, both the `content` value and the `expiry_date` value.
+5. Set a reminder to renew the token a week or so in advance of the next access token expiry date:
+    ```
+    /remind #dlss-infrastructure "@infrastructure-devs :firstresponder: it's time to generate a new CircleCI access token for Jenkins! see https://github.com/sul-dlss/DeveloperPlaybook/blob/main/infrateam_first_responder.md#jenkins-circleci-integration for details" August 24th, 2027
+    ```
+
 ## General Responsibilities
 ### Improve Troubleshooting Documentation as Needed
 
@@ -182,8 +208,7 @@ SDR logs are aggregated in AWS Cloudwatch. To view/search them, log into AWS Con
   * If so, ensure you assign the ticket to yourself and put it in the "in progress" column of [the team's production priorities board](https://github.com/orgs/sul-dlss/projects/58)
 * First responder may be asked to spearhead a work estimate https://github.com/sul-dlss-labs/estimation (note that these are, by definition, meant to be done by more than one person; if it's smaller, should it be a ticket in a project?)
 
-
-## General
+## Processes
 ### First Responder Rotation Premises
 
 * Respond to production issues in a timely fashion during business hours.
